@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-7-4 21:56:08 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yumazhe.pojo.User" table="USER">
+        <id name="number" type="java.lang.String">
+            <column name="number" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" />
+        </property>
+        <property name="classes" type="java.lang.String">
+            <column name="CLASSES" />
+        </property>
+        <property name="contactWay" type="java.lang.String">
+            <column name="CONTACTWAY" />
+        </property>
+        <many-to-one name="position" class="com.yumazhe.pojo.Position">
+            <column name="POSITION" />
+        </many-to-one>
+        <property name="payState" type="java.lang.String">
+            <column name="PAYSTATE" />
+        </property>
+        <property name="photoPath" type="java.lang.String">
+            <column name="PHOTOPATH" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <set name="permissions" table="USER_PERMISSION" inverse="false" lazy="false">
+            <key>
+                <column name="uid" />
+            </key>
+            <many-to-many class="com.yumazhe.pojo.Permission" column="pid" />
+        </set>
+    </class>
+</hibernate-mapping>

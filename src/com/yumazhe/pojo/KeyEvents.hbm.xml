@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-7-4 21:56:08 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yumazhe.pojo.KeyEvents" table="KEYEVENTS">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="happenedDate" type="java.util.Date">
+            <column name="HAPPENEDDATE" />
+        </property>
+        <many-to-one name="author" class="com.yumazhe.pojo.User">
+            <column name="AUTHOR" />
+        </many-to-one>
+        <property name="photoPath" type="java.lang.String">
+            <column name="PHOTOPATH" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+    </class>
+</hibernate-mapping>

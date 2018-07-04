@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-7-4 21:56:08 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.yumazhe.pojo.Position" table="POSITION">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <set name="users" inverse="true" lazy="false">
+            <key>
+                <column name="position" />
+            </key>
+            <one-to-many class="com.yumazhe.pojo.User" />
+        </set>
+    </class>
+</hibernate-mapping>

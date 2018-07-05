@@ -3,7 +3,7 @@ package com.yumazhe.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class KeyEvents implements Serializable {
+public class KeyEvent implements Serializable {
 	private static final long serialVersionUID = 8230018310886617501L;
 	private Integer id;
 	private String title;

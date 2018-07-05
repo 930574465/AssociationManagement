@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2018-7-4 21:56:08 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.yumazhe.pojo.DailyActivities" table="DAILYACTIVITIES">
+    <class name="com.yumazhe.pojo.DailyActivity" table="DAILYACTIVITY">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="native" />

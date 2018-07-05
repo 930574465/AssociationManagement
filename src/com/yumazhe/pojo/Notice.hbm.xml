@@ -21,7 +21,7 @@
             <column name="AUTHOR" />
         </many-to-one>
         <property name="clicks" type="java.lang.Integer">
-            <column name="CLICKS" />
+            <column name="CLICKS" default="0" />
         </property>
         <property name="filePath" type="java.lang.String">
             <column name="FILEPATH" />

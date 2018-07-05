@@ -21,7 +21,7 @@
             <column name="FILEPATH" />
         </property>
         <property name="dowloadNumber" type="java.lang.Integer">
-            <column name="DOWLOADNUMBER" />
+            <column name="DOWLOADNUMBER" default="0" />
         </property>
     </class>
 </hibernate-mapping>

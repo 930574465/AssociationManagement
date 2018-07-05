@@ -9,7 +9,7 @@
             <generator class="native" />
         </id>
         <property name="size" type="java.lang.Double">
-            <column name="SIZE" />
+            <column name="SIZE" default="0.0" />
         </property>
     </class>
 </hibernate-mapping>

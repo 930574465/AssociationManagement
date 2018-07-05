@@ -2,7 +2,7 @@ package com.yumazhe.pojo;
 
 import java.io.Serializable;
 
-public class DailyActivities implements Serializable {
+public class DailyActivity implements Serializable {
 	private static final long serialVersionUID = 2408684318311690226L;
 	private Integer id;
 	private String title;

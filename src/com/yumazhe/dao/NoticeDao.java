@@ -13,5 +13,7 @@ public interface NoticeDao{
 	
 	public Notice queryById(int id);
 	
+	public List<Notice> queryByPage(int start, int size);
+	
 	public List<Notice> queryAll();
 }

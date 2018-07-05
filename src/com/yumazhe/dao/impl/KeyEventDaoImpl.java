@@ -58,12 +58,11 @@ public class KeyEventDaoImpl extends HibernateDaoSupport implements KeyEventDao 
 	public List<KeyEvent> queryAll() {
 		List<KeyEvent> keyEvents = null;
 		try {
-			Query query = super.getSession().createQuery("from KeyEvent");
+			Query query = super.getSession().createQuery("from KeyEvent order by date desc");
 			keyEvents = query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 		return keyEvents;
 	}
-
 }

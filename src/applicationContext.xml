@@ -40,25 +40,75 @@
 		<property name="mappingLocations" value="classpath:com/yumazhe/pojo/*.hbm.xml"></property>
 	</bean>
 	
-<!-- 	<bean name="userDao" class="com.school.dao.UserDaoImpl">
+	<!-- 配置dao层类的bean -->
+ 	<bean name="associationInfoDao" class="com.yumazhe.dao.impl.AssociationInfoDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean name="messageDao" class="com.school.dao.MessageDaoImpl">
+ 	<bean name="contactDao" class="com.yumazhe.dao.impl.ContactDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean name="replyDao" class="com.school.dao.ReplyDaoImpl">
+	<bean name="dailyActivityDao" class="com.yumazhe.dao.impl.DailyActivityDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="fileDao" class="com.yumazhe.dao.impl.FileDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="IncomeOrPayoutDao" class="com.yumazhe.dao.impl.IncomeOrPayoutDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="keyEventDao" class="com.yumazhe.dao.impl.KeyEventDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="moneyDao" class="com.yumazhe.dao.impl.MoneyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="noticeDao" class="com.yumazhe.dao.impl.NoticeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="permissionDao" class="com.yumazhe.dao.impl.PermissionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="positionDao" class="com.yumazhe.dao.impl.PositionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="userDao" class="com.yumazhe.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean name="userService" class="com.school.service.UserServiceImpl">
+	<!-- 配置service层类的bean -->
+	<bean name="userService" class="com.yumazhe.service.impl.AssociationInfoServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	<bean name="messageService" class="com.school.service.MessageServiceImpl">
-		<property name="messageDao" ref="messageDao"></property>
+	<bean name="contactService" class="com.yumazhe.service.impl.ContactServiceImpl">
+		<property name="contactDao" ref="contactDao"></property>
 	</bean>
-	<bean name="replyService" class="com.school.service.ReplyServiceImpl">
-		<property name="replyDao" ref="replyDao"></property>
-	</bean> -->
+	<bean name="dailyActivityService" class="com.yumazhe.service.impl.DailyActivityServiceImpl">
+		<property name="dailyActivityDao" ref="dailyActivityDao"></property>
+	</bean>
+	<bean name="fileService" class="com.yumazhe.service.impl.FileServiceImpl">
+		<property name="fileDao" ref="fileDao"></property>
+	</bean>
+	<bean name="incomeOrPayoutService" class="com.yumazhe.service.impl.IncomeOrPayoutServiceImpl">
+		<property name="incomeOrPayoutDao" ref="incomeOrPayoutDao"></property>
+	</bean>
+	<bean name="keyEventService" class="com.yumazhe.service.impl.KeyEventServiceImpl">
+		<property name="keyEventDao" ref="keyEventDao"></property>
+	</bean>
+	<bean name="moneyService" class="com.yumazhe.service.impl.MoneyServiceImpl">
+		<property name="moneyDao" ref="moneyDao"></property>
+	</bean>
+	<bean name="noticeService" class="com.yumazhe.service.impl.NoticeServiceImpl">
+		<property name="noticeDao" ref="noticeDao"></property>
+	</bean>
+	<bean name="permissionService" class="com.yumazhe.service.impl.PermissionServiceImpl">
+		<property name="permissionDao" ref="permissionDao"></property>
+	</bean>
+	<bean name="positionService" class="com.yumazhe.service.impl.PositionServiceImpl">
+		<property name="positionDao" ref="positionDao"></property>
+	</bean>
+	<bean name="userService" class="com.yumazhe.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
 	
 <!-- 	事务管理器 
 	<bean name="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">

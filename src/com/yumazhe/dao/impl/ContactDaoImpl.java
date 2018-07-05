@@ -7,7 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.yumazhe.pojo.Contact;
 
-public class ContactDao extends HibernateDaoSupport implements com.yumazhe.dao.ContactDao {
+public class ContactDaoImpl extends HibernateDaoSupport implements com.yumazhe.dao.ContactDao {
 
 	@Override
 	public boolean add(Contact contact) {

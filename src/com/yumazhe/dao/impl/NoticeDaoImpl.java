@@ -53,6 +53,20 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 		} 
 		return notice;
 	}
+	
+	@Override
+	public List<Notice> queryByPage(int start, int size) {
+		List<Notice> notices = null;
+		try {
+			Query query = super.getSession().createQuery("from Notice order by date desc");
+			query.setFirstResult(start);
+			query.setMaxResults(size);
+			notices = query.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return notices;
+	}
 
 	@Override
 	public List<Notice> queryAll() {
@@ -65,5 +79,4 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 		} 
 		return notices;
 	}
-
 }

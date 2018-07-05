@@ -65,5 +65,4 @@ public class DailyActivityDaoImpl extends HibernateDaoSupport implements DailyAc
 		} 
 		return dailyActivities;
 	}
-
 }

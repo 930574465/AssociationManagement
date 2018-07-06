@@ -2,18 +2,18 @@ package com.yumazhe.service;
 
 import java.util.List;
 
-import com.yumazhe.pojo.Permission;
+import com.yumazhe.pojo.Notice;
 
 public interface NoticeService {
-	public boolean add(Permission permmission);
+	public void add(Notice notice);
 
-	public boolean remove(Permission permmission);
+	public void remove(Notice notice);
 
-	public boolean modify(Permission permmission);
+	public void modify(Notice notice);
 	
-	public Permission queryById(int id);
+	public Notice queryById(int id);
 	
-	public List<Permission> queryByPage(int start, int size);
+	public List<Notice> queryByPage(int start, int size);
 	
-	public List<Permission> queryAll();
+	public List<Notice> queryAll();
 }

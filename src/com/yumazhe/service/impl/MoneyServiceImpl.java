@@ -14,7 +14,6 @@ public class MoneyServiceImpl implements MoneyService {
 	
 	@Override
 	public Money query() {
-		return null;
+		return moneyDao.query();
 	}
-
 }

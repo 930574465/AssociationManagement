@@ -5,13 +5,13 @@ import java.util.List;
 import com.yumazhe.pojo.User;
 
 public interface UserService {
-	public boolean register(User user);
+	public void register(User user);
 	
-	public boolean nullify(User user);
+	public void nullify(User user);
 	
-	public boolean modify(User user);
+	public void modify(User user);
 	
-	public boolean login(User user);
+	public User login(User user);
 	
 	public User query(String number);
 	
@@ -26,5 +26,5 @@ public interface UserService {
 	 * @return 
 	 * 		成功返回true，失败返回false
 	 */
-	public boolean transfer(String srcNumber, User destNumber);
+	public void transfer(String srcNumber, String destNumber);
 }

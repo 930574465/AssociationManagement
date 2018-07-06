@@ -5,11 +5,11 @@ import java.util.List;
 import com.yumazhe.pojo.Permission;
 
 public interface PermissionDao{
-	public boolean add(Permission permission);
+	public void add(Permission permission);
 	
-	public boolean remove(Permission permission);
+	public void remove(Permission permission);
 	
-	public boolean update(Permission permission);
+	public void update(Permission permission);
 	
 	public Permission queryById(int id);
 	

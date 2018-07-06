@@ -15,28 +15,40 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public boolean add(Contact contact) {
-		return false;
+	public void add(Contact contact) {
+		contactDao.add(contact);
 	}
 
 	@Override
-	public boolean remove(Contact contact) {
-		return false;
+	public void remove(Contact contact) {
+		Contact dbContact = contactDao.queryById(contact.getId());
+		if (dbContact != null) {
+			contactDao.remove(dbContact);
+		}
 	}
 
 	@Override
-	public boolean modify(Contact contact) {
-		return false;
+	public void modify(Contact contact) {
+		Contact dbContact = contactDao.queryById(contact.getId());
+		if (dbContact != null) {
+			if (contact.getContext() != null) {
+				dbContact.setContext(contact.getContext());
+			}
+			if (contact.getName() != null) {
+				dbContact.setName(contact.getName());
+			}
+			contactDao.update(dbContact);
+		}
 	}
 
 	@Override
 	public Contact queryById(int id) {
-		return null;
+		return contactDao.queryById(id);
 	}
 
 	@Override
 	public List<Contact> queryAll() {
-		return null;
+		return contactDao.queryAll();
 	}
 
 }

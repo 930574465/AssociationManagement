@@ -11,58 +11,27 @@ import com.yumazhe.pojo.KeyEvent;
 public class KeyEventDaoImpl extends HibernateDaoSupport implements KeyEventDao {
 
 	@Override
-	public boolean add(KeyEvent keyEvent) {
-		try {
-			super.getSession().save(keyEvent);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void add(KeyEvent keyEvent) {
+		super.getSession().save(keyEvent);
 	}
 
 	@Override
-	public boolean remove(KeyEvent keyEvent) {
-		try {
-			super.getSession().delete(keyEvent);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void remove(KeyEvent keyEvent) {
+		super.getSession().delete(keyEvent);
 	}
 
 	@Override
-	public boolean update(KeyEvent keyEvent) {
-		try {
-			super.getSession().update(keyEvent);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(KeyEvent keyEvent) {
+		super.getSession().update(keyEvent);
 	}
 
 	@Override
 	public KeyEvent queryById(int id) {
-		KeyEvent keyEvent = null;
-		try {
-			keyEvent = (KeyEvent) super.getSession().get(KeyEvent.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return keyEvent;
+		return (KeyEvent) super.getSession().get(KeyEvent.class, id);
 	}
 
 	@Override
 	public List<KeyEvent> queryAll() {
-		List<KeyEvent> keyEvents = null;
-		try {
-			Query query = super.getSession().createQuery("from KeyEvent order by date desc");
-			keyEvents = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return keyEvents;
+		return super.getSession().createQuery("from KeyEvent order by date desc").list();
 	}
 }

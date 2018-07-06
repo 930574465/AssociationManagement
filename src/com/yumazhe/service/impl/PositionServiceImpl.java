@@ -15,28 +15,40 @@ public class PositionServiceImpl implements PositionService {
 	}
 
 	@Override
-	public boolean add(Position position) {
-		return false;
+	public void add(Position position) {
+		positionDao.add(position);
 	}
 
 	@Override
-	public boolean remove(Position position) {
-		return false;
+	public void remove(Position position) {
+		Position dbPosition = positionDao.queryById(position.getId());
+		if (dbPosition != null) {
+			positionDao.remove(dbPosition);
+		}
 	}
 
 	@Override
-	public boolean modify(Position position) {
-		return false;
+	public void modify(Position position) {
+		Position dbPosition = positionDao.queryById(position.getId());
+		if (dbPosition != null) {
+			if (position.getName() != null) {
+				dbPosition.setName(position.getName());
+			}
+			if (position.getUsers() != null) {
+				dbPosition.setUsers(position.getUsers());
+			}
+			positionDao.update(dbPosition);
+		}
 	}
 
 	@Override
 	public Position queryById(int id) {
-		return null;
+		return positionDao.queryById(id);
 	}
 
 	@Override
 	public List<Position> queryAll() {
-		return null;
+		return positionDao.queryAll();
 	}
 
 }

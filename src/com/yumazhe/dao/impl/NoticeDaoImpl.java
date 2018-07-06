@@ -11,72 +11,35 @@ import com.yumazhe.pojo.Notice;
 public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 
 	@Override
-	public boolean add(Notice notice) {
-		try {
-			super.getSession().save(notice);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void add(Notice notice) {
+		super.getSession().save(notice);
 	}
 
 	@Override
-	public boolean remove(Notice notice) {
-		try {
-			super.getSession().delete(notice);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void remove(Notice notice) {
+		super.getSession().delete(notice);
 	}
 
 	@Override
-	public boolean update(Notice notice) {
-		try {
-			super.getSession().update(notice);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(Notice notice) {
+		super.getSession().update(notice);
 	}
 
 	@Override
 	public Notice queryById(int id) {
-		Notice notice = null;
-		try {
-			notice = (Notice) super.getSession().get(Notice.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return notice;
+		return (Notice) super.getSession().get(Notice.class, id);
 	}
 	
 	@Override
 	public List<Notice> queryByPage(int start, int size) {
-		List<Notice> notices = null;
-		try {
-			Query query = super.getSession().createQuery("from Notice order by date desc");
-			query.setFirstResult(start);
-			query.setMaxResults(size);
-			notices = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return notices;
+		Query query = super.getSession().createQuery("from Notice order by date desc");
+		query.setFirstResult(start);
+		query.setMaxResults(size);
+		return query.list();
 	}
 
 	@Override
 	public List<Notice> queryAll() {
-		List<Notice> notices = null;
-		try {
-			Query query = super.getSession().createQuery("from Notice");
-			notices = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return notices;
+		return super.getSession().createQuery("from Notice").list();
 	}
 }

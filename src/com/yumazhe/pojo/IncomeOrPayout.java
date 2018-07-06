@@ -7,7 +7,7 @@ public class IncomeOrPayout implements Serializable {
 	private static final long serialVersionUID = -1492386939686654822L;
 	private Integer id;
 	private Double money;
-	private String type;
+	private String type;	//'0'是收入，'1'是支出
 	private String tourceOrDestination;
 	private Date date;
 	private User agent;

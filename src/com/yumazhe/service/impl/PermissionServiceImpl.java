@@ -15,28 +15,40 @@ public class PermissionServiceImpl implements PermissionService {
 	}
 	
 	@Override
-	public boolean add(Permission permmission) {
-		return false;
+	public void add(Permission permission) {
+		permissionDao.add(permission);
 	}
 
 	@Override
-	public boolean remove(Permission permmission) {
-		return false;
+	public void remove(Permission permission) {
+		Permission dbPermission = permissionDao.queryById(permission.getId());
+		if (dbPermission != null) {
+			permissionDao.remove(dbPermission);
+		}
 	}
 
 	@Override
-	public boolean modify(Permission permmission) {
-		return false;
+	public void modify(Permission permission) {
+		Permission dbPermission = permissionDao.queryById(permission.getId());
+		if (dbPermission != null) {
+			if (permission.getName() != null) {
+				dbPermission.setName(permission.getName());
+			}
+			if (permission.getUsers() != null) {
+				dbPermission.setUsers(permission.getUsers());
+			}
+			permissionDao.update(dbPermission);
+		}
 	}
 
 	@Override
 	public Permission queryById(int id) {
-		return null;
+		return permissionDao.queryById(id);
 	}
 
 	@Override
 	public List<Permission> queryAll() {
-		return null;
+		return permissionDao.queryAll();
 	}
 
 }

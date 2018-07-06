@@ -5,11 +5,11 @@ import java.util.List;
 import com.yumazhe.pojo.DailyActivity;
 
 public interface DailyActivityService {
-	public boolean add(DailyActivity dailyActivity);
+	public void add(DailyActivity dailyActivity);
 
-	public boolean remove(DailyActivity dailyActivity);
+	public void remove(DailyActivity dailyActivity);
 
-	public boolean modify(DailyActivity dailyActivity);
+	public void modify(DailyActivity dailyActivity);
 	
 	public DailyActivity queryById(int id);
 	

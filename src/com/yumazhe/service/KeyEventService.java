@@ -5,11 +5,11 @@ import java.util.List;
 import com.yumazhe.pojo.KeyEvent;
 
 public interface KeyEventService {
-	public boolean add(KeyEvent keyEvent);
+	public void add(KeyEvent keyEvent);
 
-	public boolean remove(KeyEvent keyEvent);
+	public void remove(KeyEvent keyEvent);
 
-	public boolean modify(KeyEvent keyEvent);
+	public void modify(KeyEvent keyEvent);
 	
 	public KeyEvent queryById(int id);
 	

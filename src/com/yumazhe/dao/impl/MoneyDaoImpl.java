@@ -11,28 +11,15 @@ import com.yumazhe.pojo.Money;
 public class MoneyDaoImpl extends HibernateDaoSupport implements MoneyDao {
 
 	@Override
-	public boolean update(Money money) {
-		try {
-			super.getSession().update(money);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(Money money) {
+		super.getSession().update(money);
 	}
 
 	@Override
 	public Money query() {
-		List<Money> money = null;
-		try {
-			Query query = super.getSession().createQuery("from Money");
-			money = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		
+		List<Money> money = super.getSession().createQuery("from Money").list();
 		if (money != null) {
-			//不存在资金对象就创建
+			//存在资金对象就返回最后一个，不存在就创建
 			if (money.size() != 0) {
 				return money.get(money.size()-1);
 			} else {

@@ -5,11 +5,11 @@ import java.util.List;
 import com.yumazhe.pojo.File;
 
 public interface FileService {
-	public boolean add(File file);
+	public void add(File file);
 
-	public boolean remove(File file);
+	public void remove(File file);
 
-	public boolean modify(File file);
+	public void modify(File file);
 	
 	public File queryById(int id);
 	

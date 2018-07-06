@@ -11,58 +11,27 @@ import com.yumazhe.pojo.File;
 public class FileDaoImpl extends HibernateDaoSupport implements FileDao {
 
 	@Override
-	public boolean add(File file) {
-		try {
-			super.getSession().save(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void add(File file) {
+		super.getSession().save(file);
 	}
 
 	@Override
-	public boolean remove(File file) {
-		try {
-			super.getSession().delete(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void remove(File file) {
+		super.getSession().delete(file);
 	}
 
 	@Override
-	public boolean update(File file) {
-		try {
-			super.getSession().update(file);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(File file) {
+		super.getSession().update(file);
 	}
 
 	@Override
 	public File queryById(int id) {
-		File file = null;
-		try {
-			file = (File) super.getSession().get(File.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return file;
+		return (File)super.getSession().get(File.class, id);
 	}
 
 	@Override
 	public List<File> queryAll() {
-		List<File> files = null;
-		try {
-			Query query = super.getSession().createQuery("from File");
-			files = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return files;
+		return super.getSession().createQuery("from File").list();
 	}
 }

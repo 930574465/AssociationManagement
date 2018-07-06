@@ -11,59 +11,28 @@ import com.yumazhe.pojo.Position;
 public class PositionDaoImpl extends HibernateDaoSupport implements PositionDao {
 
 	@Override
-	public boolean add(Position position) {
-		try {
-			super.getSession().save(position);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void add(Position position) {
+		super.getSession().save(position);
 	}
 
 	@Override
-	public boolean remove(Position position) {
-		try {
-			super.getSession().delete(position);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void remove(Position position) {
+		super.getSession().delete(position);
 	}
 
 	@Override
-	public boolean update(Position position) {
-		try {
-			super.getSession().update(position);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(Position position) {
+		super.getSession().update(position);
 	}
 
 	@Override
 	public Position queryById(int id) {
-		Position position = null;
-		try {
-			position = (Position) super.getSession().get(Position.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return position;
+		return (Position) super.getSession().get(Position.class, id);
 	}
 
 	@Override
 	public List<Position> queryAll() {
-		List<Position> positions = null;
-		try {
-			Query query = super.getSession().createQuery("from Position");
-			positions = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return positions;
+		return super.getSession().createQuery("from Position").list();
 	}
 
 }

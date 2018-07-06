@@ -15,28 +15,40 @@ public class AssociationInfoServiceImpl implements AssociationInfoService {
 	}
 
 	@Override
-	public boolean add(AssociationInfo associationInfo) {
-		return false;
+	public void add(AssociationInfo associationInfo) {
+		associationInfoDao.add(associationInfo);
 	}
 
 	@Override
-	public boolean remove(AssociationInfo associationInfo) {
-		return false;
+	public void remove(AssociationInfo associationInfo) {
+		AssociationInfo dbAssociationInfo = associationInfoDao.queryById(associationInfo.getId());
+		if (dbAssociationInfo != null) {
+			associationInfoDao.remove(dbAssociationInfo);
+		}
 	}
 
 	@Override
-	public boolean modify(AssociationInfo associationInfo) {
-		return false;
+	public void modify(AssociationInfo associationInfo) {
+		AssociationInfo dbAssociationInfo = associationInfoDao.queryById(associationInfo.getId());
+		if (dbAssociationInfo != null) {
+			if (associationInfo.getName() != null) {
+				dbAssociationInfo.setName(associationInfo.getName());
+			}
+			if (associationInfo.getPhotoPath() != null) {
+				dbAssociationInfo.setPhotoPath(associationInfo.getPhotoPath());
+			}
+			associationInfoDao.update(dbAssociationInfo);
+		}
 	}
 
 	@Override
 	public AssociationInfo queryById(int id) {
-		return null;
+		return associationInfoDao.queryById(id);
 	}
 
 	@Override
 	public List<AssociationInfo> queryAll() {
-		return null;
+		return associationInfoDao.queryAll();
 	}
 
 }

@@ -11,58 +11,27 @@ import com.yumazhe.pojo.DailyActivity;
 public class DailyActivityDaoImpl extends HibernateDaoSupport implements DailyActivityDao {
 
 	@Override
-	public boolean add(DailyActivity dailyActivity) {
-		try {
-			super.getSession().save(dailyActivity);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void add(DailyActivity dailyActivity) {
+		super.getSession().save(dailyActivity);
 	}
 
 	@Override
-	public boolean remove(DailyActivity dailyActivity) {
-		try {
-			super.getSession().delete(dailyActivity);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void remove(DailyActivity dailyActivity) {
+		super.getSession().delete(dailyActivity);
 	}
 
 	@Override
-	public boolean update(DailyActivity dailyActivity) {
-		try {
-			super.getSession().update(dailyActivity);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(DailyActivity dailyActivity) {
+		super.getSession().update(dailyActivity);
 	}
 
 	@Override
 	public DailyActivity queryById(int id) {
-		DailyActivity dailyActivity = null;
-		try {
-			dailyActivity = (DailyActivity) super.getSession().get(DailyActivity.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return dailyActivity;
+		return (DailyActivity) super.getSession().get(DailyActivity.class, id);
 	}
 
 	@Override
 	public List<DailyActivity> queryAll() {
-		List<DailyActivity> dailyActivities = null;
-		try {
-			Query query = super.getSession().createQuery("from DailyActivity");
-			dailyActivities = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return dailyActivities;
+		return super.getSession().createQuery("from DailyActivity").list();
 	}
 }

@@ -5,11 +5,11 @@ import java.util.List;
 import com.yumazhe.pojo.Permission;
 
 public interface PermissionService {
-	public boolean add(Permission permmission);
+	public void add(Permission permission);
 
-	public boolean remove(Permission permmission);
+	public void remove(Permission permission);
 
-	public boolean modify(Permission permmission);
+	public void modify(Permission permission);
 	
 	public Permission queryById(int id);
 	

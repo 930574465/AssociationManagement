@@ -15,27 +15,39 @@ public class DailyActivityServiceImpl implements DailyActivityService {
 	}
 
 	@Override
-	public boolean add(DailyActivity dailyActivity) {
-		return false;
+	public void add(DailyActivity dailyActivity) {
+		dailyActivityDao.add(dailyActivity);
 	}
 
 	@Override
-	public boolean remove(DailyActivity dailyActivity) {
-		return false;
+	public void remove(DailyActivity dailyActivity) {
+		DailyActivity dbDailyActivity = dailyActivityDao.queryById(dailyActivity.getId());
+		if (dbDailyActivity != null) {
+			dailyActivityDao.remove(dbDailyActivity);
+		}
 	}
 
 	@Override
-	public boolean modify(DailyActivity dailyActivity) {
-		return false;
+	public void modify(DailyActivity dailyActivity) {
+		DailyActivity dbDailyActivity = dailyActivityDao.queryById(dailyActivity.getId());
+		if (dbDailyActivity != null) {
+			if (dailyActivity.getContext() != null) {
+				dbDailyActivity.setContext(dailyActivity.getContext());
+			}
+			if (dailyActivity.getTitle() != null) {
+				dbDailyActivity.setTitle(dailyActivity.getTitle());
+			}
+			dailyActivityDao.update(dbDailyActivity);
+		}
 	}
 
 	@Override
 	public DailyActivity queryById(int id) {
-		return null;
+		return dailyActivityDao.queryById(id);
 	}
 
 	@Override
 	public List<DailyActivity> queryAll() {
-		return null;
+		return dailyActivityDao.queryAll();
 	}
 }

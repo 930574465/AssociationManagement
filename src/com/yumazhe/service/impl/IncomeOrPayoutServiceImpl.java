@@ -5,6 +5,7 @@ import java.util.List;
 import com.yumazhe.dao.IncomeOrPayoutDao;
 import com.yumazhe.dao.MoneyDao;
 import com.yumazhe.pojo.IncomeOrPayout;
+import com.yumazhe.pojo.Money;
 import com.yumazhe.service.IncomeOrPayoutService;
 
 public class IncomeOrPayoutServiceImpl implements IncomeOrPayoutService {
@@ -21,27 +22,41 @@ public class IncomeOrPayoutServiceImpl implements IncomeOrPayoutService {
 	}
 
 	@Override
-	public boolean add(IncomeOrPayout incomeOrPayout) {
-		return false;
+	public void add(IncomeOrPayout incomeOrPayout) {
+		incomeOrPayoutDao.add(incomeOrPayout);
+		Money money = moneyDao.query();
+		//"0"是收入，"1"是支出
+		if (incomeOrPayout.getType() == "0") {
+			money.setSize(money.getSize()+incomeOrPayout.getMoney());
+		} else {
+			money.setSize(money.getSize()-incomeOrPayout.getMoney());
+		}
+		moneyDao.update(money);
 	}
 
 	@Override
-	public boolean remove(IncomeOrPayout incomeOrPayout) {
-		return false;
-	}
-
-	@Override
-	public boolean modify(IncomeOrPayout incomeOrPayout) {
-		return false;
+	public void remove(IncomeOrPayout incomeOrPayout) {
+		IncomeOrPayout dbIncomeOrPayout = incomeOrPayoutDao.queryById(incomeOrPayout.getId());
+		if (dbIncomeOrPayout != null) {
+			incomeOrPayoutDao.remove(dbIncomeOrPayout);
+			Money money = moneyDao.query();
+			//"0"是收入，"1"是支出
+			if (dbIncomeOrPayout.getType() == "0") {
+				money.setSize(money.getSize()-dbIncomeOrPayout.getMoney());
+			} else {
+				money.setSize(money.getSize()+dbIncomeOrPayout.getMoney());
+			}
+			moneyDao.update(money);
+		}
 	}
 
 	@Override
 	public IncomeOrPayout queryById(int id) {
-		return null;
+		return incomeOrPayoutDao.queryById(id);
 	}
 
 	@Override
 	public List<IncomeOrPayout> queryAll() {
-		return null;
+		return incomeOrPayoutDao.queryAll();
 	}
 }

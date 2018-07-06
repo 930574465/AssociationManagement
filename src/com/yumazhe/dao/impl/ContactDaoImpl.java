@@ -10,58 +10,27 @@ import com.yumazhe.pojo.Contact;
 public class ContactDaoImpl extends HibernateDaoSupport implements com.yumazhe.dao.ContactDao {
 
 	@Override
-	public boolean add(Contact contact) {
-		try {
-			super.getSession().save(contact);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void add(Contact contact) {
+		super.getSession().save(contact);
 	}
 
 	@Override
-	public boolean remove(Contact contact) {
-		try {
-			super.getSession().delete(contact);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void remove(Contact contact) {
+		super.getSession().delete(contact);
 	}
 
 	@Override
-	public boolean update(Contact contact) {
-		try {
-			super.getSession().update(contact);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} 
-		return true;
+	public void update(Contact contact) {
+		super.getSession().update(contact);
 	}
 
 	@Override
 	public Contact queryById(int id) {
-		Contact contact = null;
-		try {
-			contact = (Contact) super.getSession().get(Contact.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return contact;
+		return (Contact) super.getSession().get(Contact.class, id);
 	}
 
 	@Override
 	public List<Contact> queryAll() {
-		List<Contact> contacts = null;
-		try {
-			Query query = super.getSession().createQuery("from Contact");
-			contacts = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		return contacts;
+		return super.getSession().createQuery("from Contact").list();
 	}
 }

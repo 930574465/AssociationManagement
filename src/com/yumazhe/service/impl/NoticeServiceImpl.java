@@ -3,6 +3,7 @@ package com.yumazhe.service.impl;
 import java.util.List;
 
 import com.yumazhe.dao.NoticeDao;
+import com.yumazhe.pojo.Notice;
 import com.yumazhe.pojo.Permission;
 import com.yumazhe.service.NoticeService;
 
@@ -15,32 +16,59 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public boolean add(Permission permmission) {
-		return false;
+	public void add(Notice notice) {
+		noticeDao.add(notice);
 	}
 
 	@Override
-	public boolean remove(Permission permmission) {
-		return false;
+	public void remove(Notice notice) {
+		Notice dbNotice = noticeDao.queryById(notice.getId());
+		if (dbNotice != null) {
+			noticeDao.remove(dbNotice);
+		}
 	}
 
 	@Override
-	public boolean modify(Permission permmission) {
-		return false;
+	public void modify(Notice notice) {
+		Notice dbNotice = noticeDao.queryById(notice.getId());
+		if (dbNotice != null) {
+			if (notice.getAuthor() != null) {
+				dbNotice.setAuthor(notice.getAuthor());
+			}
+			if (notice.getClicks() != null) {
+				dbNotice.setClicks(notice.getClicks());
+			}
+			if (notice.getContent() != null) {
+				dbNotice.setContent(notice.getContent());
+			}
+			if (notice.getDate() != null) {
+				dbNotice.setDate(notice.getDate());
+			}
+			if (notice.getFilePath() != null) {
+				dbNotice.setFilePath(notice.getFilePath());
+			}
+			if (notice.getPermission() != null) {
+				dbNotice.setPermission(notice.getPermission());
+			}
+			if (notice.getTitle() != null) {
+				dbNotice.setTitle(notice.getTitle());
+			}
+			noticeDao.update(dbNotice);
+		}
 	}
 
 	@Override
-	public Permission queryById(int id) {
-		return null;
+	public Notice queryById(int id) {
+		return noticeDao.queryById(id);
 	}
 
 	@Override
-	public List<Permission> queryByPage(int start, int size) {
-		return null;
+	public List<Notice> queryByPage(int start, int size) {
+		return noticeDao.queryByPage(start, size);
 	}
 
 	@Override
-	public List<Permission> queryAll() {
-		return null;
+	public List<Notice> queryAll() {
+		return noticeDao.queryAll();
 	}
 }

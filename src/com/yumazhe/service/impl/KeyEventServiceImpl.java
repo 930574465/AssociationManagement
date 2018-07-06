@@ -15,27 +15,48 @@ public class KeyEventServiceImpl implements KeyEventService {
 	}
 
 	@Override
-	public boolean add(KeyEvent keyEvent) {
-		return false;
+	public void add(KeyEvent keyEvent) {
+		keyEventDao.add(keyEvent);
 	}
 
 	@Override
-	public boolean remove(KeyEvent keyEvent) {
-		return false;
+	public void remove(KeyEvent keyEvent) {
+		KeyEvent dbKeyEvent = keyEventDao.queryById(keyEvent.getId());
+		if (dbKeyEvent != null) {
+			keyEventDao.remove(dbKeyEvent);
+		}
 	}
 
 	@Override
-	public boolean modify(KeyEvent keyEvent) {
-		return false;
+	public void modify(KeyEvent keyEvent) {
+		KeyEvent dbKeyEvent = keyEventDao.queryById(keyEvent.getId());
+		if (dbKeyEvent != null) {
+			if (keyEvent.getAuthor() != null) {
+				dbKeyEvent.setAuthor(keyEvent.getAuthor());
+			}
+			if (keyEvent.getContent() != null) {
+				dbKeyEvent.setContent(keyEvent.getContent());
+			}
+			if (keyEvent.getHappenedDate() != null) {
+				dbKeyEvent.setHappenedDate(keyEvent.getHappenedDate());
+			}
+			if (keyEvent.getPhotoPath() != null) {
+				dbKeyEvent.setPhotoPath(keyEvent.getPhotoPath());
+			}
+			if (keyEvent.getTitle() != null) {
+				dbKeyEvent.setTitle(keyEvent.getTitle());
+			}
+			keyEventDao.update(dbKeyEvent);
+		}
 	}
 
 	@Override
 	public KeyEvent queryById(int id) {
-		return null;
+		return keyEventDao.queryById(id);
 	}
 
 	@Override
 	public List<KeyEvent> queryAll() {
-		return null;
+		return keyEventDao.queryAll();
 	}
 }

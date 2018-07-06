@@ -5,11 +5,11 @@ import java.util.List;
 import com.yumazhe.pojo.Contact;
 
 public interface ContactService {
-	public boolean add(Contact contact);
+	public void add(Contact contact);
 
-	public boolean remove(Contact contact);
+	public void remove(Contact contact);
 
-	public boolean modify(Contact contact);
+	public void modify(Contact contact);
 	
 	public Contact queryById(int id);
 	

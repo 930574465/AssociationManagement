@@ -28,20 +28,6 @@ public class PermissionServiceImpl implements PermissionService {
 	}
 
 	@Override
-	public void modify(Permission permission) {
-		Permission dbPermission = permissionDao.queryById(permission.getId());
-		if (dbPermission != null) {
-			if (permission.getName() != null) {
-				dbPermission.setName(permission.getName());
-			}
-			if (permission.getUsers() != null) {
-				dbPermission.setUsers(permission.getUsers());
-			}
-			permissionDao.update(dbPermission);
-		}
-	}
-
-	@Override
 	public Permission queryById(int id) {
 		return permissionDao.queryById(id);
 	}

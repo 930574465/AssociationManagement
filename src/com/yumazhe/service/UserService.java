@@ -7,6 +7,12 @@ import com.yumazhe.pojo.User;
 public interface UserService {
 	public void register(User user);
 	
+	/**
+	 * 销毁账号(退会)
+	 * 
+	 * @param user
+	 * 		要销毁的用户
+	 */
 	public void nullify(User user);
 	
 	public void modify(User user);

@@ -28,20 +28,6 @@ public class PositionServiceImpl implements PositionService {
 	}
 
 	@Override
-	public void modify(Position position) {
-		Position dbPosition = positionDao.queryById(position.getId());
-		if (dbPosition != null) {
-			if (position.getName() != null) {
-				dbPosition.setName(position.getName());
-			}
-			if (position.getUsers() != null) {
-				dbPosition.setUsers(position.getUsers());
-			}
-			positionDao.update(dbPosition);
-		}
-	}
-
-	@Override
 	public Position queryById(int id) {
 		return positionDao.queryById(id);
 	}

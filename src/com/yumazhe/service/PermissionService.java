@@ -8,8 +8,6 @@ public interface PermissionService {
 	public void add(Permission permission);
 
 	public void remove(Permission permission);
-
-	public void modify(Permission permission);
 	
 	public Permission queryById(int id);
 	

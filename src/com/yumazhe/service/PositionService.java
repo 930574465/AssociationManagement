@@ -8,8 +8,6 @@ public interface PositionService {
 	public void add(Position position);
 
 	public void remove(Position position);
-
-	public void modify(Position position);
 	
 	public Position queryById(int id);
 	

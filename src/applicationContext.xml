@@ -53,7 +53,7 @@
 	<bean name="fileDao" class="com.yumazhe.dao.impl.FileDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean name="IncomeOrPayoutDao" class="com.yumazhe.dao.impl.IncomeOrPayoutDaoImpl">
+	<bean name="incomeOrPayoutDao" class="com.yumazhe.dao.impl.IncomeOrPayoutDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="keyEventDao" class="com.yumazhe.dao.impl.KeyEventDaoImpl">
@@ -76,8 +76,8 @@
 	</bean>
 	
 	<!-- 配置service层类的bean -->
-	<bean name="userService" class="com.yumazhe.service.impl.AssociationInfoServiceImpl">
-		<property name="userDao" ref="userDao"></property>
+	<bean name="associationInfoService" class="com.yumazhe.service.impl.AssociationInfoServiceImpl">
+		<property name="associationInfoDao" ref="associationInfoDao"></property>
 	</bean>
 	<bean name="contactService" class="com.yumazhe.service.impl.ContactServiceImpl">
 		<property name="contactDao" ref="contactDao"></property>
@@ -90,6 +90,7 @@
 	</bean>
 	<bean name="incomeOrPayoutService" class="com.yumazhe.service.impl.IncomeOrPayoutServiceImpl">
 		<property name="incomeOrPayoutDao" ref="incomeOrPayoutDao"></property>
+		<property name="moneyDao" ref="moneyDao"></property>
 	</bean>
 	<bean name="keyEventService" class="com.yumazhe.service.impl.KeyEventServiceImpl">
 		<property name="keyEventDao" ref="keyEventDao"></property>
@@ -108,26 +109,95 @@
 	</bean>
 	<bean name="userService" class="com.yumazhe.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
+		<property name="positionDao" ref="positionDao"></property>
 	</bean>
 	
-<!-- 	事务管理器 
+	<!-- 	事务管理器  -->
 	<bean name="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	事务详情 ，进行具体事务设置
+	<!-- 事务详情 ，进行具体事务设置 -->
+	<tx:advice id="associationInfoTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+			<tx:method name="modify" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="contactTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+			<tx:method name="modify" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="dailyActivityTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+			<tx:method name="modify" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="fileTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+			<tx:method name="modify" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="incomeOrPayoutTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="keyEventTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+			<tx:method name="modify" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="noticeTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+			<tx:method name="modify" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="permissionTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+		</tx:attributes>
+	</tx:advice>
+	<tx:advice id="positionTxAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add" />
+			<tx:method name="remove" />
+		</tx:attributes>
+	</tx:advice>
 	<tx:advice id="userTxAdvice" transaction-manager="txManager">
 		<tx:attributes>
 			<tx:method name="register" />
 			<tx:method name="nullify" />
 			<tx:method name="modify" />
+			<tx:method name="transfer"/>
 		</tx:attributes>
-	</tx:advice> -->
+	</tx:advice>
 	
-	<!-- aop编程，自动代理UserServiceImpl类对象 -->
-<!-- 	<aop:config>
-		<aop:advisor advice-ref="userTxAdvice" pointcut="execution(* com.school.service.UserService.*(..))" />
-		<aop:advisor advice-ref="messageTxAdvice" pointcut="execution(* com.school.service.MessageService.*(..))" />
-		<aop:advisor advice-ref="replyTxAdvice" pointcut="execution(* com.school.service.ReplyService.*(..))" />
-	</aop:config> -->
+	<!-- aop，自动代理UserServiceImpl类对象 -->
+ 	<aop:config>
+		<aop:advisor advice-ref="associationInfoTxAdvice" pointcut="execution(* com.yumazhe.service.AssociationInfoService.*(..))" />
+		<aop:advisor advice-ref="contactTxAdvice" pointcut="execution(* com.yumazhe.service.ContactService.*(..))" />
+		<aop:advisor advice-ref="dailyActivityTxAdvice" pointcut="execution(* com.yumazhe.service.DailyActivityService.*(..))" />
+		<aop:advisor advice-ref="fileTxAdvice" pointcut="execution(* com.yumazhe.service.FileService.*(..))" />
+		<aop:advisor advice-ref="incomeOrPayoutTxAdvice" pointcut="execution(* com.yumazhe.service.IncomeOrPayoutService.*(..))" />
+		<aop:advisor advice-ref="keyEventTxAdvice" pointcut="execution(* com.yumazhe.service.KeyEventService.*(..))" />
+		<aop:advisor advice-ref="noticeTxAdvice" pointcut="execution(* com.yumazhe.service.NoticeService.*(..))" />
+		<aop:advisor advice-ref="permissionTxAdvice" pointcut="execution(* com.yumazhe.service.PermissionService.*(..))" />
+		<aop:advisor advice-ref="positionTxAdvice" pointcut="execution(* com.yumazhe.service.PositionService.*(..))" />
+		<aop:advisor advice-ref="userTxAdvice" pointcut="execution(* com.yumazhe.service.UserService.*(..))" />
+	</aop:config>
 </beans>

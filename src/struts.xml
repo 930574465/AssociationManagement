@@ -10,6 +10,43 @@
 	<constant name="struts.devMode" value="true"></constant>
 
 	<package name="p1" extends="struts-default">
-		
+		<!-- 配置拦截器 -->
+	    <interceptors>
+	    	<!-- 登录拦截器 -->
+<!-- 	        <interceptor name="loginIntercepter" class="com.school.intercepter.LoginIntercepter"></interceptor>
+	        <interceptor name="encodingIntercepter" class="com.school.intercepter.EncodingIntercepter"></interceptor> -->
+		    <!-- 自定义拦截器栈,拦截所有动作 
+	            AbstractInterceptor的子类MethodFilterInterceptor可以指定哪些方法要被拦截器拦截或不拦截
+	                excludeMethods:指定哪些方法不被过滤
+	                includeMethods:指定哪些方法要被过滤 -->
+	        <interceptor-stack name="myStack">
+	            <!-- 引用默认拦截器栈 -->
+<!-- 	            <interceptor-ref name="encodingIntercepter"></interceptor-ref> -->
+	            <interceptor-ref name="defaultStack"></interceptor-ref>
+<!-- 	            <interceptor-ref name="loginIntercepter">
+	            	<param name="excludeMethods">register,login,isExistEmail</param>
+	            </interceptor-ref> -->
+	        </interceptor-stack>
+	    </interceptors>
+	    
+	    <!-- 配置默认拦截器 -->
+	    <default-interceptor-ref name="myStack"></default-interceptor-ref>
+	
+		<action name="registerUser" class="userAction" method="register">
+			<result name="success" type="redirect">/Reception/RegistSuccess.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+			<interceptor-ref name="myStack">
+				<param name="fileUpload.allowedExtensions">jpg</param>
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg</param>
+			</interceptor-ref>
+		</action>
+		<action name="loginUser" class="userAction" method="login">
+			<result name="success" type="redirect">/Reception/Home.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="logoutUser" class="userAction" method="logout">
+			<result name="success" type="redirect">/Reception/Home.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
 	</package>
 </struts>

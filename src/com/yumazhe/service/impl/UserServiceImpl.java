@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User login(User user) {
 		User dbUser = userDao.queryByNumber(user.getNumber());
-		if (user.getNumber()!=null && user.getPassword()!=null && user.getNumber().equals(dbUser.getNumber()) && user.getPassword().equals(dbUser.getPassword())) {
+		if (user.getNumber().equals(dbUser.getNumber()) && user.getPassword().equals(dbUser.getPassword())) {
 			return dbUser;
 		} 
 		return null;

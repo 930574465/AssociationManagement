@@ -24,6 +24,11 @@
         <property name="jdbcUrl" value="${jdbc.url}"></property>
         <property name="user" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
+        <property name="initialPoolSize" value="10"></property>
+        <property name="maxIdleTime" value="30"></property>
+        <property name="maxPoolSize" value="100"></property>
+        <property name="minPoolSize" value="10"></property>
+        <property name="maxStatements" value="200"></property>
     </bean>
 	
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">

@@ -6,7 +6,8 @@
 <struts>
 	<!-- 修改上传文件的大小限制 -->
 	<!-- 在default.properties中字段struts.multipart.maxSize=2097152 -->
-	<constant name="struts.multipart.maxSize" value="5242880"></constant>
+	<!-- 设置上传的总大小为8MB -->
+	<constant name="struts.multipart.maxSize" value="8388608"></constant>
 	<constant name="struts.devMode" value="true"></constant>
 
 	<package name="p1" extends="struts-default">

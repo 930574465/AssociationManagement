@@ -17,7 +17,7 @@
         <property name="tourceOrDestination" type="java.lang.String">
             <column name="TOURCEORDESTINATION" />
         </property>
-        <property name="date" type="java.util.Date">
+        <property name="date" type="date">
             <column name="DATE" />
         </property>
         <many-to-one name="agent" class="com.yumazhe.pojo.User">

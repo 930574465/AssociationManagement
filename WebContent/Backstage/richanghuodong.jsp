@@ -1,11 +1,5 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -584,8 +578,6 @@ textarea.size1 {
 	-webkit-box-shadow: 0 0 2px #978f6c;
 }
 </style>
-</head>
-
 <script type="text/javascript">
 	//===================================弹框js部分 start by:songfayuan=========================================
 	//弹出隐藏层
@@ -651,6 +643,9 @@ textarea.size1 {
 }
 /* ===================================弹框css部分 end by:songfayuan========================================= */
 </style>
+</head>
+
+
 <body>
 
 
@@ -692,98 +687,16 @@ textarea.size1 {
 								<tr>
 									<th>活动标题</th>
 									<th>活动内容</th>
-									<th width="110" class="ac">修改</th>
+									<th width="110" class="ac">删除</th>
 								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">日常训练</a>
-										</h3></td>
-									<td><h3>aaaaaaa.</h3></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">日常训练</a>
-										</h3></td>
-									<td><h3>aaaaaaa</h3></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">日常训练</a>
-										</h3></td>
-									<td><h3>aaaaaaa.</h3></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">日常训练</a>
-										</h3></td>
-									<td><h3>aaaaaaa.</h3></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">日常训练</a>
-										</h3></td>
-									<td><h3>aaaaaaa.</h3></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-
-
-								<!--弹出层时背景层DIV---start-->
-								<div id="fade" class="black_overlay"></div>
-								<div id="MyDiv" class="white_content">
-									<div
-										style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
-										<span
-											style="font-size: 10px; margin-right: 11px; color: #56BE2D; font-weight: 600;cursor:pointer;"
-											onclick="CloseDiv('MyDiv','fade')">关闭</span>
-									</div>
-									<div class="itempanel" style="    margin-left: 13%;">
-										<div class="floatleft title" style="text-align: left;">
-											修改标题：<input type="text" id="label" name="label"
-												placeholder="aaaaaaaa" />
-										</div>
-										<br />
-
-										<div class="floatleft title" style="text-align: left;">
-											修改内容：
-											<textarea class="field size3" rows="10" cols="10"></textarea>
-										</div>
-										<br>
-										<div class="floatleft message"></div>
-										<div class="clear"></div>
-									</div>
-									<div
-										style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
-										<input type="button" class="greenbutton2"
-											style="width: 110px;margin-left: 30px;"
-											onclick="javasrcipt:goToAdd()" value="修改"
-											style="width: 123px; margin-left: 20%; "> <input
-											type="button" class="greenbutton2"
-											style="width: 110px;margin-left: 30px;"
-											onclick="CloseDiv('MyDiv','fade')" value="取消"
-											style="width: 123px; margin-left: 20%; ">
-									</div>
-								</div>
-								<!--弹出层时背景层DIV---end-->
+								<c:forEach items="${dailyActivityList}" var="dailyActivity">
+									<tr>
+										<td>${dailyActivity.title}</td>
+										<td><a href="queryDailyActivity" target="_top">内容</a></td>
+										<td><a href="removeDailyActivity?id=${dailyActivity.id}">删除</a></td>
+									</tr>
+								</c:forEach>
 							</table>
-
-
-							<!-- Pagging -->
-							<div class="pagging">
-								<div class="right">
-									<a href="#">首页</a> <a href="#">1</a> <a href="#">2</a> <a
-										href="#">3</a> <a href="#">4</a> <span>...</span> <a href="#">245</a>
-									<a href="#">下一页</a> <a href="#">尾页</a>
-								</div>
-							</div>
 
 						</div>
 						<!-- Table -->
@@ -799,18 +712,18 @@ textarea.size1 {
 						</div>
 						<!-- End Box Head -->
 
-						<form action="" method="post">
+						<form action="addDailyActivity" method="post">
 
 							<!-- Form -->
 							<div class="form">
 								<p>
-									<label>活动标题</label> <input type="text" class="field size1" />
+									<label>活动标题</label> <input type="text" class="field size1" name="title" />
 								</p>
 								<p class="inline-field"></p>
 
 								<p>
 									<label>活动内容 <span></span></label>
-									<textarea class="field size1" rows="10" cols="30"></textarea>
+									<textarea class="field size1" rows="10" cols="30" name="context"></textarea>
 								</p>
 
 							</div>
@@ -833,7 +746,16 @@ textarea.size1 {
 			<!-- Main -->
 		</div>
 	</div>
-
+	<c:if test="${!empty addResult and addResult==true}">							
+		<script type="text/javascript">
+			alert("添加成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty removeResult and removeResult==true}">							
+		<script type="text/javascript">
+			alert("删除成功");
+		</script>
+	</c:if>
 
 </body>
 </html>

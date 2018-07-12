@@ -23,6 +23,8 @@ public interface UserService {
 	
 	public List<User> queryAll();
 	
+	public List<User> queryByPage(int start, int size);
+	
 	/**
 	 * 转让管理员身份
 	 * 

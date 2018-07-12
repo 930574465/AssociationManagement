@@ -31,6 +31,6 @@ public class PermissionDaoImpl extends HibernateDaoSupport implements Permission
 
 	@Override
 	public List<Permission> queryAll() {
-		return super.getSession().createQuery("from Permission").list();
+		return super.getSession().createQuery("from Permission order by id asc").list();
 	}
 }

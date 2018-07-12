@@ -1,10 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="images/metinfo.css" />
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="images/jQuery1.7.2.js"></script>
 <style type="text/css">
 * {
 	padding: 0;
@@ -600,26 +596,6 @@ img {
 	display: none;
 }
 </style>
-
-<script>
-	//显示图片
-	function displayImg() {
-		var img = document.getElementById("image");
-
-		var x = event.clientX + document.body.scrollLeft + 20;
-		var y = event.clientY + document.body.scrollTop - 5;
-
-		img.style.left = x + "px";
-		img.style.top = y + "px";
-		img.style.display = "block";
-	}
-
-	//图片消失
-	function vanishImg() {
-		var img = document.getElementById("image");
-		img.style.display = "none";
-	}
-</script>
 <!-- 悬浮显示图片结束 -->
 <script type="text/javascript">
 	//===================================弹框js部分 start by:songfayuan=========================================
@@ -724,190 +700,41 @@ img {
 									<th>缴费情况</th>
 									<th>权限</th>
 									<th>密码</th>
-									<th>申请入会</th>
+									<th>职务</th>
 									<th>删除</th>
 									<th>修改</th>
 								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr align="center">
-									<td><h3>1123456789</h3></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">哈哈</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>男</td>
-									<td>软件15-3</td>
-									<td>4008004564</td>
-									<td>已缴费</td>
-									<td>权1</td>
-									<td>123456</td>
-									<td><a href="#" class="ico del">已通过&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
+								<c:forEach items="${userList}" var="user">
+									<tr align="center">
+										<td><h3>${user.number}</h3></td>
+										<td><a href="getIconUser?number=${user.number}">${user.name}</a>
+										</td>
+										<td>${user.sex}</td>
+										<td>${user.classes }</td>
+										<td>${user.contactWay}</td>
+										<td>
+											<c:if test="${user.payState == 0}">已缴</c:if>
+											<c:if test="${user.payState == 1}">未缴</c:if>
+										</td>
+										<td class="permissionText">
+											<c:forEach items="${user.permissions}" var="permission">${permission.id}</c:forEach>
+										</td>
+										<td>${user.password}</td>
+										<td>
+											<c:if test="${empty user.position}">
+												<a href="#" class="ico del">
+													同意申请
+												</a>
+											</c:if>
+											<c:if test="${!empty user.position}">${user.position.name}</c:if>
+										</td>
+										<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
+										<td><a class="button border-green button-little"
+											onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
+									</tr>
+								</c:forEach>
+								
+								
 								<!--弹出层时背景层DIV---start-->
 								<div id="fade" class="black_overlay"></div>
 								<div id="MyDiv" class="white_content">
@@ -922,27 +749,27 @@ img {
 											修改学号：<input type="text" id="label" name="label"
 												placeholder="确认正确" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改姓名：<input type="text" id="label" name="label"
 												placeholder="确认正确" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改性别：<input type="text" id="label" name="label"
 												placeholder="确认正确" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改班级：<input type="text" id="label" name="label"
 												placeholder="确认正确" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改联系方式：<input type="text" id="label" name="label"
 												placeholder="确认正确" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改缴费情况： <input type="radio" checked="checked" name="1">已缴费</input>&nbsp;&nbsp;
 											<input type="radio" name="1">未缴费</input>
@@ -958,16 +785,16 @@ img {
 											<input type="checkbox" name="vehicle" value="Car"
 												checked="checked" />5&nbsp;&nbsp;
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改密码：<input type="text" id="label" name="label"
 												placeholder="确认正确" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft title" style="text-align: left;">
 											修改头像：<input type="file" name="" size="5" />
 										</div>
-										<br>
+										<br/>
 										<div class="floatleft message"></div>
 										<div class="clear"></div>
 									</div>
@@ -976,11 +803,11 @@ img {
 										<input type="button" class="greenbutton2"
 											style="width: 110px;margin-left: 30px;"
 											onclick="javasrcipt:goToAdd()" value="修改"
-											style="width: 123px; margin-left: 20%; "> <input
+											style="width: 123px; margin-left: 20%; "/> <input
 											type="button" class="greenbutton2"
 											style="width: 110px;margin-left: 30px;"
 											onclick="CloseDiv('MyDiv','fade')" value="取消"
-											style="width: 123px; margin-left: 20%; ">
+											style="width: 123px; margin-left: 20%; "/>
 									</div>
 								</div>
 								<!--弹出层时背景层DIV---end-->
@@ -1005,47 +832,49 @@ img {
 							<h2>添加新用户</h2>
 						</div>
 						<!-- End Box Head -->
-						<form action="" method="post">
+						<form action="registerUser" method="post" enctype="multipart/form-data">
 							<!-- Form -->
 							<div class="form">
 								<p>
-									<label> 学号 <span>(添加正确的学号)</span></label> <input type="text"
-										class="field size1" />
+									<label> 学号</label> <input type="text" class="field size1" name="number" />
 								</p>
 								<p>
-									<label> 姓名 </label> <input type="text" class="field size1" />
+									<label> 姓名 </label> <input type="text" class="field size1" name="name" />
 								</p>
 								<p>
-									<label> 性别</label> <input type="radio" checked="checked"
-										name="1">男</input>&nbsp;&nbsp; <input type="radio" name="1">女</input>
+									<label> 性别</label> <input type="radio" checked="checked" value="0" name="sex"/>男&nbsp;&nbsp; 
+									<input type="radio" value="1" name="sex"/>女
 								</p>
 								<p>
-									<label> 班级 </label> <input type="text" class="field size1" />
+									<label> 班级 </label> <input type="text" class="field size1" name="classes" />
 								</p>
 								<p>
-									<label>联系方式<span></span></label> <input type="text"
-										class="field size1" />
+									<label>联系方式<span></span></label> <input type="text" class="field size1" name="contactWay" />
 								</p>
 								<p>
-									<label> 缴费情况 </label> <input type="radio" checked="checked"
-										name="1">已缴费</input>&nbsp;&nbsp; <input type="radio" name="1">未缴费</input>
+									<label> 缴费情况 </label> <input type="radio"  value="0" name="payState"/>已缴费&nbsp;&nbsp; 
+									<input type="radio" value="1" name="payState" checked="checked"/>未缴费
 								</p>
 								<p>
-									<label>权限</label> <input type="checkbox" name="vehicle"
-										value="Car" checked="checked" />1&nbsp;&nbsp; <input
-										type="checkbox" name="vehicle" value="Car" checked="checked" />2&nbsp;&nbsp;
-									<input type="checkbox" name="vehicle" value="Car"
-										checked="checked" />3&nbsp;&nbsp; <input type="checkbox"
-										name="vehicle" value="Car" checked="checked" />4&nbsp;&nbsp;
-									<input type="checkbox" name="vehicle" value="Car"
-										checked="checked" />5&nbsp;&nbsp;
+									<label>职位</label>
+									<input type="radio" name="positionId" value="1" />${positionList[0].name}&nbsp;&nbsp; 
+									<input type="radio" name="positionId" value="2" />${positionList[1].name}&nbsp;&nbsp;
+									<input type="radio" name="positionId" value="3"  />${positionList[2].name}&nbsp;&nbsp; 
+									<input type="radio" name="positionId" value="4" checked="checked"  />${positionList[3].name}&nbsp;&nbsp;
 								</p>
 								<p>
-									<label>密码</label> <input type="text" class="field size1"
-										checked="20040920" />
+									<label>权限</label> 
+									<input type="checkbox" name="permission" value="1" />${permissionList[0].name}&nbsp;&nbsp; 
+									<input type="checkbox" name="permission" value="2" />${permissionList[1].name}&nbsp;&nbsp;
+									<input type="checkbox" name="permission" value="3"  />${permissionList[2].name}&nbsp;&nbsp; 
+									<input type="checkbox" name="permission" value="4"  />${permissionList[3].name}&nbsp;&nbsp;
+									<input type="checkbox" name="permission" value="5" />${permissionList[4].name}&nbsp;&nbsp;
 								</p>
 								<p>
-									<label>头像</label> <input type="file" name="" size="5" />
+									<label>密码</label> <input type="text" class="field size1" name="password" />
+								</p>
+								<p>
+									<label>照片</label> <input type="file" name="icon" size="5" />
 								</p>
 							</div>
 							<!-- End Form -->
@@ -1064,6 +893,18 @@ img {
 			<!-- Main -->
 		</div>
 	</div>
+	<c:if test="${!empty registerResult and registerResult==true}">							
+		<script type="text/javascript">
+			alert("添加成功");
+		</script>
+	</c:if>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".permissionText").each(function() {
+				this.innerHTML = $(this).text().trim().split("").sort().toString().replace(/,/g, "");
+			});
+		});
+	</script>
 </body>
 </html>
 

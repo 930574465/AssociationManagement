@@ -13,5 +13,7 @@ public interface UserDao{
 	
 	public User queryByNumber(String number);
 	
+	public List<User> queryByPage(int start, int size);
+	
 	public List<User> queryAll();
 }

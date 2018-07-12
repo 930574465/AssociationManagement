@@ -2,6 +2,7 @@ package com.yumazhe.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -30,6 +31,14 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		return (User) super.getSession().get(User.class, number);
 	}
 
+	@Override
+	public List<User> queryByPage(int start, int size) {
+		Query query = super.getSession().createQuery("from User");
+		query.setFirstResult(start);
+		query.setMaxResults(size);
+		return query.list();
+	}
+	
 	@Override
 	public List<User> queryAll() {
 		return super.getSession().createQuery("from User").list();

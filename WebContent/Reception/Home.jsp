@@ -55,7 +55,7 @@
 						<li class="line"></li>
 						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
-						<li id="nav_3" style="width:138px;" class=""><a href="Activity1.jsp" class="hover-none nav"><span>日常活动</span></a></li>
+						<li id="nav_3" style="width:138px;" class=""><a href="queryDailyActivity" class="hover-none nav"><span>日常活动</span></a></li>
 						<li class="line"></li>
 						<li id="nav_32" style="width:138px;"><a href="Time.jsp" class="hover-none nav"><span>时间轴</span></a></li>
 						<li class="line"></li>
@@ -136,10 +136,10 @@
 			</div>
 		 	<!-- 日常活动 -->
 			<div class="index-news style-1">
-				<h3 class="title"><span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">日常活动</span><a href="Activity1.jsp" class="more" title="链接关键词">更多&gt;&gt;</a></h3>
+				<h3 class="title"><span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">日常活动</span><a href="queryDailyActivity" class="more" title="链接关键词">更多&gt;&gt;</a></h3>
 					<div class="active clear listel contour-2" style="height: 300px;">
 						<ol class="list-none metlist">
-							<li class="list top"><span class="time"></span><a href="Activity1.jsp">日常训练</a></li>
+							<li class="list top"><span class="time"></span><a href="queryDailyActivity">日常训练</a></li>
 							<li class="list "><span class="time"></span><a href="Activity2.jsp">假期拉练</a></li>
 							<li class="list "><span class="time"></span><a href="Activity3.jsp">十一出行</a></li>
 							<li class="list "><span class="time"></span><a href="Activity4.jsp">团队建设</a></li>
@@ -193,7 +193,7 @@
 					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
 					<a href="About1.jsp" title="关于我们">关于我们</a><span>|</span>
 					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
-					<a href="Activity1.jsp" title="日常活动">日常活动</a><span>|</span>
+					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="Time.jsp" title="时间轴">时间轴</a><span>|</span>
 					<a href="Download1.jsp" title="下载中心">下载中心</a><span>|</span>
 					<a href="Contact.jsp" title="联系我们">联系我们</a><span>|</span>

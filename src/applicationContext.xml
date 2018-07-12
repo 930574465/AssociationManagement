@@ -115,6 +115,19 @@
 	<!-- 配置Action类 -->
 	<bean name="userAction" class="com.yumazhe.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
+		<property name="permissionService" ref="permissionService"></property>
+		<property name="positionService" ref="positionService"></property>
+	</bean>
+	<bean name="noticeAction" class="com.yumazhe.action.NoticeAction" scope="prototype">
+		<property name="noticeService" ref="noticeService"></property>
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean name="dailyActivityAction" class="com.yumazhe.action.DailyActivityAction" scope="prototype">
+		<property name="dailyActivityService" ref="dailyActivityService"></property>
+	</bean>
+	<bean name="fileAction" class="com.yumazhe.action.FileAction" scope="prototype">
+		<property name="fileService" ref="fileService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 	
 	<!-- 	事务管理器  -->

@@ -395,16 +395,6 @@ li.dropdown.act a.w3_icons_act {
 .white-agile{
 	color:#fff!important;
 }
-.about-left-w3ls {
-    background: url(../images/about.jpg)no-repeat 0px 0px;
-    background-size: cover;
-    padding: 0;
-    min-height: 794px;
-    position: relative;
-    text-align: center;
-    z-index: 999;
-    margin: 0;
-}
 .jarallax {
     position: relative;
     background-size: cover;
@@ -1950,10 +1940,7 @@ a.callbacks_nav.callbacks1_nav.prev {
 	.banner-image-w3layouts img {
 		right: 4%;
 	}
-	.about-left-w3ls {
-		background: url(../images/about.jpg)no-repeat 0px -183px;
-		background-size: cover;
-	}
+	
 	.about-left-w3ls h5 {
 		margin: 6em 6.5em 0 0;
 	}

@@ -90,6 +90,11 @@ public class UserServiceImpl implements UserService {
 	public List<User> queryAll() {
 		return userDao.queryAll();
 	}
+	
+	@Override
+	public List<User> queryByPage(int start, int size) {
+		return userDao.queryByPage(start, size);
+	}
 
 	@Override
 	public void transfer(String srcNumber, String destNumber) {

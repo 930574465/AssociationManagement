@@ -1,14 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Cache-control" content="no-cache"/>
+<meta http-equiv="Cache" content="no-cache"/>
+
+
 <title>与马者管理系统</title>
 <link href="images/metinfo.css" rel="stylesheet" />
 <script type="text/javascript" src="images/jQuery1.7.2.js"></script>
@@ -44,9 +47,9 @@
 				<div class="top-r-box">
 					<div class="top-right-boxr">
 						<div class="top-r-t">
-							您好 <a href="../Backstage/index.jsp" title="编辑 admin 的个人资料"
-								class='tui' style="text-decoration:underline;">admin</a><span>-</span><a
-								target="_top" href="#" id="outhome" title="退出" class='tui'>退出</a><span>|</span><a
+							您好 <a href="../Backstage/index.jsp" title=""
+								class='tui' style="text-decoration:underline;">${loginedUser.name}</a><span>-</span><a
+								target="_top" href="logoutUser" id="outhome" title="退出" class='tui'>退出</a><span>|</span><a
 								href="javascript:;" onclick="kzqie($(this))" title="切换到窄版">窄版</a>
 						</div>
 						<div class="langs">
@@ -79,19 +82,19 @@
 					<ul id="ul_1">
 						<li><a href="gerenzhongxin.jsp" target='main' id='nav_1_9'
 							class="on" title="个人中心" hidefocus="true">个人中心</a></li>
-						<li><a href="yonghuguanli.jsp" target='main' id='nav_1_8'
+						<li><a href="queryByPageUser" target='main' id='nav_1_8'
 							title="用户管理" hidefocus="true">用户管理</a></li>
-						<li><a href="gonggaoguanli.jsp" target='main' id='nav_1_9'
+						<li><a href="queryByPageNotice" target='main' id='nav_1_9'
 							title="公告管理" hidefocus="true">公告管理</a></li>
 						<li><a href="shouzhijilu.jsp" target='main' id='nav_1_10'
 							title="收支记录" hidefocus="true">收支记录</a></li>
-						<li><a href="richanghuodong.jsp" target='main' id='nav_1_11'
+						<li><a href="queryAllDailyActivity" target='main' id='nav_1_11'
 							title="日常活动" hidefocus="true">日常活动</a></li>
 						<li><a href="xinxiguanli.jsp" target='main' id='nav_1_11'
 							title="信息管理" hidefocus="true">信息管理</a></li>
 						<li><a href="lianxifangshi.jsp" target='main' id='nav_1_11'
 							title="联系方式" hidefocus="true">联系方式</a></li>
-						<li><a href="wenjianguanli.jsp" target='main' id='nav_1_11'
+						<li><a href="queryByPageFile" target='main' id='nav_1_11'
 							title="文件管理" hidefocus="true">文件管理</a></li>
 						<li><a href="shijianzhouguanli.jsp" target='main'
 							id='nav_1_11' title="时间轴管理" hidefocus="true">时间轴管理</a></li>

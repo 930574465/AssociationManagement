@@ -1,11 +1,5 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="images/metinfo.css" />
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="images/jQuery1.7.2.js"></script>
 <style type="text/css">
 * {
 	padding: 0;
@@ -666,144 +661,25 @@ img {
 						<div class="table">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<th>资料名称</th>
+									<th>名称</th>
+									<th>类型</th>
 									<th>时间</th>
 									<th>上传者</th>
+									<th>下载量</th>
 									<th>删除</th>
-									<th>点击量</th>
 								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="#">aaaaa</a>
-										</h3></td>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td>12</td>
-								</tr>
-
-
+								<c:forEach items="${fileList}" var="file">
+									<tr>
+										<td>
+											<a href="downloadFile?id=${file.id}" class="fileName">${file.filePath}</a>
+										</td>
+										<td>${file.type}</td>
+										<td>${file.date}</td>
+										<td><a href="queryByNumberUser?number=${file.author.number}">${file.author.name}</a></td>
+										<td>${file.dowloadNumber}</td>
+										<td><a href="removeFile?id=${file.id}" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
+									</tr>
+								</c:forEach>
 							</table>
 
 
@@ -831,20 +707,22 @@ img {
 						</div>
 						<!-- End Box Head -->
 
-						<form action="" method="post">
+						<form action="addFile" method="post" enctype="multipart/form-data">
 
 							<!-- Form -->
 							<div class="form">
 								<p>
-									<!-- <span class="req">max 100 symbols</span> -->
-									<label>资料名称</label> <input type="text" class="field size1" />
+									<label>资料类型</label> 
+									<input type="radio" name="type" value="历年周刊" checked="checked" />历年周刊
+									<input type="radio" name="type" value="出行路书" />出行路书
+									<input type="radio" name="type" value="自我修养" />自我修养
+									<input type="radio" name="type" value="资料模板" />资料模板
 								</p>
 
 								<p>
-									<label>上传者</label> <input type="text" class="field size1" />
+									<label>文件</label> 
+									<input type="file" name="upload" />
 								</p>
-
-
 							</div>
 							<!-- End Form -->
 
@@ -868,6 +746,28 @@ img {
 		</div>
 	</div>
 
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fileName").each(function() {
+				var split = $(this).text().trim().split("/");
+				split = split[split.length-1];
+				this.innerHTML = split.substring(split.indexOf("_")+1);
+			});
+		});
+	</script>
+	<c:if test="${!empty addResult and addResult==true}">							
+		<script type="text/javascript">
+			$(document).ready(function() {
+				alert("添加成功");
+			});
+		</script>
+	</c:if>
+	<c:if test="${!empty removeResult and removeResult==true}">							
+		<script type="text/javascript">
+			$(document).ready(function() {
+				alert("删除成功");
+			});
+		</script>
+	</c:if>
 </body>
 </html>

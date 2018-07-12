@@ -1,10 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -728,241 +723,28 @@ img {
 								align="center">
 								<tr>
 									<th>标题</th>
-									<th>内容</th>
 									<th>附件</th>
 									<th>时间</th>
 									<th>作者</th>
 									<th>点击量</th>
 									<th>删除</th>
 								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td><h3>
-											<a href="../Reception/Template.jsp" target="_blank">aaaaaaaaaaa</a>
-										</h3></td>
-									<td>内容</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">附件</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12.05.09</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>12</td>
-									<td><a href="#">删除</a></td>
-								</tr>
-
-								<!--弹出层时背景层DIV---start-->
-								<div id="fade" class="black_overlay"></div>
-								<div id="MyDiv" class="white_content">
-									<div
-										style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
-										<span
-											style="font-size: 16px; margin-right: 17px; color: #56BE2D; font-weight: 600;cursor:pointer;"
-											onclick="CloseDiv('MyDiv','fade')">关闭</span>
-									</div>
-									<div class="itempanel" style="    margin-left: 13%;">
-										<div class="floatleft title" style="text-align: left;">二级分类名称：</div>
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;">
-											<input type="text" id="label" name="label"
-												placeholder="请输入二级分类名称" />
-										</div>
-										<div class="floatleft message"></div>
-										<div class="clear"></div>
-									</div>
-									<HR
-										style="FILTER: alpha(opacity=100,finishopacity=0,style=3); margin-top: 39px;"
-										width="90%" color=#ddd SIZE=2>
-									<div
-										style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
-										<input type="button" class="greenbutton2"
-											style="width: 123px;margin-left: 30px;"
-											onclick="javasrcipt:goToAdd()" value="添加"
-											style="width: 123px; margin-left: 20%; "> <input
-											type="button" class="greenbutton2"
-											style="width: 123px;margin-left: 30px;"
-											onclick="CloseDiv('MyDiv','fade')" value="取消"
-											style="width: 123px; margin-left: 20%; ">
-									</div>
-								</div>
-								<!--弹出层时背景层DIV---end-->
-
-
+								<c:forEach items="${noticeList}" var="notice">
+									<tr>
+										<td>
+											<a href="queryByIdNotice?id=${notice.id}" target="_top">${notice.title}</a>
+										</td>
+										<td>
+											<c:if test="${!empty notice.filePath}">
+												<a href="getFileNotice?id=${notice.id}">附件</a>
+											</c:if>
+										</td>
+										<td>${notice.date}</td>
+										<td><a href="queryByNumberUser?number=${notice.author.number}">${notice.author.name}</a></td>
+										<td>${notice.clicks}</td>
+										<td><a href="removeNotice?id=${notice.id}">删除</a></td>
+									</tr>
+								</c:forEach>
 							</table>
 						</div>
 						<!-- Table -->
@@ -985,21 +767,18 @@ img {
 						</div>
 						<!-- End Box Head -->
 
-						<form action="" method="post">
+						<form action="addNotice" method="post" enctype="multipart/form-data">
 
 							<!-- Form -->
 							<div class="form">
-								<label>标题</label> <input type="text" class="field" />
-							</div>
-							<div class="form">
-								<label>作者</label> <input type="text" class="field" />
+								<label>标题</label> <input type="text" class="field" name="title" />
 							</div>
 							<div class="form">
 								<label>内容</label>
-								<textarea class="field size1" rows="10" cols="30"></textarea>
+								<textarea class="field size1" rows="10" cols="30" name="content"></textarea>
 							</div>
 							<div class="form">
-								<label>上传附件</label> <input type="file" class="field" />
+								<label>上传附件</label> <input type="file" class="field" name="appendFile" />
 							</div>
 							<div class="form">
 								<label>权限</label> <input type="radio" value="0"
@@ -1025,7 +804,16 @@ img {
 			<!-- Main -->
 		</div>
 	</div>
-
-
+	
+	<c:if test="${!empty removeResult and removeResult==true}">							
+		<script type="text/javascript">
+			alert("删除成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty addResult and addResult==true}">							
+		<script type="text/javascript">
+			alert("添加成功");
+		</script>
+	</c:if>
 </body>
 </html>

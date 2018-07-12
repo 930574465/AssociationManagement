@@ -54,10 +54,14 @@ public class FileServiceImpl implements FileService {
 	public File queryById(int id) {
 		return fileDao.queryById(id);
 	}
+	
+	@Override
+	public List<File> queryByPage(int start, int size) {
+		return fileDao.queryByPage(start, size);
+	}
 
 	@Override
 	public List<File> queryAll() {
 		return fileDao.queryAll();
 	}
-
 }

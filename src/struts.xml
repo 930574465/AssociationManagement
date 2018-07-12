@@ -33,7 +33,8 @@
 	    <default-interceptor-ref name="myStack"></default-interceptor-ref>
 	
 		<action name="registerUser" class="userAction" method="register">
-			<result name="success" type="redirect">/Reception/RegistSuccess.jsp</result>
+			<result name="addSuccess" type="chain">queryByPageUser</result>
+			<result name="registerSuccess">/Reception/RegistSuccess.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 			<interceptor-ref name="myStack">
 				<param name="fileUpload.allowedExtensions">jpg</param>
@@ -47,6 +48,90 @@
 		<action name="logoutUser" class="userAction" method="logout">
 			<result name="success" type="redirect">/Reception/Home.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="modifyUser" class="userAction" method="modify">
+			<result name="success">/Backstage/gerenzhongxin.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByPageUser" class="userAction" method="queryByPage">
+			<result name="success">/Backstage/yonghuguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByNumberUser" class="userAction" method="queryByNumber">
+			<result name="success">/Backstage/userInfo.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="getIconUser" class="userAction" method="getIcon">
+		</action>
+		
+		
+		<action name="queryByPageNotice" class="noticeAction" method="queryByPage">
+			<result name="success">/Backstage/gonggaoguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByIdNotice" class="noticeAction" method="queryById">
+			<result name="success" type="redirect">/Reception/Template.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="addNotice" class="noticeAction" method="add">
+			<result name="success" type="chain">queryByPageNotice</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="removeNotice" class="noticeAction" method="remove">
+			<result name="success" type="chain">queryByPageNotice</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="getFileNotice" class="noticeAction" method="getFile">
+			<result name="success" type="stream">
+                <!-- 将动作中的输入流get方法去除“get”后首字符小写的字符串 -->
+                <param name="inputName">inputStream</param>
+                <!-- 设置响应消息头，告诉浏览器以下载方式打开，设置文件名    OGNL表达式：${fileName} -->
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <!-- 设置响应消息头，告诉浏览器响应正文的mime类型 -->
+                <param name="contentType">application/octet-stream</param>
+            </result>
+		</action>
+		
+		
+		<action name="queryAllDailyActivity" class="dailyActivityAction" method="queryAll">
+			<result name="success">richanghuodong.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryDailyActivity" class="dailyActivityAction" method="queryAll">
+			<result name="success" type="redirect">/Reception/Activity1.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="addDailyActivity" class="dailyActivityAction" method="add">
+			<result name="success" type="chain">queryAllDailyActivity</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="removeDailyActivity" class="dailyActivityAction" method="remove">
+			<result name="success" type="chain">queryAllDailyActivity</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		
+		<action name="addFile" class="fileAction" method="add">
+			<result name="success" type="chain">queryByPageFile</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="removeFile" class="fileAction" method="remove">
+			<result name="success" type="chain">queryByPageFile</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByPageFile" class="fileAction" method="queryByPage">
+			<result name="success">wenjianguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="downloadFile" class="fileAction" method="download">
+			<result name="success" type="stream">
+                <!-- 将动作中的输入流get方法去除“get”后首字符小写的字符串 -->
+                <param name="inputName">inputStream</param>
+                <!-- 设置响应消息头，告诉浏览器以下载方式打开，设置文件名    OGNL表达式：${fileName} -->
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <!-- 设置响应消息头，告诉浏览器响应正文的mime类型 -->
+                <param name="contentType">application/octet-stream</param>
+            </result>
 		</action>
 	</package>
 </struts>

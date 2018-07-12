@@ -69,68 +69,38 @@
 				<ul style="margin-left: 140px">
 					<li>
 						<span>学号 &nbsp;&nbsp;:</span>
-						<input type="text" name="number" value="${loginedUser.number}" onfocus="lose(this)" />
+						<input type="text" name="number" value="${queryUser.number}" disabled="disabled" />
 					</li>
 					<li >
 						<span>姓名&nbsp;&nbsp;:</span>
-						<input type="text" name="name" value="${loginedUser.name}" />
-					</li>
-					<li >
-						<span>密码 &nbsp;&nbsp;:</span>
-						<input type="password" name="password" value="${loginedUser.password}" />
+						<input type="text" name="name" value="${queryUser.name}" disabled="disabled" />
 					</li>
 					<li >
 						<span>性别</span>
-						<c:if test="${loginedUser.sex == 0}">
+						<c:if test="${queryUser.sex == 0}">
 							<input type="radio" name="sex" value="0" checked="checked" disabled="disabled" />男
 							<input type="radio" name="sex" value="1" disabled="disabled" />女
 						</c:if>
-						<c:if test="${loginedUser.sex == 1}">
+						<c:if test="${queryUser.sex == 1}">
 							<input type="radio" name="sex" value="0" checked="checked"  />男
 							<input type="radio" name="sex" value="1" disabled="disabled" disabled="disabled" />女
 						</c:if>
 					</li>
 					<li >
 						<span>班级&nbsp;&nbsp;:</span>
-						<input type="text" name="classes" value="${loginedUser.classes}" />
+						<input type="text" name="classes" value="${queryUser.classes}" disabled="disabled" />
 					</li>
 					<li>
 						<span>联系方式&nbsp;&nbsp;:</span>
-						<input type="text" name="contactWay" value="${loginedUser.contactWay}" />
+						<input type="text" name="contactWay" value="${queryUser.contactWay}" disabled="disabled" />
 					</li>
-					<li>
-						<span>照片:</span>
-						<input type="file" name="icon" size="5" style="display: inline-block;" />
-					</li>
-					<li style="margin-left: 150px"><input type="submit" value="修改" /></li>
 				</ul>
 			</form>
 			
 			<br/><br/>
-			<h3 align="center">会长身份转让</h3>
-			<ul style="margin-left: 140px">
-				<li>
-					<span>身份接收者学号:</span>
-					<input type="text" />
-				</li>
-				<li style="margin-left: 150px"><a href="#" class="botton-w3ls">转让</a></li>
-			</ul>
 		</div>
 		<div class="clearfix"></div>
 	</div>
 	<!-- //about-bottom -->
-
-	<div id="small-dialog" class="mfp-hide w3ls_small_dialog wthree_pop">
-		<div class="agileits_modal_body">
-			<iframe src=""></iframe>
-		</div>
-	</div>
-
-	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-	<c:if test="${!empty modifyResult and modifyResult==true}">							
-		<script type="text/javascript">
-			alert("修改成功");
-		</script>
-	</c:if>
 </body>
 </html>

@@ -878,35 +878,42 @@ img {
 											onclick="CloseDiv('MyDiv','fade')">关闭</span>
 									</div>
 									<div class="itempanel" style="    margin-left: 13%;">
+										<div class="floatleft message" style="text-align: left;">日期:</div>
+										<div class="floatleft editor"
+											style="font-size:16px;height: 24px;line-height: 24px;">
+											<input type="date" placeholder="时间" />
+										</div>
 										<div class="floatleft title" style="text-align: left;">修改标题：</div>
 										<div class="floatleft editor"
 											style="font-size:16px;height: 24px;line-height: 24px;">
 											<input type="text" id="label" name="label"
 												placeholder="确认标题正确" />
 										</div>
+										<div class="floatleft message" style="text-align: left;">作者:</div>
+										<div class="floatleft editor"
+											style="font-size:16px;height: 24px;line-height: 24px;">
+											<input type="text" name="label" placeholder="作者" />
+										</div>
 										<div class="floatleft title" style="text-align: left;">修改内容：</div>
 										<div class="floatleft editor"
 											style="font-size:16px;height: 24px;line-height: 24px;">
 											<textarea class="field size3" rows="10" cols="30"></textarea>
 										</div>
-
-										<div class="floatleft message"></div>
+										
 										<div class="clear"></div>
 									</div>
-									<HR
-										style="FILTER: alpha(opacity=100,finishopacity=0,style=3); margin-top: 39px;"
-										width="90%" color=#ddd SIZE=2>
-										<div
+									<hr style="margin-top: 150px; background-color: #ddd" width="90%" />
+									<div
 											style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
 											<input type="button" class="greenbutton2"
 												style="width: 123px;margin-left: 30px;"
 												onclick="javasrcipt:goToAdd()" value="添加"
-												style="width: 123px; margin-left: 20%; "> <input
+												style="width: 123px; margin-left: 20%; "/> <input
 												type="button" class="greenbutton2"
 												style="width: 123px;margin-left: 30px;"
 												onclick="CloseDiv('MyDiv','fade')" value="取消"
-												style="width: 123px; margin-left: 20%; ">
-										</div>
+												style="width: 123px; margin-left: 20%; "/>
+									</div>
 							</table>
 
 
@@ -944,8 +951,7 @@ img {
 							<div class="form">
 								<p>
 									<!-- <span class="req">max 100 symbols</span> -->
-									<label>日期</label> <input type="date" v-model="addDetail.user"
-										name="classes" value="" placeholder="作者" />
+									<label>日期</label> <input type="date" name=""  />
 								</p>
 
 								<p>
@@ -977,7 +983,6 @@ img {
 		</div>
 		<!-- Main -->
 	</div>
-
 
 </body>
 </html>

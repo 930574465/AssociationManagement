@@ -24,7 +24,7 @@
             <column name="POSITION" />
         </many-to-one>
         <property name="payState" type="java.lang.String">
-            <column name="PAYSTATE" default="0" />
+            <column name="PAYSTATE" default="1" />
         </property>
         <property name="photoPath" type="java.lang.String">
             <column name="PHOTOPATH" />

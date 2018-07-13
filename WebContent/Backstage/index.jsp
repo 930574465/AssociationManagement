@@ -86,11 +86,11 @@
 							title="用户管理" hidefocus="true">用户管理</a></li>
 						<li><a href="queryByPageNotice" target='main' id='nav_1_9'
 							title="公告管理" hidefocus="true">公告管理</a></li>
-						<li><a href="shouzhijilu.jsp" target='main' id='nav_1_10'
+						<li><a href="queryByPageMoney" target='main' id='nav_1_10'
 							title="收支记录" hidefocus="true">收支记录</a></li>
 						<li><a href="queryAllDailyActivity" target='main' id='nav_1_11'
 							title="日常活动" hidefocus="true">日常活动</a></li>
-						<li><a href="xinxiguanli.jsp" target='main' id='nav_1_11'
+						<li><a href="queryAllAssociationInfo" target='main' id='nav_1_11'
 							title="信息管理" hidefocus="true">信息管理</a></li>
 						<li><a href="lianxifangshi.jsp" target='main' id='nav_1_11'
 							title="联系方式" hidefocus="true">联系方式</a></li>

@@ -54,9 +54,15 @@ public class IncomeOrPayoutServiceImpl implements IncomeOrPayoutService {
 	public IncomeOrPayout queryById(int id) {
 		return incomeOrPayoutDao.queryById(id);
 	}
+	
+	@Override
+	public List<IncomeOrPayout> queryByPage(int start, int size) {
+		return incomeOrPayoutDao.queryByPage(start, size);
+	}
 
 	@Override
 	public List<IncomeOrPayout> queryAll() {
 		return incomeOrPayoutDao.queryAll();
 	}
+
 }

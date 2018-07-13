@@ -685,12 +685,14 @@ textarea.size1 {
 						<div class="table">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
+									<th>编号</th>
 									<th>活动标题</th>
 									<th>活动内容</th>
 									<th width="110" class="ac">删除</th>
 								</tr>
 								<c:forEach items="${dailyActivityList}" var="dailyActivity">
 									<tr>
+										<td>${dailyActivity.id}</td>
 										<td>${dailyActivity.title}</td>
 										<td><a href="queryDailyActivity" target="_top">内容</a></td>
 										<td><a href="removeDailyActivity?id=${dailyActivity.id}">删除</a></td>

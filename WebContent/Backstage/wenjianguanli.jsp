@@ -661,6 +661,7 @@ img {
 						<div class="table">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
+									<th>编号</th>
 									<th>名称</th>
 									<th>类型</th>
 									<th>时间</th>
@@ -671,9 +672,17 @@ img {
 								<c:forEach items="${fileList}" var="file">
 									<tr>
 										<td>
+											${file.id}
+										</td>
+										<td>
 											<a href="downloadFile?id=${file.id}" class="fileName">${file.filePath}</a>
 										</td>
-										<td>${file.type}</td>
+										<td>
+											<c:if test="${file.type == 1}">历年周刊</c:if> 
+											<c:if test="${file.type == 2}">出行路书</c:if> 
+											<c:if test="${file.type == 3}">自我修养</c:if> 
+											<c:if test="${file.type == 4}">资料模板</c:if> 
+										</td>
 										<td>${file.date}</td>
 										<td><a href="queryByNumberUser?number=${file.author.number}">${file.author.name}</a></td>
 										<td>${file.dowloadNumber}</td>
@@ -713,10 +722,10 @@ img {
 							<div class="form">
 								<p>
 									<label>资料类型</label> 
-									<input type="radio" name="type" value="历年周刊" checked="checked" />历年周刊
-									<input type="radio" name="type" value="出行路书" />出行路书
-									<input type="radio" name="type" value="自我修养" />自我修养
-									<input type="radio" name="type" value="资料模板" />资料模板
+									<input type="radio" name="type" value="1" checked="checked" />历年周刊
+									<input type="radio" name="type" value="2" />出行路书
+									<input type="radio" name="type" value="3" />自我修养
+									<input type="radio" name="type" value="4" />资料模板
 								</p>
 
 								<p>

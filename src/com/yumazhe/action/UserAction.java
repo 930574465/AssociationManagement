@@ -214,6 +214,18 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		}
 	}
 	
+	public String nullify() {
+		try {
+			User dbUser = userService.query(user.getNumber());
+			userService.nullify(dbUser);
+			request.setAttribute("nullifyResult", true);
+			return SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "fail";
+		}
+	}
+	
 	public String modify() {
 		User dbUser = userService.query(user.getNumber());
 		if (dbUser != null) {
@@ -313,6 +325,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			sos.write(buffer, 0, len);
 		}
 		sos.flush();
+		fis.close();
 		return NONE;
 	}
 }

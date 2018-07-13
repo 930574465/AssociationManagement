@@ -61,7 +61,7 @@
 	<!-- about -->
 	<div class="about" id="about">
 		<div class="col-md-6 about-left-w3ls">
-			<img alt="" src="getIconUser" width="100%" height="100%">
+			<img alt="" src="getIconUser?number=${queryUser.number}" width="100%" height="100%">
 		</div>
 		<div class="col-md-6 person-info-agileits-w3layouts">
 			<h3 class="w3_head w3_head1">About Me</h3>

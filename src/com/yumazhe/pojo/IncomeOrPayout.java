@@ -8,7 +8,7 @@ public class IncomeOrPayout implements Serializable {
 	private Integer id;
 	private Double money;
 	private String type;	//'0'是收入，'1'是支出
-	private String tourceOrDestination;
+	private String sourceOrDestination;
 	private Date date;
 	private User agent;
 	private User applicant;
@@ -37,12 +37,12 @@ public class IncomeOrPayout implements Serializable {
 		this.type = type;
 	}
 
-	public String getTourceOrDestination() {
-		return tourceOrDestination;
+	public String getSourceOrDestination() {
+		return sourceOrDestination;
 	}
 
-	public void setTourceOrDestination(String tourceOrDestination) {
-		this.tourceOrDestination = tourceOrDestination;
+	public void setSourceOrDestination(String sourceOrDestination) {
+		this.sourceOrDestination = sourceOrDestination;
 	}
 
 	public Date getDate() {

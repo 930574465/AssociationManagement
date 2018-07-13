@@ -722,6 +722,7 @@ img {
 							<table width="100%" border="0" cellspacing="0" cellpadding="0"
 								align="center">
 								<tr>
+									<th>编号</th>
 									<th>标题</th>
 									<th>附件</th>
 									<th>时间</th>
@@ -731,6 +732,7 @@ img {
 								</tr>
 								<c:forEach items="${noticeList}" var="notice">
 									<tr>
+										<td>${notice.id}</td>
 										<td>
 											<a href="queryByIdNotice?id=${notice.id}" target="_top">${notice.title}</a>
 										</td>

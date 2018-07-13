@@ -25,9 +25,9 @@
         <property name="user" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
         <property name="initialPoolSize" value="10"></property>
-        <property name="maxIdleTime" value="30"></property>
+        <property name="maxIdleTime" value="20"></property>
         <property name="maxPoolSize" value="100"></property>
-        <property name="minPoolSize" value="10"></property>
+        <property name="minPoolSize" value="5"></property>
         <property name="maxStatements" value="200"></property>
     </bean>
 	
@@ -118,6 +118,9 @@
 	</bean>
 	
 	<!-- 配置Action类 -->
+	<bean name="redirectHome" class="com.yumazhe.action.HomeAction" scope="prototype">
+		
+	</bean>
 	<bean name="userAction" class="com.yumazhe.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
 		<property name="permissionService" ref="permissionService"></property>
@@ -127,8 +130,16 @@
 		<property name="noticeService" ref="noticeService"></property>
 		<property name="userService" ref="userService"></property>
 	</bean>
+	<bean name="moneyAction" class="com.yumazhe.action.MoneyAction" scope="prototype">
+		<property name="moneyService" ref="moneyService"></property>
+		<property name="incomeOrPayoutService" ref="incomeOrPayoutService"></property>
+		<property name="userService" ref="userService"></property>
+	</bean>
 	<bean name="dailyActivityAction" class="com.yumazhe.action.DailyActivityAction" scope="prototype">
 		<property name="dailyActivityService" ref="dailyActivityService"></property>
+	</bean>
+	<bean name="associationInfoAction" class="com.yumazhe.action.AssociationInfoAction" scope="prototype">
+		<property name="associationInfoService" ref="associationInfoService"></property>
 	</bean>
 	<bean name="fileAction" class="com.yumazhe.action.FileAction" scope="prototype">
 		<property name="fileService" ref="fileService"></property>

@@ -10,7 +10,7 @@
 	<constant name="struts.multipart.maxSize" value="8388608"></constant>
 	<constant name="struts.devMode" value="true"></constant>
 
-	<package name="p1" extends="struts-default">
+	<package name="p1" extends="struts-default" namespace="/">
 		<!-- 配置拦截器 -->
 	    <interceptors>
 	    	<!-- 登录拦截器 -->
@@ -41,6 +41,10 @@
 				<param name="fileUpload.allowedExtensions">jpg</param>
 				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg</param>
 			</interceptor-ref>
+		</action>
+		<action name="nullifyUser" class="userAction" method="nullify">
+			<result name="success" type="chain">queryByPageUser</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="loginUser" class="userAction" method="login">
 			<result name="success" type="redirect">/Reception/Home.jsp</result>
@@ -93,6 +97,9 @@
             </result>
 		</action>
 		
+		<action name="redirectHome" class="redirectHome" method="execute">
+			<result name="success" type="redirect">/Reception/Home.jsp</result>
+		</action>
 		
 		<action name="queryAllDailyActivity" class="dailyActivityAction" method="queryAll">
 			<result name="success">richanghuodong.jsp</result>
@@ -133,6 +140,48 @@
                 <!-- 设置响应消息头，告诉浏览器响应正文的mime类型 -->
                 <param name="contentType">application/octet-stream</param>
             </result>
+		</action>
+		
+		
+		<action name="queryByPageMoney" class="moneyAction" method="queryByPage">
+			<result name="success">shouzhijilu.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="addincomeOrPayout" class="moneyAction" method="add">
+			<result name="success" type="chain">queryByPageMoney</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="removeincomeOrPayout" class="moneyAction" method="remove">
+			<result name="success" type="chain">queryByPageMoney</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		
+		<action name="addAssociationInfo" class="associationInfoAction" method="add">
+			<result name="success" type="chain">queryAllAssociationInfo</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+			<interceptor-ref name="myStack">
+				<param name="fileUpload.allowedExtensions">jpg</param>
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg</param>
+			</interceptor-ref>
+		</action>
+		<action name="removeAssociationInfo" class="associationInfoAction" method="remove">
+			<result name="success" type="chain">queryAllAssociationInfo</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="modifyAssociationInfo" class="associationInfoAction" method="modify">
+			<result name="success" type="chain">queryAllAssociationInfo</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryAllAssociationInfo" class="associationInfoAction" method="queryAll">
+			<result name="success">xinxiguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByIdAssociationInfo" class="associationInfoAction" method="queryById">
+			<result name="success" type="redirect">/Reception/About1.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="getInfoPhoto" class="associationInfoAction" method="getInfoPhoto">
 		</action>
 	</package>
 </struts>

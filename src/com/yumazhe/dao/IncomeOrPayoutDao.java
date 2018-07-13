@@ -13,5 +13,7 @@ public interface IncomeOrPayoutDao {
 	
 	public IncomeOrPayout queryById(int id);
 	
+	public List<IncomeOrPayout> queryByPage(int start, int size);
+	
 	public List<IncomeOrPayout> queryAll();
 }

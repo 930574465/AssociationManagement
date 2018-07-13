@@ -29,6 +29,14 @@ public class IncomeOrPayoutDaoImpl extends HibernateDaoSupport implements Income
 	public IncomeOrPayout queryById(int id) {
 		return (IncomeOrPayout) super.getSession().get(IncomeOrPayout.class, id);
 	}
+	
+	@Override
+	public List<IncomeOrPayout> queryByPage(int start, int size) {
+		Query query = super.getSession().createQuery("from IncomeOrPayout order by date desc");
+		query.setFirstResult(start);
+		query.setMaxResults(size);
+		return query.list();
+	}
 
 	@Override
 	public List<IncomeOrPayout> queryAll() {

@@ -14,8 +14,8 @@
         <property name="type" type="java.lang.String">
             <column name="TYPE" />
         </property>
-        <property name="tourceOrDestination" type="java.lang.String">
-            <column name="TOURCEORDESTINATION" />
+        <property name="sourceOrDestination" type="java.lang.String">
+            <column name="SOURCEORDESTINATION" />
         </property>
         <property name="date" type="date">
             <column name="DATE" />

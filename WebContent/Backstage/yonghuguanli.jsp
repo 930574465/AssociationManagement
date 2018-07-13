@@ -701,7 +701,7 @@ img {
 									<th>权限</th>
 									<th>密码</th>
 									<th>职务</th>
-									<th>删除</th>
+									<th>退会</th>
 									<th>修改</th>
 								</tr>
 								<c:forEach items="${userList}" var="user">
@@ -728,7 +728,11 @@ img {
 											</c:if>
 											<c:if test="${!empty user.position}">${user.position.name}</c:if>
 										</td>
-										<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
+										<td>
+											<c:if test="${!empty user.position and !(user.position.name eq '已退会')}">
+												<a href="nullifyUser?number=${user.number}" class="ico del">退会&nbsp;&nbsp;&nbsp;</a>
+											</c:if>
+										</td>
 										<td><a class="button border-green button-little"
 											onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
 									</tr>
@@ -857,7 +861,6 @@ img {
 								</p>
 								<p>
 									<label>职位</label>
-									<input type="radio" name="positionId" value="1" />${positionList[0].name}&nbsp;&nbsp; 
 									<input type="radio" name="positionId" value="2" />${positionList[1].name}&nbsp;&nbsp;
 									<input type="radio" name="positionId" value="3"  />${positionList[2].name}&nbsp;&nbsp; 
 									<input type="radio" name="positionId" value="4" checked="checked"  />${positionList[3].name}&nbsp;&nbsp;
@@ -896,6 +899,11 @@ img {
 	<c:if test="${!empty registerResult and registerResult==true}">							
 		<script type="text/javascript">
 			alert("添加成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty nullifyResult and nullifyResult==true}">							
+		<script type="text/javascript">
+			alert("退会成功");
 		</script>
 	</c:if>
 	<script type="text/javascript">

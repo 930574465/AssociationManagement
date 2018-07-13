@@ -1,6 +1,5 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -648,7 +647,7 @@ img {
 					<!-- Box -->
 					<div class="box">
 						<div align="center" style="margin:10px">
-							<label> <font size="5" color="#6666ff">资金余额:500元</font></label>
+							<label> <font size="5" color="#6666ff">资金余额:${money.size}元</font></label>
 						</div>
 						<!-- Box Head -->
 						<div class="box-head">
@@ -671,187 +670,43 @@ img {
 						<div class="table">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
+									<td>编号</td>
 									<th>类型</th>
 									<th>金额</th>
-									<th>明细</th>
+									<th>来源或去向</th>
 									<th>时间</th>
 									<th>申请人</th>
 									<th>经办人</th>
 									<th>删除</th>
 
 								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-								<tr>
-									<td>支出</td>
-									<td>300</td>
-									<td>看病</td>
-									<td>2000.02.02</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张三</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">张4</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td><a href="#">删除</a></td>
-								</tr>
-
-
+								<c:forEach items="${incomeOrPayoutList}" var="incomeOrPayout">
+									<tr>
+										<td>${incomeOrPayout.id}</td>
+										<td>
+											<c:if test="${incomeOrPayout.type == 0}">
+												支出
+											</c:if>
+											<c:if test="${incomeOrPayout.type == 1}">
+												收入
+											</c:if>
+										</td>
+										<td>${incomeOrPayout.money}</td>
+										<td>${incomeOrPayout.sourceOrDestination}</td>
+										<td>${incomeOrPayout.date}</td>
+										<td>
+											<a href="queryByNumberUser?number=${incomeOrPayout.applicant.number}">
+												${incomeOrPayout.applicant.name}
+											</a>
+										</td>
+										<td>
+											<a href="queryByNumberUser?number=${incomeOrPayout.agent.number}">
+												${incomeOrPayout.agent.name}
+											</a>
+										</td>
+										<td><a href="removeincomeOrPayout?id=${incomeOrPayout.id}">删除</a></td>
+									</tr>
+								</c:forEach>
 							</table>
 							<!-- Pagging -->
 							<div class="pagging">
@@ -875,11 +730,11 @@ img {
 						</div>
 						<!-- End Box Head -->
 
-						<form action="" method="post">
+						<form action="addincomeOrPayout" method="post">
 
 							<!-- Form -->
 							<div class="form">
-								<label>金额</label> <input type="text" class="field" size="25" />
+								<label>金额</label> <input type="text" class="field" size="25" name="money" />
 							</div>
 							<div class="form">
 								<label>类型</label> <input type="radio" value="0" name="type"
@@ -888,13 +743,10 @@ img {
 							</div>
 							<div class="form">
 								<label>来源或去向</label>
-								<textarea class="field" rows="3" cols="30"></textarea>
+								<textarea class="field" rows="3" cols="30" name="sourceOrDestination"></textarea>
 							</div>
 							<div class="form">
-								<label>经办人学号</label> <input type="text" class="field" size="25" />
-							</div>
-							<div class="form">
-								<label>申请人学号</label> <input type="text" class="field" size="25" />
+								<label>申请人学号</label> <input type="text" class="field" size="25" name="applicantUser" />
 							</div>
 							<!-- End Form -->
 
@@ -916,6 +768,15 @@ img {
 		</div>
 	</div>
 
-
+	<c:if test="${!empty addResult and addResult==true}">							
+		<script type="text/javascript">
+			alert("添加成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty removeResult and removeResult==true}">							
+		<script type="text/javascript">
+			alert("删除成功");
+		</script>
+	</c:if>
 </body>
 </html>

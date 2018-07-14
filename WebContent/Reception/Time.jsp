@@ -56,7 +56,7 @@
 						<li class="line"></li>
 						<li id="nav_3" style="width:138px;" class=""><a href="queryDailyActivity" class="hover-none nav"><span>日常活动</span></a></li>
 						<li class="line"></li>
-						<li id="nav_32" style="width:138px;" class="navdown"><a href="Time.jsp" class="hover-none nav"><span>时间轴</span></a></li>
+						<li id="nav_32" style="width:138px;" class="navdown"><a href="queryAllKeyEventReceptionAction" class="hover-none nav"><span>时间轴</span></a></li>
 						<li class="line"></li>
 						<li id="nav_33" style="width:138px;"><a href="Download1.jsp" class="hover-none nav"><span>下载中心</span></a></li>
 						<li class="line"></li>
@@ -154,7 +154,7 @@
 					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
 					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
-					<a href="Time.jsp" title="时间轴">时间轴</a><span>|</span>
+					<a href="queryAllKeyEventReceptionAction" title="时间轴">时间轴</a><span>|</span>
 					<a href="Download1.jsp" title="下载中心">下载中心</a><span>|</span>
 					<a href="Contact.jsp" title="联系我们">联系我们</a><span>|</span>
 					<a href="http://www.imut.edu.cn/" title="网站首页">工大官网</a></div>

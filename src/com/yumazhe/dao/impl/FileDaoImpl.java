@@ -32,8 +32,17 @@ public class FileDaoImpl extends HibernateDaoSupport implements FileDao {
 	}
 
 	@Override
-	public List<File> queryByPage(int start, int size) {
-		Query query = super.getSession().createQuery("from File order by date desc");
+	public List<File> queryByPage(int start, int size, File file) {
+		String hql = null;
+		Query query = null;
+		if (file.getType() != null) {
+			hql = "from File where type=? order by date desc";
+			query = super.getSession().createQuery(hql);
+			query.setString(0, file.getType());
+		} else {
+			hql = "from File order by date desc";
+			query = super.getSession().createQuery(hql);
+		}
 		query.setFirstResult(start);
 		query.setMaxResults(size);
 		return query.list();

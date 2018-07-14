@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -728,6 +729,7 @@ img {
 									<th>时间</th>
 									<th>作者</th>
 									<th>点击量</th>
+									<th>权限</th>
 									<th>删除</th>
 								</tr>
 								<c:forEach items="${noticeList}" var="notice">
@@ -741,9 +743,13 @@ img {
 												<a href="getFileNotice?id=${notice.id}">附件</a>
 											</c:if>
 										</td>
-										<td>${notice.date}</td>
+										<td><fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										<td><a href="queryByNumberUser?number=${notice.author.number}">${notice.author.name}</a></td>
 										<td>${notice.clicks}</td>
+										<td>
+											<c:if test="${notice.permission == 0}">公开</c:if>
+											<c:if test="${notice.permission == 1}">内部</c:if>
+										</td>
 										<td><a href="removeNotice?id=${notice.id}">删除</a></td>
 									</tr>
 								</c:forEach>

@@ -35,4 +35,6 @@ public interface UserService {
 	 * 		成功返回true，失败返回false
 	 */
 	public void transfer(String srcNumber, String destNumber);
+	
+	public void accept(User user);
 }

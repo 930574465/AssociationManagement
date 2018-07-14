@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -683,7 +684,7 @@ img {
 											<c:if test="${file.type == 3}">自我修养</c:if> 
 											<c:if test="${file.type == 4}">资料模板</c:if> 
 										</td>
-										<td>${file.date}</td>
+										<td><fmt:formatDate value="${file.date}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 										<td><a href="queryByNumberUser?number=${file.author.number}">${file.author.name}</a></td>
 										<td>${file.dowloadNumber}</td>
 										<td><a href="removeFile?id=${file.id}" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>

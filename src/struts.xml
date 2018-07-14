@@ -48,7 +48,7 @@
 		</action>
 		<action name="loginUser" class="userAction" method="login">
 			<result name="success" type="redirect">/Reception/Home.jsp</result>
-			<result name="fail" type="redirect">/fail.jsp</result>
+			<result name="fail">/Reception/Login.jsp</result>
 		</action>
 		<action name="logoutUser" class="userAction" method="logout">
 			<result name="success" type="redirect">/Reception/Home.jsp</result>
@@ -56,6 +56,10 @@
 		</action>
 		<action name="modifyUser" class="userAction" method="modify">
 			<result name="success">/Backstage/gerenzhongxin.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="modifyUser2" class="userAction" method="modify">
+			<result name="success" type="chain">queryByPageUser</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="queryByPageUser" class="userAction" method="queryByPage">
@@ -66,12 +70,20 @@
 			<result name="success">/Backstage/userInfo.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
+		<action name="acceptUser" class="userAction" method="accept">
+			<result name="success" type="chain">queryByPageUser</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
 		<action name="getIconUser" class="userAction" method="getIcon">
 		</action>
 		
 		
 		<action name="queryByPageNotice" class="noticeAction" method="queryByPage">
 			<result name="success">/Backstage/gonggaoguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByPageNotice2" class="noticeAction" method="queryByPage">
+			<result name="success">/Reception/Notice.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="queryByIdNotice" class="noticeAction" method="queryById">
@@ -97,8 +109,9 @@
             </result>
 		</action>
 		
-		<action name="redirectHome" class="redirectHome" method="execute">
-			<result name="success" type="redirect">/Reception/Home.jsp</result>
+		<action name="redirectHome" class="redirectHome" method="queryNoticeAndFile">
+			<result name="success">/Reception/Home.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		
 		<action name="queryAllDailyActivity" class="dailyActivityAction" method="queryAll">
@@ -129,6 +142,10 @@
 		</action>
 		<action name="queryByPageFile" class="fileAction" method="queryByPage">
 			<result name="success">wenjianguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryByPageAndTypeFile" class="fileAction" method="queryByPage">
+			<result name="success">/Reception/Download1.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="downloadFile" class="fileAction" method="download">
@@ -198,6 +215,10 @@
 		</action>
 		<action name="queryAllContactActiion" class="contactAction" method="queryAll">
 			<result name="success">lianxifangshi.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryAllContactActiion2" class="contactAction" method="queryAll">
+			<result name="success">/Reception/Contact.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		

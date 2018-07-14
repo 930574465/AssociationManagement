@@ -113,7 +113,7 @@
 					<span>身份接收者学号:</span>
 					<input type="text" />
 				</li>
-				<li style="margin-left: 150px"><a href="#" class="botton-w3ls">转让</a></li>
+				<li style="margin-left: 150px"><input type="submit" value="转让" /></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>

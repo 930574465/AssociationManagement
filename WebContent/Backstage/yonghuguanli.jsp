@@ -709,7 +709,10 @@ img {
 										<td><h3>${user.number}</h3></td>
 										<td><a href="getIconUser?number=${user.number}">${user.name}</a>
 										</td>
-										<td>${user.sex}</td>
+										<td>
+											<c:if test="${user.sex == '0'}">男</c:if>
+											<c:if test="${user.sex == '1'}">女</c:if>
+										</td>
 										<td>${user.classes }</td>
 										<td>${user.contactWay}</td>
 										<td>
@@ -719,102 +722,118 @@ img {
 										<td class="permissionText">
 											<c:forEach items="${user.permissions}" var="permission">${permission.id}</c:forEach>
 										</td>
-										<td>${user.password}</td>
+										<td><c:if test="${!(user.position.name eq '会长')}">${user.password}</c:if></td>
 										<td>
 											<c:if test="${empty user.position}">
-												<a href="#" class="ico del">
+												<a href="acceptUser?number=${user.number}" class="ico del">
 													同意申请
 												</a>
 											</c:if>
 											<c:if test="${!empty user.position}">${user.position.name}</c:if>
 										</td>
 										<td>
-											<c:if test="${!empty user.position and !(user.position.name eq '已退会')}">
+											<c:if test="${!empty user.position and !(user.position.name eq '已退会') and !(user.position.name eq '会长')}">
 												<a href="nullifyUser?number=${user.number}" class="ico del">退会&nbsp;&nbsp;&nbsp;</a>
 											</c:if>
 										</td>
-										<td><a class="button border-green button-little"
-											onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
+										<td>
+											<c:if test="${!(user.position.name eq '会长')}">
+												<a class="button border-green button-little"
+													onclick="javasrcipt:ShowDiv('MyDiv${user.number}','fade${user.number}')">修改</a>
+											</c:if>
+										</td>
 									</tr>
+									
+									<!--弹出层时背景层DIV---start-->
+									<div id="fade${user.number}" class="black_overlay"></div>
+									<div id="MyDiv${user.number}" class="white_content">
+										<div
+											style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
+											<span
+												style="font-size: 10px; margin-right: 11px; color: #56BE2D; font-weight: 600;cursor:pointer;"
+												onclick="CloseDiv('MyDiv${user.number}','fade${user.number}')">关闭</span>
+										</div>
+										<form action="modifyUser2" method="post" enctype="multipart/form-data">
+											<div class="itempanel" style="    margin-left: 13%;">
+												<div class="floatleft title" style="text-align: left;">
+													学号(不可修改)：<input type="text" id="label" name="number" value="${user.number}" onfocus="lose(this)" />
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改姓名：<input type="text" id="label" name="name" value="${user.name}"/>
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改性别：
+													<input type="radio" id="label" name="sex" value="0" <c:if test="${user.sex==0}">checked="checked"</c:if> />男
+													<input type="radio" id="label" name="sex" value="1" <c:if test="${user.sex==1}">checked="checked"</c:if> />女
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改班级：<input type="text" id="label" name="classes" value="${user.classes}" />
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改联系方式：<input type="text" id="label" name="contactWay" value="${user.contactWay}"/>
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改缴费情况： <input type="radio" name="payState" value="0" <c:if test="${user.payState==0}">checked="checked"</c:if> />已缴费
+													<input type="radio" name="payState" value="1" <c:if test="${user.payState==1}">checked="checked"</c:if> />未缴费
+												</div>
+												<br />
+												<div class="floatleft title" style="text-align: left;">
+													修改职位： 
+													<c:if test="${!empty user.position}">
+														<input type="radio" name="positionId" value="2" <c:if test="${user.position.id==2}">checked="checked"</c:if> />书记
+														<input type="radio" name="positionId" value="3" <c:if test="${user.position.id==3}">checked="checked"</c:if> />执委
+														<input type="radio" name="positionId" value="4" <c:if test="${user.position.id==4}">checked="checked"</c:if> />成员
+													</c:if>
+													<c:if test="${empty user.position}">
+														<input type="radio" name="positionId" value="2" />书记
+														<input type="radio" name="positionId" value="3"  />执委
+														<input type="radio" name="positionId" value="4" />成员
+													</c:if>
+												</div>
+												<br />
+												<div class="floatleft title" style="text-align: left;">
+													修改权限：<br/>
+													<input type="checkbox" name="permission" value="1" />用户管理
+													<input type="checkbox" name="permission" value="2"  />资金管理
+													<input type="checkbox" name="permission" value="3"  />公告管理 
+													<input type="checkbox" name="permission" value="4"  />文件管理
+													<input type="checkbox" name="permission" value="5"  />其他
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改密码：<input type="password" id="label" name="password" value="${user.password}" />
+												</div>
+												<br/>
+												<div class="floatleft title" style="text-align: left;">
+													修改照片：<input type="file" name="icon" size="5" />
+												</div>
+												<br/>
+												<div class="floatleft message"></div>
+												<div class="clear"></div>
+											</div>
+											<div
+												style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
+												<input type="submit" class="greenbutton2"
+													style="width: 110px;margin-left: 30px;"
+													onclick="javasrcipt:goToAdd()" value="修改"
+													style="width: 123px; margin-left: 20%; "/> <input
+													type="button" class="greenbutton2"
+													style="width: 110px;margin-left: 30px;"
+													onclick="CloseDiv('MyDiv${user.number}','fade${user.number}')" value="取消"
+													style="width: 123px; margin-left: 20%; "/>
+											</div>
+										</form>
+									</div>
+									<!--弹出层时背景层DIV---end-->
+									
 								</c:forEach>
 								
 								
-								<!--弹出层时背景层DIV---start-->
-								<div id="fade" class="black_overlay"></div>
-								<div id="MyDiv" class="white_content">
-									<div
-										style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
-										<span
-											style="font-size: 10px; margin-right: 11px; color: #56BE2D; font-weight: 600;cursor:pointer;"
-											onclick="CloseDiv('MyDiv','fade')">关闭</span>
-									</div>
-									<div class="itempanel" style="    margin-left: 13%;">
-										<div class="floatleft title" style="text-align: left;">
-											修改学号：<input type="text" id="label" name="label"
-												placeholder="确认正确" />
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改姓名：<input type="text" id="label" name="label"
-												placeholder="确认正确" />
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改性别：<input type="text" id="label" name="label"
-												placeholder="确认正确" />
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改班级：<input type="text" id="label" name="label"
-												placeholder="确认正确" />
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改联系方式：<input type="text" id="label" name="label"
-												placeholder="确认正确" />
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改缴费情况： <input type="radio" checked="checked" name="1">已缴费</input>&nbsp;&nbsp;
-											<input type="radio" name="1">未缴费</input>
-										</div>
-										<br />
-										<div class="floatleft title" style="text-align: left;">
-											修改权限： <input type="checkbox" name="vehicle" value="Car"
-												checked="checked" />1&nbsp;&nbsp; <input type="checkbox"
-												name="vehicle" value="Car" checked="checked" />2&nbsp;&nbsp;
-											<input type="checkbox" name="vehicle" value="Car"
-												checked="checked" />3&nbsp;&nbsp; <input type="checkbox"
-												name="vehicle" value="Car" checked="checked" />4&nbsp;&nbsp;
-											<input type="checkbox" name="vehicle" value="Car"
-												checked="checked" />5&nbsp;&nbsp;
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改密码：<input type="text" id="label" name="label"
-												placeholder="确认正确" />
-										</div>
-										<br/>
-										<div class="floatleft title" style="text-align: left;">
-											修改头像：<input type="file" name="" size="5" />
-										</div>
-										<br/>
-										<div class="floatleft message"></div>
-										<div class="clear"></div>
-									</div>
-									<div
-										style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
-										<input type="button" class="greenbutton2"
-											style="width: 110px;margin-left: 30px;"
-											onclick="javasrcipt:goToAdd()" value="修改"
-											style="width: 123px; margin-left: 20%; "/> <input
-											type="button" class="greenbutton2"
-											style="width: 110px;margin-left: 30px;"
-											onclick="CloseDiv('MyDiv','fade')" value="取消"
-											style="width: 123px; margin-left: 20%; "/>
-									</div>
-								</div>
-								<!--弹出层时背景层DIV---end-->
 
 							</table>
 							<!-- Pagging -->
@@ -906,12 +925,21 @@ img {
 			alert("退会成功");
 		</script>
 	</c:if>
+	<c:if test="${!empty acceptResult and acceptResult==true}">							
+		<script type="text/javascript">
+			alert("成功");
+		</script>
+	</c:if>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".permissionText").each(function() {
 				this.innerHTML = $(this).text().trim().split("").sort().toString().replace(/,/g, "");
 			});
 		});
+		
+		function lose(number) {
+			number.blur();
+		}
 	</script>
 </body>
 </html>

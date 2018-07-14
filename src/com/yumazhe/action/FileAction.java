@@ -158,7 +158,7 @@ public class FileAction extends ActionSupport implements ModelDriven<File> {
 	}
 	
 	public String queryByPage() {
-		List<File> fileList = fileService.queryByPage(start, size);
+		List<File> fileList = fileService.queryByPage(start, size, file);
 		if (fileList != null) {
 			request.setAttribute("fileList", fileList);
 			return SUCCESS;

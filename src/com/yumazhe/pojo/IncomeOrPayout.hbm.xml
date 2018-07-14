@@ -17,7 +17,7 @@
         <property name="sourceOrDestination" type="java.lang.String">
             <column name="SOURCEORDESTINATION" />
         </property>
-        <property name="date" type="date">
+        <property name="date" type="java.util.Date">
             <column name="DATE" />
         </property>
         <many-to-one name="agent" class="com.yumazhe.pojo.User">

@@ -115,7 +115,7 @@
 							</c:if>
 							<c:if test="${!empty loginedUser}">
 								你好，
-								<a href="../Backstage/index.jsp">${loginedUser.name}</a>
+								<a href="../Backstage../index.jsp">${loginedUser.name}</a>
 								<span>|</span>
 								<a href="logoutUser">注销</a>
 							</c:if>
@@ -125,19 +125,19 @@
 			
 				<nav>
 					<ul class="list-none">
-						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" data-corner="tl 5px"><a href="Home.jsp" class="nav"><span>网站首页</span></a></li>
+						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" data-corner="tl 5px"><a href="../index.jsp" class="nav"><span>网站首页</span></a></li>
 						<li class="line"></li>
 						<li id="nav_1" style="width:138px;" class=""><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
-						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
+						<li id="nav_2" style="width:138px;" class=""><a href="queryByPageNotice2" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
 						<li id="nav_3" style="width:138px;" class=""><a href="queryDailyActivity" class="hover-none nav"><span>日常活动</span></a></li>
 						<li class="line"></li>
 						<li id="nav_32" style="width:138px;"><a href="queryAllKeyEventReceptionAction" class="hover-none nav"><span>时间轴</span></a></li>
 						<li class="line"></li>
-						<li id="nav_33" style="width:138px;"><a href="Download1.jsp" class="hover-none nav"><span>下载中心</span></a></li>
+						<li id="nav_33" style="width:138px;"><a href="queryByPageAndTypeFile?type=1" class="hover-none nav"><span>下载中心</span></a></li>
 						<li class="line"></li>
-						<li id="nav_22" style="width: 139px; border-top-right-radius: 5px;" data-corner="tr 5px" ><a href="Contact.jsp" class="hover-none nav"><span>联系我们</span></a></li>
+						<li id="nav_22" style="width: 139px; border-top-right-radius: 5px;" data-corner="tr 5px" ><a href="queryAllContactActiion2" class="hover-none nav"><span>联系我们</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -154,7 +154,7 @@
 		<div class="sidebar inner ">
 		    <div class="sb_box1">
 			    <h3 class="title">
-					<div class="position">当前位置：<a href="Home.jsp" title="网站首页">网站首页</a> &gt; &nbsp;登录</div>
+					<div class="position">当前位置：<a href="../index.jsp" title="网站首页">网站首页</a> &gt; &nbsp;登录</div>
 					<span>登录</span>
 				</h3>
 					
@@ -173,6 +173,9 @@
 							</table>
 							<br>
 							<p>
+								<c:if test="${!empty loginError}">
+									<font color="red">学号或密码错误</font><br/>
+								</c:if>
 								<input type="submit" value="登录"> &nbsp;&nbsp;&nbsp;<input type="reset" value="重置">
 							</p>
 						</form>
@@ -194,13 +197,13 @@
 		<footer data-module="10001" data-classnow="10001">
 			<div class="inner">
 				<div class="foot-nav">
-					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
+					<a href="../index.jsp" title="网站首页">网站首页</a><span>|</span>
 					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
-					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
+					<a href="queryByPageNotice2" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="queryAllKeyEventReceptionAction" title="时间轴">时间轴</a><span>|</span>
-					<a href="Download1.jsp" title="下载中心">下载中心</a><span>|</span>
-					<a href="Contact.jsp" title="联系我们">联系我们</a><span>|</span>
+					<a href="queryByPageAndTypeFile?type=1" title="下载中心">下载中心</a><span>|</span>
+					<a href="queryAllContactActiion2" title="联系我们">联系我们</a><span>|</span>
 					<a href="http://www.imut.edu.cn/" title="网站首页">工大官网</a></div>
 				<div class="foot-text">
 					<p>我们的网站 版权所有 2018-2022 蒙ICP备88888</p>

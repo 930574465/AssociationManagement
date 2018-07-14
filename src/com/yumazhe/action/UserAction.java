@@ -89,8 +89,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return user;
 	}
 	
-	public String login() {
-		
+	public void load() {
 		try {
 			Map<String, Object> application = ActionContext.getContext().getApplication();
 			if (application.get("permissionList") == null) {
@@ -104,7 +103,9 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public String login() {
 		if (user.getNumber()!=null && user.getPassword()!=null && !user.getNumber().trim().equals("") && !user.getPassword().trim().equals("")) {
 			user.setNumber(user.getNumber().trim());
 			user.setPassword(user.getPassword().trim());
@@ -114,15 +115,18 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 				loginedUser = userService.login(user);
 			} catch (Exception e) {
 				e.printStackTrace();
+				request.setAttribute("loginError", true);
 				return "fail";
 			}
 			
 			if (loginedUser != null) {
 				session.put("loginedUser", loginedUser);
 			} else {
+				request.setAttribute("loginError", true);
 				return "fail";
 			}
 		} else {
+			request.setAttribute("loginError", true);
 			return "fail";
 		}
 		return SUCCESS;
@@ -138,6 +142,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String register() {
+		load();
+		
 		boolean flag = true;
 		if (user.getClasses()!=null && !user.getClasses().trim().equals("")) {
 			user.setClasses(user.getClasses().trim());
@@ -215,6 +221,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String nullify() {
+		load();
 		try {
 			User dbUser = userService.query(user.getNumber());
 			userService.nullify(dbUser);
@@ -227,6 +234,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String modify() {
+		load();
 		User dbUser = userService.query(user.getNumber());
 		if (dbUser != null) {
 			if (user.getClasses()!=null && !user.getClasses().trim().equals("")) {
@@ -271,7 +279,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			try {
 				userService.modify(user);
 				if (session.get("loginedUser") != null) {
-					session.put("loginedUser", user);
 					request.setAttribute("modifyResult", true);
 					return SUCCESS;
 				} else {
@@ -287,6 +294,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String queryByPage() {
+		load();
 		List<User> userList = userService.queryByPage(start, size);
 		if (userList!=null) {
 			session.put("userList", userList);
@@ -297,10 +305,31 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String queryByNumber() {
-		User dbUser = userService.query(user.getNumber());
+		User dbUser = null;
+		if (user.getNumber() != null) {
+			dbUser = userService.query(user.getNumber());
+		} else {
+			dbUser = (User) session.get("loginedUser");
+		}
 		if (dbUser != null) {
 			request.setAttribute("queryUser", dbUser);
 			return SUCCESS;
+		} else {
+			return "fail";
+		}
+	}
+	
+	public String accept() {
+		load();
+		if (user.getNumber() != null) {
+			try {
+				userService.accept(user);
+				request.setAttribute("acceptResult", true);
+				return SUCCESS;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "fail";
+			}
 		} else {
 			return "fail";
 		}

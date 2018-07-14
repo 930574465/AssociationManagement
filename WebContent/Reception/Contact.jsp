@@ -50,7 +50,7 @@
 							</c:if>
 							<c:if test="${!empty loginedUser}">
 								你好，
-								<a href="../Backstage/index.jsp">${loginedUser.name}</a>
+								<a href="../Backstage../index.jsp">${loginedUser.name}</a>
 								<span>|</span>
 								<a href="logoutUser">注销</a>
 							</c:if>
@@ -60,19 +60,19 @@
 			
 				<nav>
 					<ul class="list-none">
-						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" data-corner="tl 5px"><a href="Home.jsp" class="nav"><span>网站首页</span></a></li>
+						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" data-corner="tl 5px"><a href="../index.jsp" class="nav"><span>网站首页</span></a></li>
 						<li class="line"></li>
 						<li id="nav_1" style="width:138px;" class=""><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
-						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
+						<li id="nav_2" style="width:138px;" class=""><a href="queryByPageNotice2" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
 						<li id="nav_3" style="width:138px;" class=""><a href="queryDailyActivity" class="hover-none nav"><span>日常活动</span></a></li>
 						<li class="line"></li>
 						<li id="nav_32" style="width:138px;"><a href="queryAllKeyEventReceptionAction" class="hover-none nav"><span>时间轴</span></a></li>
 						<li class="line"></li>
-						<li id="nav_33" style="width:138px;"><a href="Download1.jsp" class="hover-none nav"><span>下载中心</span></a></li>
+						<li id="nav_33" style="width:138px;"><a href="queryByPageAndTypeFile?type=1" class="hover-none nav"><span>下载中心</span></a></li>
 						<li class="line"></li>
-						<li id="nav_22" style="width: 139px; border-top-right-radius: 5px;" data-corner="tr 5px" class="navdown myCorner"><a href="Contact.jsp" class="hover-none nav"><span>联系我们</span></a></li>
+						<li id="nav_22" style="width: 139px; border-top-right-radius: 5px;" data-corner="tr 5px" class="navdown myCorner"><a href="queryAllContactActiion2" class="hover-none nav"><span>联系我们</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -89,45 +89,19 @@
 		<div class="sidebar inner ">
 		    <div class="sb_box1">
 			    <h3 class="title">
-					<div class="position">当前位置：<a href="Home.jsp" title="网站首页">网站首页</a> &gt; &nbsp;联系我们</div>
+					<div class="position">当前位置：<a href="../index.jsp" title="网站首页">网站首页</a> &gt; &nbsp;联系我们</div>
 					<span>联系我们</span>
 				</h3>
 				<div class="clear"></div> 
 		        <div class="active" id="newslist">
 					<table>
 						<caption>长期招新</caption>
-						<tr>
-							<td>微信公众号</td>
-							<td> yumazhe</td>
-						</tr>
-							<td>官方QQ</td>
-							<td>448555923</td>
-						</tr>
-				        <tr>
-				        	<td>外联部成员</td>
-				            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金川:杨贻琳19997672291&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-				            	&nbsp;&nbsp;&nbsp;肖倩雪18047499604<br>
-			            		本部:淖敏18147558918 <br>
-			            		&nbsp;&nbsp;&nbsp;石秀15049106057<br>
-				            </td>
-				        </tr>
-						<tr>
-							<td>车协负责</td>
-							<td>会长本部：彭文迪15147107290<br>
-				            	书记金川：滑博宇13948593557
-			    	        </td>
-						</tr>
-				        <tr>
-							<td>官方邮箱</td>
-							<td>448555923@qq.com</td>
-						</tr>
-				        <tr>
-							<td>其他方式 </td>
-							<td>
-						                 每周二四晚9：00操场日常训练<br>
-						                 每周二四晚自习 
-				 			</td>
-						</tr>
+						<c:forEach items="${contactList}" var="contact">
+							<tr>
+								<td>${contact.name}</td>
+								<td>${contact.context}</td>
+							</tr>
+						</c:forEach>
 					</table>
 					<h1>&nbsp;  </h1>
 				</div>
@@ -138,13 +112,13 @@
 		<footer data-module="10001" data-classnow="10001">
 			<div class="inner">
 				<div class="foot-nav">
-					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
+					<a href="../index.jsp" title="网站首页">网站首页</a><span>|</span>
 					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
-					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
+					<a href="queryByPageNotice2" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="queryAllKeyEventReceptionAction" title="时间轴">时间轴</a><span>|</span>
-					<a href="Download1.jsp" title="下载中心">下载中心</a><span>|</span>
-					<a href="Contact.jsp" title="联系我们">联系我们</a><span>|</span>
+					<a href="queryByPageAndTypeFile?type=1" title="下载中心">下载中心</a><span>|</span>
+					<a href="queryAllContactActiion2" title="联系我们">联系我们</a><span>|</span>
 					<a href="http://www.imut.edu.cn/" title="网站首页">工大官网</a></div>
 				<div class="foot-text">
 					<p>我们的网站 版权所有 2018-2022 蒙ICP备88888</p>

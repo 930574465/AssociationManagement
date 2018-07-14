@@ -26,13 +26,12 @@ public class IncomeOrPayoutServiceImpl implements IncomeOrPayoutService {
 		incomeOrPayoutDao.add(incomeOrPayout);
 		Money money = moneyDao.query();
 		
-		//收支记录金额不能小于0，减去收支记录金额后的资金余额不能小于9
-		if (money.getSize()-incomeOrPayout.getMoney()<0 || incomeOrPayout.getMoney()<0) {
-			throw new RuntimeException("余额小于0或者收支金额为负数");
-		}
-		
 		//"0"是支出，"1"是收入
 		if (incomeOrPayout.getType().equals("0")) {
+			//收支记录金额不能小于0，减去收支记录金额后的资金余额不能小于9
+			if (money.getSize()-incomeOrPayout.getMoney()<0 || incomeOrPayout.getMoney()<0) {
+				throw new RuntimeException("余额小于0或者收支金额为负数");
+			}
 			money.setSize(money.getSize()-incomeOrPayout.getMoney());
 		} else {
 			money.setSize(money.getSize()+incomeOrPayout.getMoney());
@@ -47,14 +46,13 @@ public class IncomeOrPayoutServiceImpl implements IncomeOrPayoutService {
 			incomeOrPayoutDao.remove(dbIncomeOrPayout);
 			Money money = moneyDao.query();
 			
-			if (money.getSize()-dbIncomeOrPayout.getMoney()<0 || incomeOrPayout.getMoney()<0) {
-				throw new RuntimeException("余额小于0或者收支金额为负数");
-			}
-			
 			//"0"是支出，"1"是收入
 			if (dbIncomeOrPayout.getType().equals("0")) {
 				money.setSize(money.getSize()+dbIncomeOrPayout.getMoney());
 			} else {
+				if (money.getSize()-dbIncomeOrPayout.getMoney()<0 || incomeOrPayout.getMoney()<0) {
+					throw new RuntimeException("余额小于0或者收支金额为负数");
+				}
 				money.setSize(money.getSize()-dbIncomeOrPayout.getMoney());
 			}
 			moneyDao.update(money);

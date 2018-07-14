@@ -13,7 +13,7 @@ public interface FileService {
 	
 	public File queryById(int id);
 	
-	public List<File> queryByPage(int start, int size);
+	public List<File> queryByPage(int start, int size, File file);
 	
 	public List<File> queryAll();
 }

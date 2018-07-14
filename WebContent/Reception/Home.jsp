@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -49,19 +50,19 @@
 			
 				<nav>
 					<ul class="list-none">
-						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" class="navdown myCorner" data-corner="tl 5px"><a href="Home.jsp" class="nav"><span>网站首页</span></a></li>
+						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" class="navdown myCorner" data-corner="tl 5px"><a href="../index.jsp" class="nav"><span>网站首页</span></a></li>
 						<li class="line"></li>
 						<li id="nav_1" style="width:138px;" class=""><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
-						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
+						<li id="nav_2" style="width:138px;" class=""><a href="queryByPageNotice2" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
 						<li id="nav_3" style="width:138px;" class=""><a href="queryDailyActivity" class="hover-none nav"><span>日常活动</span></a></li>
 						<li class="line"></li>
 						<li id="nav_32" style="width:138px;"><a href="queryAllKeyEventReceptionAction" class="hover-none nav"><span>时间轴</span></a></li>
 						<li class="line"></li>
-						<li id="nav_33" style="width:138px;"><a href="Download1.jsp" class="hover-none nav"><span>下载中心</span></a></li>
+						<li id="nav_33" style="width:138px;"><a href="queryByPageAndTypeFile?type=1" class="hover-none nav"><span>下载中心</span></a></li>
 						<li class="line"></li>
-						<li id="nav_22" style="width: 139px; border-top-right-radius: 5px;" class="myCorner" data-corner="tr 5px"><a href="Contact.jsp" class="hover-none nav"><span>联系我们</span></a></li>
+						<li id="nav_22" style="width: 139px; border-top-right-radius: 5px;" class="myCorner" data-corner="tr 5px"><a href="queryAllContactActiion2" class="hover-none nav"><span>联系我们</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -117,47 +118,51 @@
 			<div class="index-news style-1">
 				<h3 class="title">
 					<span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">车协公告</span>
-					<a href="Notice.jsp" class="more" title="链接关键词">更多&gt;&gt;</a>
+					<a href="queryByPageNotice2" class="more" title="链接关键词">更多&gt;&gt;</a>
 				</h3>
 					<div class="active clear listel contour-2" style="height: 300px;">
 						<ol class="list-none metlist">
-							<li class="list top"><span class="time">2012-07-17</span><a href="Template.jsp">aaaaaaa</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">bbbbbb</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">cccccccc</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">dddddddddd</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">eeeeeeeeeee</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">fffffffffffff</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">ggggggggggggg</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">hhhhhhhhhhhhh</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">iiiiiiiiiiiiii</a></li>
-							<li class="list "><span class="time">2012-07-16</span><a href="Template.jsp">jjjjjjjjjjjjj</a></li>
+							<c:forEach items="${noticeList}" var="notice">
+								<c:if test="${!empty loginedUser and notice.permission==1}">
+									<li class='list top'>
+										<span>[<fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd HH:mm"/>]</span>
+										<a href="queryByIdNotice?id=${notice.id}" title='aaaa' target='_self'>${notice.title}</a>&nbsp;&nbsp;<font color="red" style="font-size: 11px;">[内部]</font>
+									</li>
+								</c:if>
+								<c:if test="${notice.permission==0}">
+									<li class='list top'>
+										<span>[<fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd HH:mm"/>]</span>
+										<a href="queryByIdNotice?id=${notice.id}" title='aaaa' target='_self'>${notice.title}</a>
+									</li>
+								</c:if>
+							</c:forEach>
 						</ol>
 					</div>
 			</div>
-		 	<!-- 日常活动 -->
+		 	<!-- 图形报表 -->
 			<div class="index-news style-1">
-				<h3 class="title"><span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">日常活动</span><a href="queryDailyActivity" class="more" title="链接关键词">更多&gt;&gt;</a></h3>
+				<h3 class="title"><span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">图形报表</span><a href="#" class="more" title="链接关键词">更多&gt;&gt;</a></h3>
 					<div class="active clear listel contour-2" style="height: 300px;">
 						<ol class="list-none metlist">
-							<li class="list top"><span class="time"></span><a href="queryDailyActivity">日常训练</a></li>
-							<li class="list "><span class="time"></span><a href="Activity2.jsp">假期拉练</a></li>
-							<li class="list "><span class="time"></span><a href="Activity3.jsp">十一出行</a></li>
-							<li class="list "><span class="time"></span><a href="Activity4.jsp">团队建设</a></li>
+							<li class="list top"><span class="time"></span><a href="#">用户模块</a></li>
+							<li class="list "><span class="time"></span><a href="#">资金模块</a></li>
+							<li class="list "><span class="time"></span><a href="#">下载模块</a></li>
 						</ol>
 					</div>
 			</div>
 			<!-- 下载中心 -->
 			<div class="index-conts style-2">
 				<h3 class="title myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
-					<a href="Download1.jsp" title="链接关键词" class="more">更多&gt;&gt;</a>下载中心
+					<a href="queryByPageAndTypeFile?type=1" title="链接关键词" class="more">更多&gt;&gt;</a>下载中心
 				</h3>
 				<div class="active clear listel contour-2" style="height: 300px;">
 					<ol class="list-none metlist">
-						<li class="list top"><span class="time">2012-07-16</span><a href="#">uuuuuuuuuu</a></li>
-						<li class="list "><span class="time">2012-07-16</span><a href="#">vvvvvvvvvv</a></li>
-						<li class="list "><span class="time">2012-07-16</span><a href="#">wwwwwwwwwww</a></li>
-						<li class="list "><span class="time">2012-07-16</span><a href="#">xxxxxxxxx</a></li>
-						<li class="list "><span class="time">2012-07-16</span><a href="#">yyyyyyyyyyyy</a></li>
+						<c:forEach items="${fileList}" var="file">
+							<li class='list top'>
+								<span>[<fmt:formatDate value="${file.date}" pattern="yyyy-MM-dd"/>]</span>
+								<a href="downloadFile?id=${file.id}" class="fileName" target="_self">${file.filePath}</a>
+							</li>
+						</c:forEach>
 					</ol>
 				</div>
 			</div>
@@ -190,13 +195,13 @@
 		<footer data-module="10001" data-classnow="10001">
 			<div class="inner">
 				<div class="foot-nav">
-					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
+					<a href="../index.jsp" title="网站首页">网站首页</a><span>|</span>
 					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
-					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
+					<a href="queryByPageNotice2" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="queryAllKeyEventReceptionAction" title="时间轴">时间轴</a><span>|</span>
-					<a href="Download1.jsp" title="下载中心">下载中心</a><span>|</span>
-					<a href="Contact.jsp" title="联系我们">联系我们</a><span>|</span>
+					<a href="queryByPageAndTypeFile?type=1" title="下载中心">下载中心</a><span>|</span>
+					<a href="queryAllContactActiion2" title="联系我们">联系我们</a><span>|</span>
 					<a href="http://www.imut.edu.cn/" title="网站首页">工大官网</a></div>
 				<div class="foot-text">
 					<p>我们的网站 版权所有 2018-2022 蒙ICP备88888</p>
@@ -209,6 +214,16 @@
 		<div style="text-align:center;">
 			<p>来源：软件15-3班 </p>
 		</div>
+		
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".fileName").each(function() {
+				var split = $(this).text().trim().split("/");
+				split = split[split.length-1];
+				this.innerHTML = split.substring(split.indexOf("_")+1);
+			});
+		});
+	</script>
 	
 	</body>
 </html>

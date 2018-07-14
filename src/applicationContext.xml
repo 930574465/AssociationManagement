@@ -26,7 +26,7 @@
         <property name="password" value="${jdbc.password}"></property>
         <property name="initialPoolSize" value="10"></property>
         <property name="maxIdleTime" value="20"></property>
-        <property name="maxPoolSize" value="100"></property>
+        <property name="maxPoolSize" value="50"></property>
         <property name="minPoolSize" value="10"></property>
         <property name="maxStatements" value="200"></property>
     </bean>
@@ -119,7 +119,8 @@
 	
 	<!-- 配置Action类 -->
 	<bean name="redirectHome" class="com.yumazhe.action.HomeAction" scope="prototype">
-		
+		<property name="noticeAction" ref="noticeAction"></property>
+		<property name="fileAction" ref="fileAction"></property>
 	</bean>
 	<bean name="userAction" class="com.yumazhe.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
@@ -225,6 +226,7 @@
 			<tx:method name="nullify" />
 			<tx:method name="modify" />
 			<tx:method name="transfer"/>
+			<tx:method name="accept"/>
 		</tx:attributes>
 	</tx:advice>
 	

@@ -30,7 +30,8 @@ public class UserServiceImpl implements UserService {
 	public void nullify(User user) {
 		List<Position> all = positionDao.queryAll();
 		User dbUser = userDao.queryByNumber(user.getNumber());
-		if (dbUser != null) {
+		//会长不可以退会
+		if (dbUser!=null && dbUser.getPosition().getId()!=1) {
 			//最后一个职务代表 退会，在添加职务时要在最后添加 退会
 			dbUser.setPosition(all.get(all.size()-1));
 			userDao.update(dbUser);
@@ -106,5 +107,16 @@ public class UserServiceImpl implements UserService {
 		destUser.setPosition(srcPosition);
 		userDao.update(srcUser);
 		userDao.update(destUser);
+	}
+
+	@Override
+	public void accept(User user) {
+		User dbUser = userDao.queryByNumber(user.getNumber());
+		if (dbUser != null) {
+			List<Position> all = positionDao.queryAll();
+			//倒数第二个职务是会员
+			dbUser.setPosition(all.get(all.size()-2));
+			userDao.update(dbUser);
+		}
 	}
 }

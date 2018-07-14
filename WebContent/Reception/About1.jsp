@@ -46,7 +46,7 @@
 					<ul class="list-none">
 						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" data-corner="tl 5px"><a href="Home.jsp" class="nav"><span>网站首页</span></a></li>
 						<li class="line"></li>
-						<li id="nav_1" style="width:138px;" class="navdown"><a href="About1.jsp" class="hover-none nav"><span>关于我们</span></a></li>
+						<li id="nav_1" style="width:138px;" class="navdown"><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
 						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
@@ -96,7 +96,7 @@
 				<h3 class="title">
 					<div class="position">
 							当前位置：<a href="Home.jsp" title="网站首页">网站首页</a> &gt;
-							<a href="About1.jsp">关于我们</a> >&nbsp;${associationInfo.name}
+							<a href="${pageContext.request.contextPath }/queryByIdAssociationInfo">关于我们</a> >&nbsp;${associationInfo.name}
 					</div>
 					<span>关于我们</span>
 				</h3>
@@ -116,7 +116,7 @@
 			<div class="inner">
 				<div class="foot-nav">
 					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
-					<a href="About1.jsp" title="关于我们">关于我们</a><span>|</span>
+					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
 					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
 					<a href="Activity1.jsp" title="日常活动">日常活动</a><span>|</span>
 					<a href="Time.jsp" title="时间轴">时间轴</a><span>|</span>

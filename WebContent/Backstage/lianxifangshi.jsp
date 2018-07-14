@@ -1,11 +1,6 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -698,99 +693,63 @@ textarea.size1 {
 								<tr>
 									<th>标题</th>
 									<th>内容</th>
+									<th>删除</th>
 									<th width="110" class="ac">修改</th>
 								</tr>
-
-
-								<tr>
-									<td>官方邮箱</td>
-									<td>16+4541634@qq.com</td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>官方邮箱</td>
-									<td>16+4541634@qq.com</td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>官方邮箱</td>
-									<td>16+4541634@qq.com</td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>官方邮箱</td>
-									<td>16+4541634@qq.com</td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>官方邮箱</td>
-									<td>16+4541634@qq.com</td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>官方邮箱</td>
-									<td>16+4541634@qq.com</td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-
-								<!--弹出层时背景层DIV---start-->
-								<div id="fade" class="black_overlay"></div>
-								<div id="MyDiv" class="white_content">
-									<div
-										style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
-										<span
-											style="font-size: 16px; margin-right: 17px; color: #56BE2D; font-weight: 800;cursor:pointer;"
-											onclick="CloseDiv('MyDiv','fade')">关闭</span>
+								<c:forEach items="${contactList}" var="contact">
+									<tr>
+										<td>${contact.name}</td>
+										<td>${contact.context}</td>
+										<td><a href="removeContactActiion?id=${contact.id}">删除</a></td>
+										<td><a class="button border-green button-little"
+											onclick="javasrcipt:ShowDiv('MyDiv${contact.id}','fade${contact.id}')">修改</a>
+										</td>
+									</tr>
+									<!--弹出层时背景层DIV---start-->
+									<div id="fade${contact.id}" class="black_overlay"></div>
+									<div id="MyDiv${contact.id}" class="white_content">
+										<form action="modifyContactActiion" method="post">
+											<div
+												style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
+												<span
+													style="font-size: 16px; margin-right: 17px; color: #56BE2D; font-weight: 800;cursor:pointer;"
+													onclick="CloseDiv('MyDiv${contact.id}','fade${contact.id}')">关闭</span>
+											</div>
+											<div class="itempanel" style="margin-left: 13%;">
+												<input type="hidden" name="id" value="${contact.id}" />
+												<div class="floatleft title" style="text-align: left;">修改标题：</div>
+												<div class="floatleft editor"
+													style="font-size:16px;height: 24px;line-height: 24px;">
+													<input type="text" id="label" name="name" value="${contact.name}" />
+												</div>
+												<br />
+												<div class="floatleft title" style="text-align: left;">修改内容：</div>
+												<input type="text" id="label" name="context" value="${contact.context}"  />
+												<div class="floatleft editor"
+													style="font-size:16px;height: 24px;line-height: 24px;"></div>
+		
+												<div class="floatleft message"></div>
+												<div class="clear"></div>
+											</div>
+											<hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3); margin-top: 39px;"
+												width="90%" color="#ddd" size="2"></hr>
+											<div style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
+												<input type="submit" class="greenbutton2"
+													style="width: 123px;margin-left: 30px;"
+													onclick="javasrcipt:goToAdd()" value="修改"
+													style="width: 123px; margin-left: 20%; "/> <input
+													type="button" class="greenbutton2"
+													style="width: 123px;margin-left: 30px;"
+													onclick="CloseDiv('MyDiv${contact.id}','fade${contact.id}')" value="取消"
+													style="width: 123px; margin-left: 20%; "/>
+											</div>
+										</form>
 									</div>
-									<div class="itempanel" style="    margin-left: 13%;">
-										<div class="floatleft title" style="text-align: left;">修改标题：</div>
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;">
-											<input type="text" id="label" name="label"
-												placeholder="确认标题正确" />
-										</div>
-										<br />
-										<div class="floatleft title" style="text-align: left;">修改内容：</div>
-										<input type="text" id="label" name="label"
-											placeholder="确认标题正确" />
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;"></div>
-
-										<div class="floatleft message"></div>
-										<div class="clear"></div>
-									</div>
-									<HR
-										style="FILTER: alpha(opacity=100,finishopacity=0,style=3); margin-top: 39px;"
-										width="90%" color=#ddd SIZE=2>
-									<div
-										style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
-										<input type="button" class="greenbutton2"
-											style="width: 123px;margin-left: 30px;"
-											onclick="javasrcipt:goToAdd()" value="添加"
-											style="width: 123px; margin-left: 20%; "> <input
-											type="button" class="greenbutton2"
-											style="width: 123px;margin-left: 30px;"
-											onclick="CloseDiv('MyDiv','fade')" value="取消"
-											style="width: 123px; margin-left: 20%; ">
-									</div>
+								</c:forEach>
+								
 							</table>
 
 
-							<!-- Pagging -->
-							<div class="pagging">
-								<div class="right">
-									<a href="#">首页</a> <a href="#">1</a> <a href="#">2</a> <a
-										href="#">3</a> <a href="#">4</a> <span>...</span> <a href="#">245</a>
-									<a href="#">下一页</a> <a href="#">尾页</a>
-								</div>
-							</div>
-							<!-- End Pagging -->
 
 						</div>
 						<!-- Table -->
@@ -806,19 +765,19 @@ textarea.size1 {
 						</div>
 						<!-- End Box Head -->
 
-						<form action="" method="post">
+						<form action="addContactActiion" method="post">
 
 							<!-- Form -->
 							<div class="form">
 								<p>
-									<label>标题 <span></span></label> <input type="text"
-										class="field size1" />
+									<label>标题 </label> 
+									<input type="text" class="field size1" name="name" />
 								</p>
 
 
 								<p>
-									<label>内容 <span></span></label> <input type="text"
-										class="field size1" />
+									<label>内容 </label> 
+									<input type="text" class="field size1" name="context" />
 								</p>
 
 							</div>
@@ -850,6 +809,20 @@ textarea.size1 {
 		</div>
 	</div>
 
-
+	<c:if test="${!empty addResult and addResult==true}">							
+		<script type="text/javascript">
+			alert("添加成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty removeResult and removeResult==true}">							
+		<script type="text/javascript">
+			alert("删除成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty modifyResult and modifyResult==true}">							
+		<script type="text/javascript">
+			alert("修改成功");
+		</script>
+	</c:if>
 </body>
 </html>

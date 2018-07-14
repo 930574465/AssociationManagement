@@ -177,18 +177,23 @@ public class AssociationInfoAction extends ActionSupport implements ModelDriven<
 		}
 		
 		AssociationInfo dbAssociationInfo = null;
-		try {
-			dbAssociationInfo = associationInfoService.queryById(associationInfo.getId());
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (associationInfo.getId() != null) {
+			try {
+				dbAssociationInfo = associationInfoService.queryById(associationInfo.getId());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
-		if (dbAssociationInfo != null) {
+		if (dbAssociationInfo!=null && associationInfo.getId()!=null) {
 			session.put("associationInfo", dbAssociationInfo);
-			return SUCCESS;
 		} else {
-			return "fail";
+			List<AssociationInfo> associationInfoList = (List<AssociationInfo>) session.get("associationInfoList");
+			if (associationInfoList.size() > 0) {				
+				session.put("associationInfo", associationInfoList.get(0));
+			}
 		}
+		return SUCCESS;
 	}
 	
 	public String getInfoPhoto() throws IOException {

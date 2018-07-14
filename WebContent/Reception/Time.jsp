@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -49,7 +50,7 @@
 					<ul class="list-none">
 						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" data-corner="tl 5px"><a href="Home.jsp" class="nav"><span>网站首页</span></a></li>
 						<li class="line"></li>
-						<li id="nav_1" style="width:138px;" class=""><a href="About1.jsp" class="hover-none nav"><span>关于我们</span></a></li>
+						<li id="nav_1" style="width:138px;" class=""><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
 						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
@@ -97,51 +98,40 @@
 						</div>
 						<div class="parHd clearfix">
 							<ul>
-								<li class="act"><span></span>2004.09.20</li>
-								<li><span></span>2014.06.03</li>
-								<li><span></span>2016.06.26</li>
-								<li><span></span>2016.09.04</li>
-								<li><span></span>2016.11.05</li>
-								<li><span></span>2016.12.18</li>
-								<li><span></span>2017.01.13</li>
-								<li><span></span>2017.02.18</li>
+								<c:forEach items="${keyEventList}" var="keyEvent" varStatus="vs">
+									<c:if test="${vs.index == 0}">
+										<li class="act"><span></span><fmt:formatDate value="${keyEvent.happenedDate}" pattern="yyyyMMdd"/></li>
+									</c:if>
+									<c:if test="${vs.index != 0}">
+										<li><span></span><fmt:formatDate value="${keyEvent.happenedDate}" pattern="yyyyMMdd"/></li>
+									</c:if>
+								</c:forEach>
 							</ul>
 							<a class="sPrev"><img src="images/left_ico.png" alt="" title=""></a>
 							<a class="sNext"><img src="images/right_ico.png" alt="" title=""></a>
 						</div>
 						<div class="parBd clearfix">
-							<div class="slideBox">
-								<h4>与马者成立于内蒙古工业大学机械学院</h4>
-								<p>成立者：海洋</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>协会确立负责人机制</h4>
-								<p>俩边有负责人</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>Cycling Association Inner Mongolia University of Technology</h4>
-								<p>0000000</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>Cycling Association Inner Mongolia University of Technology</h4>
-								<p>00000000</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>Cycling Association Inner Mongolia University of Technology</h4>
-								<p>11111111</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>Cycling Association Inner Mongolia University of Technology</h4>
-								<p>222222222</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>Cycling Association Inner Mongolia University of Technology</h4>
-								<p>6666666</p>
-							</div>
-							<div class="slideBox" style="display: none;">
-								<h4>Cycling Association Inner Mongolia University of Technology</h4>
-								<p>99999999</p>
-							</div>
+							<c:forEach items="${keyEventList}" var="keyEvent" varStatus="vs">
+								<c:if test="${vs.index == 0}">
+									<div class="slideBox">
+										<h4>${keyEvent.title}</h4>
+										<p>${keyEvent.content}</p>
+										<c:if test="${!empty keyEvent.photoPath}">
+											<img alt="" src="getEventPhoto?id=${keyEvent.id}" width="100%"/>
+										</c:if>
+									</div>
+								</c:if>
+								<c:if test="${vs.index != 0}">
+									<div class="slideBox"  style="display: none;">
+										<h4>${keyEvent.title}</h4>
+										<p>${keyEvent.content}</p>
+										<c:if test="${!empty keyEvent.photoPath}">
+											<img alt="" src="getEventPhoto?id=${keyEvent.id}" width="100%"/>
+										</c:if>
+									</div>
+								</c:if>
+							</c:forEach>
+							
 						</div>
 					</div>
 				</div>
@@ -161,7 +151,7 @@
 			<div class="inner">
 				<div class="foot-nav">
 					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
-					<a href="About1.jsp" title="关于我们">关于我们</a><span>|</span>
+					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
 					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="Time.jsp" title="时间轴">时间轴</a><span>|</span>

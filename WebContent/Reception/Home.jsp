@@ -51,7 +51,7 @@
 					<ul class="list-none">
 						<li id="nav_10001" style="width: 138px; border-top-left-radius: 5px;" class="navdown myCorner" data-corner="tl 5px"><a href="Home.jsp" class="nav"><span>网站首页</span></a></li>
 						<li class="line"></li>
-						<li id="nav_1" style="width:138px;" class=""><a href="About1.jsp" class="hover-none nav"><span>关于我们</span></a></li>
+						<li id="nav_1" style="width:138px;" class=""><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
 						<li id="nav_2" style="width:138px;" class=""><a href="Notice.jsp" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
@@ -90,7 +90,7 @@
 			<!-- 车协介绍 -->
 			<div class="aboutus style-1">
 				<h3 class="title">
-				<span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">车协简介</span><a href="About1.jsp" class="more" title="链接关键词">更多&gt;&gt;</a></h3>
+				<span class="myCorner" data-corner="top 5px" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">车协简介</span><a href="queryByIdAssociationInfo" class="more" title="链接关键词">更多&gt;&gt;</a></h3>
 				<div class="active editor clear contour-1" style="height: 225px;">
 					<div>
 					<img alt="" src="images/20180704145427.jpg" style="margin: 8px; width: 196px; float: left; height: 209px; "></div>
@@ -191,7 +191,7 @@
 			<div class="inner">
 				<div class="foot-nav">
 					<a href="Home.jsp" title="网站首页">网站首页</a><span>|</span>
-					<a href="About1.jsp" title="关于我们">关于我们</a><span>|</span>
+					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
 					<a href="Notice.jsp" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="Time.jsp" title="时间轴">时间轴</a><span>|</span>

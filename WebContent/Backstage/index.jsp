@@ -73,7 +73,7 @@
 		<div id="content">
 			<div class="floatl" id="metleft">
 				<div class="fast">
-					<a href="../Reception/Home.jsp" id="qthome"
+					<a href="../index.jsp" id="qthome"
 						title="网站首页">网站首页</a> <span></span> <a
 						href="../Backstage/index.jsp" title="后台首页">后台首页</a>
 				</div>
@@ -92,11 +92,11 @@
 							title="日常活动" hidefocus="true">日常活动</a></li>
 						<li><a href="queryAllAssociationInfo" target='main' id='nav_1_11'
 							title="信息管理" hidefocus="true">信息管理</a></li>
-						<li><a href="lianxifangshi.jsp" target='main' id='nav_1_11'
+						<li><a href="queryAllContactActiion" target='main' id='nav_1_11'
 							title="联系方式" hidefocus="true">联系方式</a></li>
 						<li><a href="queryByPageFile" target='main' id='nav_1_11'
 							title="文件管理" hidefocus="true">文件管理</a></li>
-						<li><a href="shijianzhouguanli.jsp" target='main'
+						<li><a href="queryAllKeyEventAction" target='main'
 							id='nav_1_11' title="时间轴管理" hidefocus="true">时间轴管理</a></li>
 					</ul>
 				</div>

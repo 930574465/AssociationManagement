@@ -1,6 +1,6 @@
 
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -729,206 +729,20 @@ img {
 						<div class="table">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<th>日期</th>
 									<th>标题</th>
-									<th>作者</th>
-									<th>内容</th>
+									<th>日期</th>
+									<th>操作者</th>
 									<th width="110" class="ac">删除</th>
-									<th width="110" class="ac">修改</th>
 								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td>哈哈哈</td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-								<tr>
-									<td>2016.05.09</td>
-									<td><a href="#">哈哈哈</a></td>
-									<td><a href="#" onmouseover="displayImg()"
-										onmouseout="vanishImg()" onmousemove="displayImg()">123</a></td>
-									<div id="image">
-										<img src="images/men.png" alt=""></img>
-									</div>
-									<td>aaaaaaaaaaaaaaa</td>
-									<td><a href="#" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
-									<td><a class="button border-green button-little"
-										onclick="javasrcipt:ShowDiv('MyDiv','fade')">修改</a></td>
-								</tr>
-
-
-								<!--弹出层时背景层DIV---start-->
-								<div id="fade" class="black_overlay"></div>
-								<div id="MyDiv" class="white_content">
-									<div
-										style="text-align: right; cursor: default; margin-top:10px;margin-bottom:10px;">
-										<span
-											style="font-size: 16px; margin-right: 17px; color: #56BE2D; font-weight: 800;cursor:pointer;"
-											onclick="CloseDiv('MyDiv','fade')">关闭</span>
-									</div>
-									<div class="itempanel" style="    margin-left: 13%;">
-										<div class="floatleft message" style="text-align: left;">日期:</div>
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;">
-											<input type="date" placeholder="时间" />
-										</div>
-										<div class="floatleft title" style="text-align: left;">修改标题：</div>
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;">
-											<input type="text" id="label" name="label"
-												placeholder="确认标题正确" />
-										</div>
-										<div class="floatleft message" style="text-align: left;">作者:</div>
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;">
-											<input type="text" name="label" placeholder="作者" />
-										</div>
-										<div class="floatleft title" style="text-align: left;">修改内容：</div>
-										<div class="floatleft editor"
-											style="font-size:16px;height: 24px;line-height: 24px;">
-											<textarea class="field size3" rows="10" cols="30"></textarea>
-										</div>
-										
-										<div class="clear"></div>
-									</div>
-									<hr style="margin-top: 150px; background-color: #ddd" width="90%" />
-									<div
-											style="margin-bottom: 23px; margin-top: 23px; margin-left: 23%;">
-											<input type="button" class="greenbutton2"
-												style="width: 123px;margin-left: 30px;"
-												onclick="javasrcipt:goToAdd()" value="添加"
-												style="width: 123px; margin-left: 20%; "/> <input
-												type="button" class="greenbutton2"
-												style="width: 123px;margin-left: 30px;"
-												onclick="CloseDiv('MyDiv','fade')" value="取消"
-												style="width: 123px; margin-left: 20%; "/>
-									</div>
+								<c:forEach items="${keyEventList}" var="keyEvent">
+									<tr>
+										<td><a href="queryAllKeyEventReceptionAction" target="_top">${keyEvent.title}</a></td>
+										<td>${keyEvent.happenedDate}</td>
+										<td><a href="queryByNumberUser?number=${keyEvent.author.number}">${keyEvent.author.name}</a></td>
+										<td><a href="removeKeyEventAction?id=${keyEvent.id}" class="ico del">删除&nbsp;&nbsp;&nbsp;</a></td>
+									</tr>
+								</c:forEach>
 							</table>
-
-
-
-
-
-							<!-- Pagging -->
-							<div class="pagging">
-								<div class="right">
-									<a href="#">首页</a> <a href="#">1</a> <a href="#">2</a> <a
-										href="#">3</a> <a href="#">4</a> <span>...</span> <a href="#">245</a>
-									<a href="#">下一页</a> <a href="#">尾页</a>
-								</div>
-							</div>
-							<!-- End Pagging -->
 
 						</div>
 						<!-- Table -->
@@ -941,28 +755,27 @@ img {
 					<div class="box">
 						<!-- Box Head -->
 						<div class="box-head">
-							<h2>添加时间轴</h2>
+							<h2>添加事件</h2>
 						</div>
 						<!-- End Box Head -->
 
-						<form action="" method="post">
+						<form action="addKeyEventAction" method="post" enctype="multipart/form-data">
 
 							<!-- Form -->
 							<div class="form">
 								<p>
-									<!-- <span class="req">max 100 symbols</span> -->
-									<label>日期</label> <input type="date" name=""  />
-								</p>
-
-								<p>
-									<label>标题</label> <input type="text" class="field size1" />
+									<label>标题</label> <input type="text" name="title" size="30" />
 								</p>
 								<p>
-									<label>作者</label> <input type="text" class="field size1" />
+									<label>日期</label> <input type="date" name="happenedDate" size="30"  />
 								</p>
 								<p>
-									<label>内容</label> <input type="text" class="field size1" />
+									<label>内容</label> <textarea rows="6" cols="30" name="content"></textarea>
 								</p>
+								<p>
+									<label>照片</label> <input type="file" name="upload" size="20" />
+								</p>
+								
 							</div>
 							<!-- End Form -->
 
@@ -983,6 +796,17 @@ img {
 		</div>
 		<!-- Main -->
 	</div>
+	
+		<c:if test="${!empty addResult and addResult==true}">							
+		<script type="text/javascript">
+			alert("添加成功");
+		</script>
+	</c:if>
+	<c:if test="${!empty removeResult and removeResult==true}">							
+		<script type="text/javascript">
+			alert("删除成功");
+		</script>
+	</c:if>
 
 </body>
 </html>

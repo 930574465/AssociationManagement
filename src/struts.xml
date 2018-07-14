@@ -183,5 +183,45 @@
 		</action>
 		<action name="getInfoPhoto" class="associationInfoAction" method="getInfoPhoto">
 		</action>
+		
+		<action name="addContactActiion" class="contactAction" method="add">
+			<result name="success" type="chain">queryAllContactActiion</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="removeContactActiion" class="contactAction" method="remove">
+			<result name="success" type="chain">queryAllContactActiion</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="modifyContactActiion" class="contactAction" method="modify">
+			<result name="success" type="chain">queryAllContactActiion</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryAllContactActiion" class="contactAction" method="queryAll">
+			<result name="success">lianxifangshi.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="addKeyEventAction" class="keyEventAction" method="add">
+			<result name="success" type="chain">queryAllKeyEventAction</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+			<interceptor-ref name="myStack">
+				<param name="fileUpload.allowedExtensions">jpg</param>
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg</param>
+			</interceptor-ref>
+		</action>
+		<action name="removeKeyEventAction" class="keyEventAction" method="remove">
+			<result name="success" type="chain">queryAllKeyEventAction</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryAllKeyEventAction" class="keyEventAction" method="queryAll">
+			<result name="success">shijianzhouguanli.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="queryAllKeyEventReceptionAction" class="keyEventAction" method="queryAll">
+			<result name="success" type="redirect">/Reception/Time.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="getEventPhoto" class="keyEventAction" method="getEventPhoto">
+		</action>
 	</package>
 </struts>

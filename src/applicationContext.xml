@@ -27,7 +27,7 @@
         <property name="initialPoolSize" value="10"></property>
         <property name="maxIdleTime" value="20"></property>
         <property name="maxPoolSize" value="100"></property>
-        <property name="minPoolSize" value="5"></property>
+        <property name="minPoolSize" value="10"></property>
         <property name="maxStatements" value="200"></property>
     </bean>
 	
@@ -140,6 +140,13 @@
 	</bean>
 	<bean name="associationInfoAction" class="com.yumazhe.action.AssociationInfoAction" scope="prototype">
 		<property name="associationInfoService" ref="associationInfoService"></property>
+	</bean>
+	<bean name="contactAction" class="com.yumazhe.action.ContactActiion" scope="prototype">
+		<property name="contactService" ref="contactService"></property>
+	</bean>
+	<bean name="keyEventAction" class="com.yumazhe.action.KeyEventAction" scope="prototype">
+		<property name="keyEventService" ref="keyEventService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 	<bean name="fileAction" class="com.yumazhe.action.FileAction" scope="prototype">
 		<property name="fileService" ref="fileService"></property>

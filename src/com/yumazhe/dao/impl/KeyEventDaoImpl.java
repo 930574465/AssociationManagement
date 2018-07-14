@@ -32,6 +32,6 @@ public class KeyEventDaoImpl extends HibernateDaoSupport implements KeyEventDao 
 
 	@Override
 	public List<KeyEvent> queryAll() {
-		return super.getSession().createQuery("from KeyEvent order by date desc").list();
+		return super.getSession().createQuery("from KeyEvent order by happenedDate asc").list();
 	}
 }

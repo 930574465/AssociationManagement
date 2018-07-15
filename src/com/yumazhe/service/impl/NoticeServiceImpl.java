@@ -71,4 +71,14 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<Notice> queryAll() {
 		return noticeDao.queryAll();
 	}
+	
+	@Override
+	public int getCount() {
+		return noticeDao.getCount();
+	}
+
+	@Override
+	public int getCountByPermission(Notice notice) {
+		return noticeDao.getCountByPermission(notice);
+	}
 }

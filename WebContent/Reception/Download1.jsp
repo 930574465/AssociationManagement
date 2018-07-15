@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -36,7 +37,7 @@
 							</c:if>
 							<c:if test="${!empty loginedUser}">
 								你好，
-								<a href="../Backstage/index.jsp">${loginedUser.name}</a>
+								<a href="../Backstage/redirectBackstage">${loginedUser.name}</a>
 								<span>|</span>
 								<a href="logoutUser">注销</a>
 							</c:if>
@@ -126,8 +127,48 @@
 						</c:forEach>
 					</ul>
 					<div id="flip">
-					<style>.digg4  { padding:3px; margin:3px; text-align:center; font-family:Tahoma, Arial, Helvetica, Sans-serif;  font-size: 12px;}.digg4  a,.digg4 span.miy{ border:1px solid #ddd; padding:2px 5px 2px 5px; margin:2px; color:#aaa; text-decoration:none;}.digg4  a:hover { border:1px solid #a0a0a0; }.digg4  a:hover { border:1px solid #a0a0a0; }.digg4  span.current {border:1px solid #e0e0e0; padding:2px 5px 2px 5px; margin:2px; color:#aaa; background-color:#f0f0f0; text-decoration:none;}.digg4  span.disabled { border:1px solid #f3f3f3; padding:2px 5px 2px 5px; margin:2px; color:#ccc;}.digg4 .disabledfy { font-family: Tahoma, Verdana;} </style><div class='digg4 metpager_8'><span class='disabled disabledfy'><b>«</b></span><span class='disabled disabledfy'>‹</span><span class='current'>1</span><span class='disabled disabledfy'>›</span><span class='disabled disabledfy'><b>»</b></span></div></div>
-				</div>
+					<style>.digg4  { padding:3px; margin:3px; text-align:center; font-family:Tahoma, Arial, Helvetica, Sans-serif;  font-size: 12px;}.digg4  a,.digg4 span.miy{ border:1px solid #ddd; padding:2px 5px 2px 5px; margin:2px; color:#aaa; text-decoration:none;}.digg4  a:hover { border:1px solid #a0a0a0; }.digg4  a:hover { border:1px solid #a0a0a0; }.digg4  span.current {border:1px solid #e0e0e0; padding:2px 5px 2px 5px; margin:2px; color:#aaa; background-color:#f0f0f0; text-decoration:none;}.digg4  span.disabled { border:1px solid #f3f3f3; padding:2px 5px 2px 5px; margin:2px; color:#ccc;}.digg4 .disabledfy { font-family: Tahoma, Verdana;} </style>
+					
+					<div class='digg4 metpager_8'>
+						<span class='disabled disabledfy'><a href="queryByPageAndTypeFile?page=0&type=1">首页</a></span>
+						<span class='disabled disabledfy'>
+							<c:if test="${currPage == 1}">
+								<a href="javascript:void(0)"><b>‹</b></a>
+							</c:if>
+							<c:if test="${currPage != 1}">
+								<a href="queryByPageAndTypeFile?page=${currPage-2}&type=1"><b>‹</b></a>
+							</c:if>
+						</span>
+						<span class='current'>
+							<s:if test="#request.countNumber*1.0/10 == #request.countNumber/10*1.0">
+								${currPage}/共<s:property value="#request.countNumber/10" />页
+							</s:if>
+							<s:if test="#request.countNumber*1.0/10 != #request.countNumber/10*1.0">
+								${currPage}/共<s:property value="#request.countNumber/10+1" />页
+							</s:if>
+						</span>
+						<span class='disabled disabledfy'>
+							<s:if test="#request.countNumber*1.0/10 == #request.countNumber/10*1.0">
+								<s:if test="#request.countNumber/10 == #request.currPage">
+									<a href="javascript:void(0)"><b>›</b></a> 
+								</s:if>
+								<s:if test="#request.countNumber/10 != #request.currPage">
+									<a href="queryByPageAndTypeFile?page=${currPage}&type=1"><b>›</b></a> 
+								</s:if>
+								<a href="queryByPageAndTypeFile?page=<s:property value='#request.countNumber/10'/>&type=1">尾页</a>
+							</s:if>
+							<s:if test="#request.countNumber*1.0/10 != #request.countNumber/10*1.0">
+								<s:if test="#request.countNumber/10+1 == #request.currPage">
+									<a href="javascript:void(0)"><b>›</b></a> 
+								</s:if>
+								<s:if test="#request.countNumber/10+1 != #request.currPage">
+									<a href="queryByPageAndTypeFile?page=${currPage}&type=1"><b>›</b></a> 
+								</s:if>
+								<a href="queryByPageAndTypeFile?page=<s:property value='#request.countNumber/10'/>&type=1">尾页</a>
+							</s:if>
+						</span>
+						</div></div>
+					</div>
 			</div>
 			<div class="clear"></div>
 		</div>

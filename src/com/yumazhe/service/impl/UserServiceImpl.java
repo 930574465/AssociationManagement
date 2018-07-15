@@ -34,6 +34,8 @@ public class UserServiceImpl implements UserService {
 		User dbUser = userDao.queryByNumber(user.getNumber());
 		//会长不可以退会
 		if (dbUser!=null && dbUser.getPosition().getId()!=1) {
+			//消除所有权限
+			dbUser.getPermissions().clear();
 			//最后一个职务代表 退会，在添加职务时要在最后添加 退会
 			dbUser.setPosition(all.get(all.size()-1));
 			userDao.update(dbUser);
@@ -129,5 +131,10 @@ public class UserServiceImpl implements UserService {
 			dbUser.setPosition(all.get(all.size()-2));
 			userDao.update(dbUser);
 		}
+	}
+	
+	@Override
+	public int getCount() {
+		return userDao.getCount();
 	}
 }

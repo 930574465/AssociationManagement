@@ -16,4 +16,8 @@ public interface NoticeService {
 	public List<Notice> queryByPage(int start, int size, Notice notice);
 	
 	public List<Notice> queryAll();
+	
+	public int getCount();
+	
+	public int getCountByPermission(Notice notice);
 }

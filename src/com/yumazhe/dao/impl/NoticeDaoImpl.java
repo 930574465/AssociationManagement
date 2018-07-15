@@ -48,4 +48,16 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 	public List<Notice> queryAll() {
 		return super.getSession().createQuery("from Notice").list();
 	}
+	
+	@Override
+	public int getCount() {
+		return super.getSession().createQuery("from Notice").list().size();
+	}
+
+	@Override
+	public int getCountByPermission(Notice notice) {
+		Query query = super.getSession().createQuery("from Notice where permission=?");
+		query.setString(0, notice.getPermission());
+		return query.list().size();
+	}
 }

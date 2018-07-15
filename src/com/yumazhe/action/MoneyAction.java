@@ -29,7 +29,7 @@ public class MoneyAction extends ActionSupport implements ModelDriven<IncomeOrPa
 	private HttpServletRequest request;
 	private Map<String, Object> session;
 	
-	private int start = 0;
+	private int page = 0;
 	private int size = 10;
 	
 	private String applicantUser;
@@ -51,8 +51,8 @@ public class MoneyAction extends ActionSupport implements ModelDriven<IncomeOrPa
 		this.userService = userService;
 	}
 	
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 	public void setSize(int size) {
@@ -84,7 +84,7 @@ public class MoneyAction extends ActionSupport implements ModelDriven<IncomeOrPa
 		
 		List<IncomeOrPayout> incomeOrPayoutList = null;
 		try {
-			incomeOrPayoutList = incomeOrPayoutService.queryByPage(start, size);
+			incomeOrPayoutList = incomeOrPayoutService.queryByPage(page*size, size);
 		} catch (Exception e) {
 			e.printStackTrace();
 			flag = false;
@@ -96,6 +96,8 @@ public class MoneyAction extends ActionSupport implements ModelDriven<IncomeOrPa
 		
 		if (flag) {
 			request.setAttribute("incomeOrPayoutList", incomeOrPayoutList);
+			request.setAttribute("countNumber", incomeOrPayoutService.getCount());
+			request.setAttribute("currPage", page+1);
 			return SUCCESS;
 		} else {
 			return "fail";
@@ -137,7 +139,7 @@ public class MoneyAction extends ActionSupport implements ModelDriven<IncomeOrPa
 				flag = false;
 			}
 		} else {
-			flag = false;
+			
 		}
 		
 		if (flag) {
@@ -176,4 +178,5 @@ public class MoneyAction extends ActionSupport implements ModelDriven<IncomeOrPa
 			return "fail";
 		}
 	}
+	
 }

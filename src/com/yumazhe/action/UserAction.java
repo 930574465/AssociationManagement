@@ -44,7 +44,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	private Integer positionId;
 	private String permission;
 	
-	private int start = 0;
+	private int page = 0;
 	private int size = 10;
 	
 	public UserAction() {
@@ -82,6 +82,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	
 	public void setPermission(String permission) {
 		this.permission = permission;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 	@Override
@@ -303,10 +311,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	
 	public String queryByPage() {
 		load();
-		List<User> userList = userService.queryByPage(start, size);
+		List<User> userList = userService.queryByPage(page*size, size);
 		if (userList!=null) {
 			session.put("userList", userList);
 			List<Permission> permissionList = permissionService.queryAll();
+			request.setAttribute("countNumber", userService.getCount());
+			request.setAttribute("currPage", page+1);
 			return SUCCESS;
 		} else {
 			return "fail";

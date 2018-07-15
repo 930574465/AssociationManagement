@@ -64,4 +64,14 @@ public class FileServiceImpl implements FileService {
 	public List<File> queryAll() {
 		return fileDao.queryAll();
 	}
+
+	@Override
+	public int getCount() {
+		return fileDao.getCount();
+	}
+
+	@Override
+	public int getCountByType(File file) {
+		return fileDao.getCountByType(file);
+	}
 }

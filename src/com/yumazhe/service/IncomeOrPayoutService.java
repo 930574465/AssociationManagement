@@ -14,4 +14,6 @@ public interface IncomeOrPayoutService {
 	public List<IncomeOrPayout> queryByPage(int start, int size);
 	
 	public List<IncomeOrPayout> queryAll();
+	
+	public int getCount();
 }

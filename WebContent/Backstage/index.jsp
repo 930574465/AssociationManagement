@@ -47,7 +47,7 @@
 				<div class="top-r-box">
 					<div class="top-right-boxr">
 						<div class="top-r-t">
-							您好 <a href="../Backstage/index.jsp" title=""
+							您好 <a href="redirectBackstage" title=""
 								class='tui' style="text-decoration:underline;">${loginedUser.name}</a><span>-</span><a
 								target="_top" href="logoutUser" id="outhome" title="退出" class='tui'>退出</a><span>|</span><a
 								href="javascript:;" onclick="kzqie($(this))" title="切换到窄版">窄版</a>
@@ -75,29 +75,49 @@
 				<div class="fast">
 					<a href="../index.jsp" id="qthome"
 						title="网站首页">网站首页</a> <span></span> <a
-						href="../Backstage/index.jsp" title="后台首页">后台首页</a>
+						href="redirectBackstage" title="后台首页">后台首页</a>
 				</div>
 				<div class="nav_list" id="leftnav">
 
 					<ul id="ul_1">
 						<li><a href="gerenzhongxin.jsp" target='main' id='nav_1_9'
 							class="on" title="个人中心" hidefocus="true">个人中心</a></li>
-						<li><a href="queryByPageUser" target='main' id='nav_1_8'
-							title="用户管理" hidefocus="true">用户管理</a></li>
-						<li><a href="queryByPageNotice" target='main' id='nav_1_9'
-							title="公告管理" hidefocus="true">公告管理</a></li>
-						<li><a href="queryByPageMoney" target='main' id='nav_1_10'
-							title="收支记录" hidefocus="true">收支记录</a></li>
-						<li><a href="queryAllDailyActivity" target='main' id='nav_1_11'
-							title="日常活动" hidefocus="true">日常活动</a></li>
-						<li><a href="queryAllAssociationInfo" target='main' id='nav_1_11'
-							title="信息管理" hidefocus="true">信息管理</a></li>
-						<li><a href="queryAllContactActiion" target='main' id='nav_1_11'
-							title="联系方式" hidefocus="true">联系方式</a></li>
-						<li><a href="queryByPageFile" target='main' id='nav_1_11'
-							title="文件管理" hidefocus="true">文件管理</a></li>
-						<li><a href="queryAllKeyEventAction" target='main'
-							id='nav_1_11' title="时间轴管理" hidefocus="true">时间轴管理</a></li>
+						<c:forEach items="${permissionSet}" var="permission">
+							<c:if test="${permission.id == 1}">
+								<li><a href="queryByPageUser" target='main' id='nav_1_8'
+									title="用户管理" hidefocus="true">用户管理</a></li>
+							</c:if>
+						</c:forEach>
+						<c:forEach items="${permissionSet}" var="permission">
+							<c:if test="${permission.id == 2}">
+								<li><a href="queryByPageMoney" target='main' id='nav_1_10'
+									title="收支记录" hidefocus="true">收支记录</a></li>
+							</c:if>
+						</c:forEach>
+						<c:forEach items="${permissionSet}" var="permission">
+							<c:if test="${permission.id == 3}">
+								<li><a href="queryByPageNotice" target='main' id='nav_1_9'
+									title="公告管理" hidefocus="true">公告管理</a></li>
+							</c:if>
+						</c:forEach>
+						<c:forEach items="${permissionSet}" var="permission">
+							<c:if test="${permission.id == 4}">
+								<li><a href="queryByPageFile" target='main' id='nav_1_11'
+									title="文件管理" hidefocus="true">文件管理</a></li>
+							</c:if>
+						</c:forEach>
+						<c:forEach items="${permissionSet}" var="permission">
+							<c:if test="${permission.id == 5}">
+								<li><a href="queryAllDailyActivity" target='main' id='nav_1_11'
+									title="日常活动" hidefocus="true">日常活动</a></li>
+								<li><a href="queryAllAssociationInfo" target='main' id='nav_1_11'
+									title="信息管理" hidefocus="true">信息管理</a></li>
+								<li><a href="queryAllContactActiion" target='main' id='nav_1_11'
+									title="联系方式" hidefocus="true">联系方式</a></li>
+								<li><a href="queryAllKeyEventAction" target='main'
+									id='nav_1_11' title="时间轴管理" hidefocus="true">时间轴管理</a></li>
+							</c:if>
+						</c:forEach>
 					</ul>
 				</div>
 

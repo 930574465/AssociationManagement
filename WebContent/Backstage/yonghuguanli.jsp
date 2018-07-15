@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -845,9 +846,38 @@ img {
 									<font color="blue">权限一列中的数字代表5个对应的权限:1.用户管理2.资金管理3.公告管理4.文件管理5.其他</font>
 								</div>
 								<div class="right">
-									<a href="#">首页</a> <a href="#">1</a> <a href="#">2</a> <a
-										href="#">3</a> <a href="#">4</a> <span>...</span> <a href="#">245</a>
-									<a href="#">下一页</a> <a href="#">尾页</a>
+									<a href="queryByPageUser?page=0">首页</a> 
+									<c:if test="${currPage == 1}">
+										<a href="javascript:void(0)">上一页</a>
+									</c:if>
+									<c:if test="${currPage != 1}">
+										<a href="queryByPageUser?page=${currPage-2}">上一页</a>
+									</c:if>
+									<s:if test="#request.countNumber*1.0/10 == #request.countNumber/10*1.0">
+										${currPage}/共<s:property value="#request.countNumber/10" />页
+									</s:if>
+									<s:if test="#request.countNumber*1.0/10 != #request.countNumber/10*1.0">
+										${currPage}/共<s:property value="#request.countNumber/10+1" />页
+									</s:if>
+									
+									<s:if test="#request.countNumber*1.0/10 == #request.countNumber/10*1.0">
+										<s:if test="#request.countNumber/10 == #request.currPage">
+											<a href="javascript:void(0)">下一页</a> 
+										</s:if>
+										<s:if test="#request.countNumber/10 != #request.currPage">
+											<a href="queryByPageUser?page=${currPage}">下一页</a> 
+										</s:if>
+										<a href="queryByPageUser?page= <s:property value='#request.countNumber/10'/>">尾页</a>
+									</s:if>
+									<s:if test="#request.countNumber*1.0/10 != #request.countNumber/10*1.0">
+										<s:if test="#request.countNumber/10+1 == #request.currPage">
+											<a href="javascript:void(0)">下一页</a> 
+										</s:if>
+										<s:if test="#request.countNumber/10+1 != #request.currPage">
+											<a href="queryByPageUser?page=${currPage}">下一页</a> 
+										</s:if>
+										<a href="queryByPageUser?page= <s:property value='#request.countNumber/10'/>">尾页</a>
+									</s:if>
 								</div>
 							</div>
 							<!-- End Pagging -->
@@ -861,7 +891,7 @@ img {
 							<h2>添加新用户</h2>
 						</div>
 						<!-- End Box Head -->
-						<form action="registerUser" method="post" enctype="multipart/form-data">
+						<form action="addUser" method="post" enctype="multipart/form-data">
 							<!-- Form -->
 							<div class="form">
 								<p>

@@ -37,4 +37,6 @@ public interface UserService {
 	public void transfer(String srcNumber, String destNumber);
 	
 	public void accept(User user);
+	
+	public int getCount();
 }

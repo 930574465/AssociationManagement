@@ -52,4 +52,16 @@ public class FileDaoImpl extends HibernateDaoSupport implements FileDao {
 	public List<File> queryAll() {
 		return super.getSession().createQuery("from File").list();
 	}
+
+	@Override
+	public int getCount() {
+		return super.getSession().createQuery("from File").list().size();
+	}
+
+	@Override
+	public int getCountByType(File file) {
+		Query query = super.getSession().createQuery("from File where type=?");
+		query.setString(0, file.getType());
+		return query.list().size();
+	}
 }

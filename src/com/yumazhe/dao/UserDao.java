@@ -16,4 +16,6 @@ public interface UserDao{
 	public List<User> queryByPage(int start, int size);
 	
 	public List<User> queryAll();
+	
+	public int getCount();
 }

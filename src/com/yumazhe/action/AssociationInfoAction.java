@@ -188,7 +188,9 @@ public class AssociationInfoAction extends ActionSupport implements ModelDriven<
 		if (dbAssociationInfo!=null && associationInfo.getId()!=null) {
 			session.put("associationInfo", dbAssociationInfo);
 		} else {
-			List<AssociationInfo> associationInfoList = (List<AssociationInfo>) session.get("associationInfoList");
+			//查询所有活动
+			List<AssociationInfo> associationInfoList = associationInfoService.queryAll();
+			session.put("associationInfoList", associationInfoList);
 			if (associationInfoList.size() > 0) {				
 				session.put("associationInfo", associationInfoList.get(0));
 			}

@@ -15,6 +15,8 @@
 	    <interceptors>
 	    	<!-- 登录拦截器 -->
  	        <interceptor name="loginIntercepter" class="com.yumazhe.intercepter.LoginIntercepter"></interceptor>
+ 	        <interceptor name="permissionIntercepter" class="com.yumazhe.intercepter.PermissionIntercepter"></interceptor>
+ 	        
 		    <!-- 自定义拦截器栈,拦截所有动作 
 	            AbstractInterceptor的子类MethodFilterInterceptor可以指定哪些方法要被拦截器拦截或不拦截
 	                excludeMethods:指定哪些方法不被过滤
@@ -22,12 +24,8 @@
 	        <interceptor-stack name="myStack">
 	            <!-- 引用默认拦截器栈 -->
 	            <interceptor-ref name="defaultStack"></interceptor-ref>
- 	            <interceptor-ref name="loginIntercepter">
-	            	<param name="excludeMethods">
-	            		register,login,queryByPage,queryById,getFile,queryNoticeAndFile,
-	            		queryAll,queryByPage,download,getEventPhoto,getInfoPhoto
-	            	</param>
-	            </interceptor-ref>
+ 	            <interceptor-ref name="loginIntercepter"></interceptor-ref>
+ 	            <interceptor-ref name="permissionIntercepter"></interceptor-ref>
 	        </interceptor-stack>
 	    </interceptors>
 	    
@@ -36,11 +34,20 @@
 	    
 	    <global-results>
 	    	<result name="notLogin" type="redirect">/notLogin.jsp</result>
+	    	<result name="noPermission" type="redirect">/noPermission.jsp</result>
 	    </global-results>
 	
 		<action name="registerUser" class="userAction" method="register">
-			<result name="addSuccess" type="chain">queryByPageUser</result>
 			<result name="registerSuccess">/Reception/RegistSuccess.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+			<interceptor-ref name="myStack">
+				<param name="fileUpload.allowedExtensions">jpg</param>
+				<param name="fileUpload.allowedTypes">image/jpg,image/jpeg</param>
+			</interceptor-ref>
+		</action>
+		<!-- 后台添加 -->
+		<action name="addUser" class="userAction" method="register">
+			<result name="addSuccess" type="chain">queryByPageUser</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 			<interceptor-ref name="myStack">
 				<param name="fileUpload.allowedExtensions">jpg</param>
@@ -123,11 +130,16 @@
 			<result name="success">/Reception/Home.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
+		<action name="redirectBackstage" class="redirectHome" method="queryPermissions">
+			<result name="success">/Backstage/index.jsp</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
 		
 		<action name="queryAllDailyActivity" class="dailyActivityAction" method="queryAll">
 			<result name="success">richanghuodong.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
+		<!-- 前台 -->
 		<action name="queryDailyActivity" class="dailyActivityAction" method="queryAll">
 			<result name="success" type="redirect">/Reception/Activity1.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
@@ -154,6 +166,7 @@
 			<result name="success">wenjianguanli.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
+		<!-- 前台 -->
 		<action name="queryByPageAndTypeFile" class="fileAction" method="queryByPage">
 			<result name="success">/Reception/Download1.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
@@ -248,6 +261,7 @@
 			<result name="success">shijianzhouguanli.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
+		<!-- 前台 -->
 		<action name="queryAllKeyEventReceptionAction" class="keyEventAction" method="queryAll">
 			<result name="success" type="redirect">/Reception/Time.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>

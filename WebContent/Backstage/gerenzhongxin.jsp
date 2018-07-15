@@ -82,12 +82,12 @@
 					<li >
 						<span>性别</span>
 						<c:if test="${loginedUser.sex == 0}">
-							<input type="radio" name="sex" value="0" checked="checked" disabled="disabled" />男
-							<input type="radio" name="sex" value="1" disabled="disabled" />女
+							<input type="radio" name="sex" value="0" checked="checked" />男
+							<input type="radio" name="sex" value="1" />女
 						</c:if>
 						<c:if test="${loginedUser.sex == 1}">
 							<input type="radio" name="sex" value="0" checked="checked"  />男
-							<input type="radio" name="sex" value="1" disabled="disabled" disabled="disabled" />女
+							<input type="radio" name="sex" value="1" />女
 						</c:if>
 					</li>
 					<li >

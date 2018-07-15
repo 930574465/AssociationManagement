@@ -33,7 +33,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	@Override
 	public List<User> queryByPage(int start, int size) {
-		Query query = super.getSession().createQuery("from User");
+		Query query = super.getSession().createQuery("from User order by position,number");
 		query.setFirstResult(start);
 		query.setMaxResults(size);
 		return query.list();
@@ -42,5 +42,10 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	public List<User> queryAll() {
 		return super.getSession().createQuery("from User").list();
+	}
+	
+	@Override
+	public int getCount() {
+		return super.getSession().createQuery("from User").list().size();
 	}
 }

@@ -42,4 +42,9 @@ public class IncomeOrPayoutDaoImpl extends HibernateDaoSupport implements Income
 	public List<IncomeOrPayout> queryAll() {
 		return super.getSession().createQuery("from IncomeOrPayout").list();
 	}
+	
+	@Override
+	public int getCount() {
+		return super.getSession().createQuery("from IncomeOrPayout").list().size();
+	}
 }

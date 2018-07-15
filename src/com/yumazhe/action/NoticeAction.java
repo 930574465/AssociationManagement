@@ -37,7 +37,7 @@ public class NoticeAction extends ActionSupport implements ModelDriven<Notice> {
 	public InputStream inputStream; //框架有bug，变量名不能为in
     public String fileName;
 	
-	private int start = 0;
+	private int page = 0;
 	private int size = 10;
 	
 	private Map<String, Object> session = ActionContext.getContext().getSession();
@@ -95,8 +95,8 @@ public class NoticeAction extends ActionSupport implements ModelDriven<Notice> {
 		this.fileName = fileName;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 	public void setSize(int size) {
@@ -109,14 +109,25 @@ public class NoticeAction extends ActionSupport implements ModelDriven<Notice> {
 	}
 	
 	public String queryByPage() {
+		//解决Action转发而产生的问题
+		if (ActionContext.getContext().getActionInvocation().getProxy().getActionName().equals("queryByPageNotice")) {
+			notice.setPermission(null);
+		}
+		
 		//notice.getPermission()的值为空代表获取所有的公告，1代表获取内部公告，需要先登录
 		if (session.get("loginedUser")==null && (notice.getPermission()==null || notice.getPermission().equals("1"))) {
 			return "notLogin";
 		}
 		
-		List<Notice> noticeList = noticeService.queryByPage(start, size, notice);
+		List<Notice> noticeList = noticeService.queryByPage(page*size, size, notice);
 		if (noticeList!=null) {
 			session.put("noticeList", noticeList);
+			if (notice.getPermission() == null) {
+				request.setAttribute("countNumber", noticeService.getCount());
+			} else {
+				request.setAttribute("countNumber", noticeService.getCountByPermission(notice));
+			}
+			request.setAttribute("currPage", page+1);
 			return SUCCESS;
 		} else {
 			return "fail";
@@ -239,4 +250,5 @@ public class NoticeAction extends ActionSupport implements ModelDriven<Notice> {
         return SUCCESS;
         //3.交给stream结果类型处理
 	}
+	
 }

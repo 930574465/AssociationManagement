@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.plaf.basic.BasicSliderUI.ActionScroller;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.struts2.ServletActionContext;
@@ -37,7 +38,7 @@ public class FileAction extends ActionSupport implements ModelDriven<File> {
 	private HttpServletRequest request;
 	private Map<String, Object> session;
 	
-	private int start = 0;
+	private int page = 0;
 	private int size = 10;
 	
 	public InputStream inputStream; 
@@ -85,8 +86,8 @@ public class FileAction extends ActionSupport implements ModelDriven<File> {
 		this.uploadContentType = uploadContentType;
 	}
 	
-	public void setStart(int start) {
-		this.start = start;
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 	public void setSize(int size) {
@@ -135,6 +136,7 @@ public class FileAction extends ActionSupport implements ModelDriven<File> {
 			try {
 				fileService.add(file);
 				request.setAttribute("addResult", true);
+				file.setType(null);
 				return SUCCESS;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -158,9 +160,21 @@ public class FileAction extends ActionSupport implements ModelDriven<File> {
 	}
 	
 	public String queryByPage() {
-		List<File> fileList = fileService.queryByPage(start, size, file);
+		//解决Action转发而产生的问题
+		if (ActionContext.getContext().getActionInvocation().getProxy().getActionName().equals("queryByPageFile")) {
+			file.setType(null);
+		}
+		
+		
+		List<File> fileList = fileService.queryByPage(page, size, file);
 		if (fileList != null) {
 			request.setAttribute("fileList", fileList);
+			request.setAttribute("currPage", page+1);
+			if (file.getType() == null) {
+				request.setAttribute("countNumber", fileService.getCount());
+			} else {
+				request.setAttribute("countNumber", fileService.getCountByType(file));
+			}
 			return SUCCESS;
 		} else {
 			return "fail";
@@ -199,4 +213,5 @@ public class FileAction extends ActionSupport implements ModelDriven<File> {
         return SUCCESS;
         //3.交给stream结果类型处理
 	}
+	
 }

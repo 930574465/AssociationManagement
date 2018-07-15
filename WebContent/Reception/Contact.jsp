@@ -50,7 +50,7 @@
 							</c:if>
 							<c:if test="${!empty loginedUser}">
 								你好，
-								<a href="../Backstage/index.jsp">${loginedUser.name}</a>
+								<a href="../Backstage/redirectBackstage">${loginedUser.name}</a>
 								<span>|</span>
 								<a href="logoutUser">注销</a>
 							</c:if>

@@ -16,4 +16,8 @@ public interface FileService {
 	public List<File> queryByPage(int start, int size, File file);
 	
 	public List<File> queryAll();
+	
+	public int getCount();
+	
+	public int getCountByType(File file);
 }

@@ -1,6 +1,8 @@
 package com.yumazhe.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.yumazhe.pojo.User;
 
 public class HomeAction extends ActionSupport {
 
@@ -21,9 +23,19 @@ public class HomeAction extends ActionSupport {
 	}
 	
 	public String queryNoticeAndFile() {
+		User user = (User) ActionContext.getContext().getSession().get("loginedUser");
+		if (user != null) {
+			
+		} else {
+			noticeAction.getModel().setPermission("0");
+		}
+		
 		if (noticeAction.queryByPage().equals("success") && fileAction.queryByPage().equals("success")) {
 			return SUCCESS;
-		} else {
+		} else if (noticeAction.queryByPage().equals("notLogin")) {
+			return "notLogin";
+		}
+		else {
 			return "fail";
 		}
 	}

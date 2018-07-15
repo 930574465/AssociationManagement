@@ -120,6 +120,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			}
 			
 			if (loginedUser != null) {
+				//等待审核
+				if (loginedUser.getPosition() == null) {
+					return "waitVerify";
+				}
 				session.put("loginedUser", loginedUser);
 			} else {
 				request.setAttribute("loginError", true);
@@ -129,6 +133,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			request.setAttribute("loginError", true);
 			return "fail";
 		}
+		
 		return SUCCESS;
 	}
 	
@@ -280,10 +285,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 				userService.modify(user);
 				if (session.get("loginedUser") != null) {
 					request.setAttribute("modifyResult", true);
-					return SUCCESS;
-				} else {
-					return "fail";
-				}
+					//如果是修改个人信息，就更新session中的登录信息
+					User loginedUser = (User) session.get("loginedUser");
+					if (loginedUser.getNumber().equals(user.getNumber())) {
+						session.put("loginedUser", userService.query(loginedUser.getNumber()));
+					}
+				} 
+				return SUCCESS;
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "fail";
@@ -298,6 +306,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		List<User> userList = userService.queryByPage(start, size);
 		if (userList!=null) {
 			session.put("userList", userList);
+			List<Permission> permissionList = permissionService.queryAll();
 			return SUCCESS;
 		} else {
 			return "fail";
@@ -356,5 +365,26 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		sos.flush();
 		fis.close();
 		return NONE;
+	}
+	
+	public String tranfer() {
+		User loginedUser = (User) session.get("loginedUser");
+		if (loginedUser.getPosition().getId() == 1) {
+			user = userService.query(user.getNumber());
+			if (user == null) {
+				return "fail";
+			}
+			try {
+				userService.transfer(loginedUser.getNumber(), user.getNumber());
+				request.setAttribute("tranferResult", true);
+				loginedUser.setPosition(user.getPosition());
+				return SUCCESS;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "fail";
+			}
+		} else {
+			return "fail";
+		}
 	}
 }

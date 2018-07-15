@@ -31,8 +31,14 @@ public class NoticeDaoImpl extends HibernateDaoSupport implements NoticeDao {
 	}
 	
 	@Override
-	public List<Notice> queryByPage(int start, int size) {
-		Query query = super.getSession().createQuery("from Notice order by date desc");
+	public List<Notice> queryByPage(int start, int size, Notice notice) {
+		Query query = null;
+		if (notice.getPermission() == null) {
+			query = super.getSession().createQuery("from Notice order by date desc");
+		} else {
+			query = super.getSession().createQuery("from Notice where permission=? order  by date desc");
+			query.setString(0, notice.getPermission());
+		}
 		query.setFirstResult(start);
 		query.setMaxResults(size);
 		return query.list();

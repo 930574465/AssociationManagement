@@ -1,10 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
 <html>
@@ -165,23 +160,9 @@ a:hover {
 	<div class="error-page">
 		<div class="error-page-container">
 			<div class="error-page-main">
-				<h3>
-					<strong>场面hou不住了</strong><br /> 发生错误
-				</h3>
 				<div class="error-page-actions">
 					<div>
-						<h4>可能原因：</h4>
-						<ol>
-							<li>网络信号差</li>
-							<li>找不到请求的页面</li>
-							<li>服务器错误</li>
-						</ol>
-					</div>
-					<div>
-						<h4>可以尝试：</h4>
-						<ul>
-							<li><a href="index.jsp">返回首页</a></li>
-						</ul>
+						审核中，您可以先返回<a href="${pageContext.request.contextPath}/index.jsp" target="_top">首页</a>
 					</div>
 				</div>
 			</div>

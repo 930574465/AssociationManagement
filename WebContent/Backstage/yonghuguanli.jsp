@@ -798,11 +798,14 @@ img {
 												<br />
 												<div class="floatleft title" style="text-align: left;">
 													修改权限：<br/>
-													<input type="checkbox" name="permission" value="1" />用户管理
-													<input type="checkbox" name="permission" value="2"  />资金管理
-													<input type="checkbox" name="permission" value="3"  />公告管理 
-													<input type="checkbox" name="permission" value="4"  />文件管理
-													<input type="checkbox" name="permission" value="5"  />其他
+													<c:forEach items="${permissionList}" var="permission">
+														<c:if test="${user.permissions.contains(permission)}">
+															<input type="checkbox" name="permission" checked="checked" value="${permission.id}" />${permission.name}
+														</c:if>
+														<c:if test="${!user.permissions.contains(permission)}">
+															<input type="checkbox" name="permission"  value="${permission.id}" />${permission.name}
+														</c:if>
+													</c:forEach>
 												</div>
 												<br/>
 												<div class="floatleft title" style="text-align: left;">
@@ -838,6 +841,9 @@ img {
 							</table>
 							<!-- Pagging -->
 							<div class="pagging">
+								<div align="left" style="display: inline-block;">
+									<font color="blue">权限一列中的数字代表5个对应的权限:1.用户管理2.资金管理3.公告管理4.文件管理5.其他</font>
+								</div>
 								<div class="right">
 									<a href="#">首页</a> <a href="#">1</a> <a href="#">2</a> <a
 										href="#">3</a> <a href="#">4</a> <span>...</span> <a href="#">245</a>

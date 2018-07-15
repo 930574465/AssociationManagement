@@ -1,9 +1,11 @@
 package com.yumazhe.service.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import com.yumazhe.dao.PositionDao;
 import com.yumazhe.dao.UserDao;
+import com.yumazhe.pojo.Permission;
 import com.yumazhe.pojo.Position;
 import com.yumazhe.pojo.User;
 import com.yumazhe.service.UserService;
@@ -105,6 +107,15 @@ public class UserServiceImpl implements UserService {
 		Position destPosition = destUser.getPosition();
 		srcUser.setPosition(destPosition);
 		destUser.setPosition(srcPosition);
+		
+		Set<Permission> permissions = srcUser.getPermissions();
+		for (Permission permission: permissions) {
+			destUser.getPermissions().add(permission);
+		}
+		srcUser.getPermissions().clear();
+		
+		destUser.setPayState("0");
+		
 		userDao.update(srcUser);
 		userDao.update(destUser);
 	}

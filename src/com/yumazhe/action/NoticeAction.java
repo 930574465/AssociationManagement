@@ -109,7 +109,12 @@ public class NoticeAction extends ActionSupport implements ModelDriven<Notice> {
 	}
 	
 	public String queryByPage() {
-		List<Notice> noticeList = noticeService.queryByPage(start, size);
+		//notice.getPermission()的值为空代表获取所有的公告，1代表获取内部公告，需要先登录
+		if (session.get("loginedUser")==null && (notice.getPermission()==null || notice.getPermission().equals("1"))) {
+			return "notLogin";
+		}
+		
+		List<Notice> noticeList = noticeService.queryByPage(start, size, notice);
 		if (noticeList!=null) {
 			session.put("noticeList", noticeList);
 			return SUCCESS;

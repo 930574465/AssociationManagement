@@ -35,7 +35,7 @@
 							</c:if>
 							<c:if test="${!empty loginedUser}">
 								你好，
-								<a href="../Backstage../index.jsp">${loginedUser.name}</a>
+								<a href="../Backstage/index.jsp">${loginedUser.name}</a>
 								<span>|</span>
 								<a href="logoutUser">注销</a>
 							</c:if>
@@ -49,7 +49,7 @@
 						<li class="line"></li>
 						<li id="nav_1" style="width:138px;" class=""><a href="queryByIdAssociationInfo" class="hover-none nav"><span>关于我们</span></a></li>
 						<li class="line"></li>
-						<li id="nav_2" style="width:138px;" class="navdown"><a href="queryByPageNotice2" class="hover-none nav"><span>车协公告</span></a></li>
+						<li id="nav_2" style="width:138px;" class="navdown"><a href="queryByPageNotice2<c:if test="${empty loginedUser}">?permission=0</c:if>" class="hover-none nav"><span>车协公告</span></a></li>
 						<li class="line"></li>
 						<li id="nav_3" style="width:138px;" class=""><a href="queryDailyActivity" class="hover-none nav"><span>日常活动</span></a></li>
 						<li class="line"></li>
@@ -83,13 +83,10 @@
 					<ul class='list-none metlist'>
 						<c:forEach items="${noticeList}" var="notice">
 							<li class='list top'>
+								<span>[<fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd HH:mm"/>]</span>
+								<a href="queryByIdNotice?id=${notice.id}" title='aaaa' target='_self'>${notice.title}</a>
 								<c:if test="${!empty loginedUser and notice.permission==1}">
-									<span>[<fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd HH:mm"/>]</span>
-									<a href="queryByIdNotice?id=${notice.id}" title='aaaa' target='_self'>${notice.title}</a>&nbsp;&nbsp;<font color="red" style="font-size: 11px;">[内部]</font>
-								</c:if>
-								<c:if test="${notice.permission==0}">
-									<span>[<fmt:formatDate value="${notice.date}" pattern="yyyy-MM-dd HH:mm"/>]</span>
-									<a href="queryByIdNotice?id=${notice.id}" title='aaaa' target='_self'>${notice.title}</a>
+									&nbsp;&nbsp;<font color="red" style="font-size: 11px;">[内部]</font>
 								</c:if>
 							</li>
 						</c:forEach>
@@ -105,7 +102,7 @@
 				<div class="foot-nav">
 					<a href="../index.jsp" title="网站首页">网站首页</a><span>|</span>
 					<a href="queryByIdAssociationInfo" title="关于我们">关于我们</a><span>|</span>
-					<a href="queryByPageNotice2" title="车协公告">车协公告</a><span>|</span>
+					<a href="queryByPageNotice2<c:if test="${empty loginedUser}">?permission=0</c:if>" title="车协公告">车协公告</a><span>|</span>
 					<a href="queryDailyActivity" title="日常活动">日常活动</a><span>|</span>
 					<a href="queryAllKeyEventReceptionAction" title="时间轴">时间轴</a><span>|</span>
 					<a href="queryByPageAndTypeFile?type=1" title="下载中心">下载中心</a><span>|</span>

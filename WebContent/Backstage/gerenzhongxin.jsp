@@ -107,14 +107,18 @@
 			</form>
 			
 			<br/><br/>
-			<h3 align="center">会长身份转让</h3>
-			<ul style="margin-left: 140px">
-				<li>
-					<span>身份接收者学号:</span>
-					<input type="text" />
-				</li>
-				<li style="margin-left: 150px"><input type="submit" value="转让" /></li>
-			</ul>
+			<c:if test="${loginedUser.position.id == 1}">
+				<h3 align="center">会长身份转让</h3>
+				<form action="tranfer" method="post">
+					<ul style="margin-left: 140px">
+						<li>
+							<span>身份接收者学号:</span>
+							<input type="text" name="number" />
+						</li>
+						<li style="margin-left: 150px"><input type="submit" value="转让" /></li>
+					</ul>
+				</form>
+			</c:if>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -130,6 +134,11 @@
 	<c:if test="${!empty modifyResult and modifyResult==true}">							
 		<script type="text/javascript">
 			alert("修改成功");
+		</script>
+	</c:if>
+		<c:if test="${!empty tranferResult and tranferResult==true}">							
+		<script type="text/javascript">
+			alert("转让成功");
 		</script>
 	</c:if>
 </body>

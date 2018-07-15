@@ -45,7 +45,7 @@ a:hover{text-decoration:underline}
                 <div>
                     <h4>也可以：</h4>
                     <ul>
-                        <li><a href="Home.jsp">返回首页</a></li>
+                        <li><a href="/index.jsp">返回首页</a></li>
                     </ul>
                 </div>
             </div>

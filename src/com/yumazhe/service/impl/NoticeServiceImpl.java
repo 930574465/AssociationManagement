@@ -63,8 +63,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<Notice> queryByPage(int start, int size) {
-		return noticeDao.queryByPage(start, size);
+	public List<Notice> queryByPage(int start, int size, Notice notice) {
+		return noticeDao.queryByPage(start, size, notice);
 	}
 
 	@Override

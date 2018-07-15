@@ -14,24 +14,29 @@
 		<!-- 配置拦截器 -->
 	    <interceptors>
 	    	<!-- 登录拦截器 -->
-<!-- 	        <interceptor name="loginIntercepter" class="com.school.intercepter.LoginIntercepter"></interceptor>
-	        <interceptor name="encodingIntercepter" class="com.school.intercepter.EncodingIntercepter"></interceptor> -->
+ 	        <interceptor name="loginIntercepter" class="com.yumazhe.intercepter.LoginIntercepter"></interceptor>
 		    <!-- 自定义拦截器栈,拦截所有动作 
 	            AbstractInterceptor的子类MethodFilterInterceptor可以指定哪些方法要被拦截器拦截或不拦截
 	                excludeMethods:指定哪些方法不被过滤
 	                includeMethods:指定哪些方法要被过滤 -->
 	        <interceptor-stack name="myStack">
 	            <!-- 引用默认拦截器栈 -->
-<!-- 	            <interceptor-ref name="encodingIntercepter"></interceptor-ref> -->
 	            <interceptor-ref name="defaultStack"></interceptor-ref>
-<!-- 	            <interceptor-ref name="loginIntercepter">
-	            	<param name="excludeMethods">register,login,isExistEmail</param>
-	            </interceptor-ref> -->
+ 	            <interceptor-ref name="loginIntercepter">
+	            	<param name="excludeMethods">
+	            		register,login,queryByPage,queryById,getFile,queryNoticeAndFile,
+	            		queryAll,queryByPage,download,getEventPhoto,getInfoPhoto
+	            	</param>
+	            </interceptor-ref>
 	        </interceptor-stack>
 	    </interceptors>
 	    
 	    <!-- 配置默认拦截器 -->
 	    <default-interceptor-ref name="myStack"></default-interceptor-ref>
+	    
+	    <global-results>
+	    	<result name="notLogin" type="redirect">/notLogin.jsp</result>
+	    </global-results>
 	
 		<action name="registerUser" class="userAction" method="register">
 			<result name="addSuccess" type="chain">queryByPageUser</result>
@@ -47,11 +52,12 @@
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="loginUser" class="userAction" method="login">
-			<result name="success" type="redirect">/Reception/Home.jsp</result>
+			<result name="success" type="chain">redirectHome</result>
 			<result name="fail">/Reception/Login.jsp</result>
+			<result name="waitVerify" type="redirect">/waitVerify.jsp</result>
 		</action>
 		<action name="logoutUser" class="userAction" method="logout">
-			<result name="success" type="redirect">/Reception/Home.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="modifyUser" class="userAction" method="modify">
@@ -72,6 +78,10 @@
 		</action>
 		<action name="acceptUser" class="userAction" method="accept">
 			<result name="success" type="chain">queryByPageUser</result>
+			<result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		<action name="tranfer" class="userAction" method="tranfer">
+			<result name="success">/Backstage/gerenzhongxin.jsp</result>
 			<result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 		<action name="getIconUser" class="userAction" method="getIcon">

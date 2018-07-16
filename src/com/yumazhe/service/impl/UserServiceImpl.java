@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 				dbUser.setPayState(user.getPayState());
 			}
 			if (user.getPermissions() != null) {
-				dbUser.setPermissions(user.getPermissions());
+				dbUser.getPermissions().addAll(user.getPermissions());
 			}
 			if (user.getPhotoPath() != null) {
 				dbUser.setPhotoPath(user.getPhotoPath());

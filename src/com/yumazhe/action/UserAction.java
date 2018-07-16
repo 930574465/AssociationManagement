@@ -248,8 +248,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	
 	public String modify() {
 		load();
-		User dbUser = userService.query(user.getNumber());
-		if (dbUser != null) {
+		if (user != null) {
 			if (user.getClasses()!=null && !user.getClasses().trim().equals("")) {
 				user.setClasses(user.getClasses().trim());
 			}
@@ -281,7 +280,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			
 			if (positionId != null) {
 				user.setPosition(positionService.queryById(positionId));
-			}
+			} 
 			if (permission != null) {
 				String[] split = permission.split(", ");
 				for (int i=0; i<split.length; i++) {
@@ -295,8 +294,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 					request.setAttribute("modifyResult", true);
 					//如果是修改个人信息，就更新session中的登录信息
 					User loginedUser = (User) session.get("loginedUser");
-					if (loginedUser.getNumber().equals(user.getNumber())) {
-						session.put("loginedUser", userService.query(loginedUser.getNumber()));
+					if (loginedUser.getNumber().equals(user.getNumber().trim())) {
+						session.put("loginedUser", userService.query(user.getNumber()));
 					}
 				} 
 				return SUCCESS;
@@ -360,8 +359,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			User loginedUser = (User) session.get("loginedUser");
 			photoPath = loginedUser.getPhotoPath();
 		} else {
-			User dbUser = userService.query(user.getNumber());
-			photoPath = dbUser.getPhotoPath();
+			try {
+				User dbUser = userService.query(user.getNumber());
+				photoPath = dbUser.getPhotoPath();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "fail";
+			}
 		}
 		String path = ServletActionContext.getServletContext().getRealPath(photoPath);
 		File iconFile = new File(path);

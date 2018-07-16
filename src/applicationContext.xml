@@ -33,7 +33,9 @@
         <property name="poolPreparedStatements" value="true"></property>
         <property name="timeBetweenEvictionRunsMillis" value="30000"></property>
         <property name="minEvictableIdleTimeMillis" value="60000"></property>
+        <!-- 连接失效检查时间 -->
         <property name="removeAbandonedTimeout" value="10"></property>
+        <!-- 连接失效时删除 -->
         <property name="removeAbandoned" value="true"></property>
         <property name="testOnBorrow" value="true"></property>
         <property name="testOnReturn" value="true"></property>
